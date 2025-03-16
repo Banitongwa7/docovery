@@ -1,0 +1,93 @@
+.navbar {
+  background: var(--menu-bg);
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 1.5em;
+}
+
+.navbar-brand {
+  color: var(--white-color);
+  font-size: var(--h2-font-size);
+  width: 50%;
+}
+
+.navbar-brand .logo {
+  width: 38%;
+  height: 38%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 768px){
+  .navbar-brand .logo {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+.nav-link {
+  color: var(--white-color);
+  font-size: var(--menu-font-size);
+  letter-spacing: 0.4px;
+  margin: 0 1.6em;
+  padding: 0.6em;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link.contact {
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius-large);
+  color: var(--secondary-color);
+  font-family: var(--font-bold-family);
+  padding: 0.6em 2em 0.8em 2em;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link.contact:hover,
+.navbar-expand-lg .navbar-nav .nav-link.contact.active {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.navbar-nav .navbar-toggler-icon {
+  background: none;
+}
+
+.navbar-toggler {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  margin: 0 10px 0 0;
+  width: 30px;
+  height: 35px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.navbar-toggler i {
+  font-size: 30px;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+
+#navbarNav{
+    justify-content: end;
+}
+
+#navbarNav li {
+    align-self: center;
+}
