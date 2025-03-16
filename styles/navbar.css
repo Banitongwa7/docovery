@@ -91,3 +91,8 @@
 #navbarNav li {
     align-self: center;
 }
+
+#navbarNav li a {
+  width: 100%;
+  text-align: center;
+}
