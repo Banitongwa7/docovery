@@ -415,7 +415,7 @@ export default function Home() {
             <p>
               <a href="mailto:docovery@outlook.com">
                 <i className="bi bi-envelope-fill me-2 footer-icon"></i>
-                docovery@outlook.com
+                davidbanitongwa@gmail.com
               </a>
             </p>
           </div>
