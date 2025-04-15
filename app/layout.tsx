@@ -10,6 +10,7 @@ import "./../styles/team.css"
 import "./../styles/testimonial.css"
 import './../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.css'
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +57,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
