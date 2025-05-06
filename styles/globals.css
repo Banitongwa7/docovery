@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font family for the whole app */
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Hero background gradient */
+  .hero-bg {
+    background: linear-gradient(120deg, #1e3a8a 0%, #60a5fa 100%);
+  }
+  
+  /* Card hover effect */
+  .card-hover:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 32px 0 rgba(30,64,175,0.15);
+  }
+  
+  /* Pulse animation */
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+  
+  /* Fade in up animation */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s forwards;
+  }
+  .fade-in-up.delay-100 { animation-delay: 0.1s; }
+  .fade-in-up.delay-200 { animation-delay: 0.2s; }
+  .fade-in-up.delay-300 { animation-delay: 0.3s; }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: none; }
+  }
+  
+  /* Tilt hover effect */
+  .tilt {
+    transition: transform 0.4s cubic-bezier(.03,.98,.52,.99);
+  }
+  .tilt:hover {
+    transform: rotate(-3deg) scale(1.04);
+  }
+  
+  /* Shine animation for buttons and cards */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.5) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-20deg);
+    animation: shine-move 2.2s cubic-bezier(.4,.7,.7,1) infinite;
+    pointer-events: none;
+  }
+  @keyframes shine-move {
+    0% { left: -75%; }
+    60% { left: 120%; }
+    100% { left: 120%; }
+  }
+  
+  /* Responsive hero animation SVG */
+  .hero-anim {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 320px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @media (max-width: 768px) {
+    .hero-anim { width: 350px; height: 180px; }
+  }
