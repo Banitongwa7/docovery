@@ -157,9 +157,7 @@ export default function Home() {
                 <span className="text-white">qui répond à vos besoins</span>
               </h1>
               <p className="mt-6 text-lg text-gray-300 max-w-2xl">
-                Transformez votre vision en réalité avec notre expertise en
-                développement. Des solutions innovantes pour propulser votre
-                entreprise vers l'avenir.
+                {"Transformez votre vision en réalité avec notre expertise en développement. Des solutions innovantes pour propulser votre entreprise vers l'avenir."}
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <motion.a
@@ -515,7 +513,7 @@ export default function Home() {
         </span>
       </h2>
       <p className="text-gray-600 text-lg">
-        Découvrez les retours d'expérience de nos clients satisfaits
+        {"Découvrez les retours d'expérience de nos clients satisfaits"}
       </p>
     </motion.div>
 
@@ -559,8 +557,7 @@ export default function Home() {
               <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
             </svg>
             <blockquote className="text-xl text-gray-700 italic mb-6 leading-relaxed">
-              Je suis absolument ravi de l'application développée par Docovery ! C'est exactement ce que je cherchais. 
-              L'interface est conviviale et intuitive, rendant l'utilisation de l'application simple et agréable.
+              {"Je suis absolument ravi de l'application développée par Docovery ! C'est exactement ce que je cherchais. L'interface est conviviale et intuitive, rendant l'utilisation de l'application simple et agréable."}
             </blockquote>
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
@@ -616,13 +613,13 @@ export default function Home() {
       className="text-center max-w-3xl mx-auto mb-20"
     >
       <h2 className="text-4xl font-bold mb-6">
-        L'équipe{" "}
+        {"L'équipe "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
           Docovery
         </span>
       </h2>
       <p className="text-gray-600 text-lg">
-        Des experts passionnés par l'innovation et le développement
+        {"Des experts passionnés par l'innovation et le développement"}
       </p>
     </motion.div>
 
@@ -827,7 +824,7 @@ export default function Home() {
             type="submit"
             className="w-full px-4 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.02]"
           >
-            S'abonner
+            {"S'abonner"}
           </button>
         </form>
       </div>
@@ -841,7 +838,7 @@ export default function Home() {
         </p>
         <div className="flex space-x-6">
           <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-            Conditions d'utilisation
+            {"Conditions d'utilisation"}
           </a>
           <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
             Politique de confidentialité
