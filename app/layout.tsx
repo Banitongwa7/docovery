@@ -32,6 +32,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    url: "https://docovery.vercel.app",
+    siteName: "Docovery",
     title: "Docovery",
     images: ["/docovery_logo.svg"],
     description: "Building solutions, Shaping the future",

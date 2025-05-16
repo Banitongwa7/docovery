@@ -135,236 +135,233 @@ export default function Home() {
         </motion.div>
       </nav>
 
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative pt-28 lg:pt-32 bg-gray-900 min-h-screen overflow-hidden"
-        id="homepage"
-      >
-        {/* Background gradient effects */}
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-600/20 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-gray-900 to-transparent" />
+      <div className="relative">
+        {/* Hero Section */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="pt-28 lg:pt-32 bg-gray-900 min-h-screen overflow-hidden"
+          id="homepage"
+        >
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="lg:w-1/2 text-center lg:text-left"
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                  <span className="text-white">Nous créons la</span>{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                    solution
+                  </span>{" "}
+                  <span className="text-white">qui répond à vos besoins</span>
+                </h1>
+                <p className="mt-6 text-lg text-gray-300 max-w-2xl">
+                  {
+                    "Transformez votre vision en réalité avec notre expertise en développement. Des solutions innovantes pour propulser votre entreprise vers l'avenir."
+                  }
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <motion.a
+                    href="#footer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                  >
+                    Nous contacter
+                    <svg
+                      className="ml-2 -mr-1 w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </motion.a>
+                  <motion.a
+                    href="#services"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center px-8 py-3 rounded-full border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors duration-300"
+                  >
+                    Découvrir nos services
+                  </motion.a>
+                </div>
+              </motion.div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="lg:w-1/2 relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
+                <div className="relative">
+                  <LottieAnimation
+                    animationData={devAnimation}
+                    className="w-full h-auto"
+                    style={{ maxWidth: "600px", margin: "0 auto" }}
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Stats or highlights */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:w-1/2 text-center lg:text-left"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                <span className="text-white">Nous créons la</span>{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                  solution
-                </span>{" "}
-                <span className="text-white">qui répond à vos besoins</span>
-              </h1>
-              <p className="mt-6 text-lg text-gray-300 max-w-2xl">
-                {
-                  "Transformez votre vision en réalité avec notre expertise en développement. Des solutions innovantes pour propulser votre entreprise vers l'avenir."
-                }
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <motion.a
-                  href="#footer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
-                >
-                  Nous contacter
-                  <svg
-                    className="ml-2 -mr-1 w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </motion.a>
-                <motion.a
-                  href="#services"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-8 py-3 rounded-full border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors duration-300"
-                >
-                  Découvrir nos services
-                </motion.a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="lg:w-1/2 relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
-              <div className="relative">
-                <LottieAnimation
-                  animationData={devAnimation}
-                  className="w-full h-auto"
-                  style={{ maxWidth: "600px", margin: "0 auto" }}
-                />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Stats or highlights */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-20 grid grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {[
-              { number: "5+", label: "Projets Réalisés" },
-              { number: "3+", label: "Clients Satisfaits" },
-              { number: "24/7", label: "Support Client" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-white">
-                  {stat.number}
-                </div>
-                <div className="mt-2 text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* About Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative py-24 bg-gray-50 overflow-hidden"
-        id="about"
-      >
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-grid-black/[0.03] bg-[size:60px_60px]" />
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl font-bold mb-6"
-            >
-              À propos de{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Docovery
-              </span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-gray-600 text-lg leading-relaxed"
-            >
-              Docovery est une entreprise innovante spécialisée dans le
-              développement de solutions numériques sur mesure.
-            </motion.p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-8"
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-20 grid grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {[
-                {
-                  title: "Notre Mission",
-                  description:
-                    "Transformer vos idées en solutions technologiques innovantes qui propulsent votre entreprise vers l'avenir.",
-                },
-                {
-                  title: "Notre Vision",
-                  description:
-                    "Être le partenaire technologique de référence pour les entreprises qui souhaitent se développer dans l'ère numérique.",
-                },
-                {
-                  title: "Nos Valeurs",
-                  description:
-                    "Innovation, excellence, engagement client et amélioration continue guident chacune de nos actions.",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </motion.div>
+                { number: "5+", label: "Projets Réalisés" },
+                { number: "3+", label: "Clients Satisfaits" },
+                { number: "24/7", label: "Support Client" },
+              ].map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl font-bold text-white">
+                    {stat.number}
+                  </div>
+                  <div className="mt-2 text-gray-400">{stat.label}</div>
+                </div>
               ))}
             </motion.div>
+          </div>
+        </motion.section>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
-              <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl">
-                <div className="p-8">
-                  <LottieAnimation
-                    animationData={office}
-                    className="w-full h-auto mb-8"
-                    style={{ maxWidth: "600px", margin: "0 auto" }}
-                  />
-                  <h4 className="text-2xl font-semibold mb-4">
-                    Notre Expertise
-                  </h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { label: "Projets", value: "5+" },
-                      { label: "Clients", value: "3+" },
-                      { label: "Années", value: "4+" },
-                      { label: "Support", value: "24/7" },
-                    ].map((stat, index) => (
-                      <div
-                        key={index}
-                        className="text-center p-4 bg-gray-50 rounded-xl"
-                      >
-                        <div className="text-2xl font-bold text-blue-600">
-                          {stat.value}
+        {/* About Section */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="py-24 bg-gray-50 overflow-hidden"
+          id="about"
+        >
+          {/* Background decorative elements */}
+          <div className="absolute inset-0 bg-grid-black/[0.03] bg-[size:60px_60px]" />
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl font-bold mb-6"
+              >
+                À propos de{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  Docovery
+                </span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-gray-600 text-lg leading-relaxed"
+              >
+                Docovery est une entreprise innovante spécialisée dans le
+                développement de solutions numériques sur mesure.
+              </motion.p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="space-y-8"
+              >
+                {[
+                  {
+                    title: "Notre Mission",
+                    description:
+                      "Transformer vos idées en solutions technologiques innovantes qui propulsent votre entreprise vers l'avenir.",
+                  },
+                  {
+                    title: "Notre Vision",
+                    description:
+                      "Être le partenaire technologique de référence pour les entreprises qui souhaitent se développer dans l'ère numérique.",
+                  },
+                  {
+                    title: "Nos Valeurs",
+                    description:
+                      "Innovation, excellence, engagement client et amélioration continue guident chacune de nos actions.",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 * index }}
+                    className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                  >
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600">{item.description}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
+                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl">
+                  <div className="p-8">
+                    <LottieAnimation
+                      animationData={office}
+                      className="w-full h-auto mb-8"
+                      style={{ maxWidth: "600px", margin: "0 auto" }}
+                    />
+                    <h4 className="text-2xl font-semibold mb-4">
+                      Notre Expertise
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      {[
+                        { label: "Projets", value: "5+" },
+                        { label: "Clients", value: "3+" },
+                        { label: "Années", value: "4+" },
+                        { label: "Support", value: "24/7" },
+                      ].map((stat, index) => (
+                        <div
+                          key={index}
+                          className="text-center p-4 bg-gray-50 rounded-xl"
+                        >
+                          <div className="text-2xl font-bold text-blue-600">
+                            {stat.value}
+                          </div>
+                          <div className="text-gray-600">{stat.label}</div>
                         </div>
-                        <div className="text-gray-600">{stat.label}</div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
+      
 
       {/* Services Section */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+        className=" py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
         id="services"
       >
         {/* Background Effects */}
@@ -465,6 +462,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          
 
           {/* Call to Action */}
           <motion.div
@@ -495,13 +493,14 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.section>
+      
 
       {/* Testimonial Section */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+        className="py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
       >
         {/* Background Effects */}
         <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
@@ -739,6 +738,7 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
+      </div>
 
       {/* Footer */}
       <footer
