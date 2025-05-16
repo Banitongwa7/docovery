@@ -135,7 +135,7 @@ export default function Home() {
         </motion.div>
       </nav>
 
-      <div className="relative">
+      <div className="relative w-full">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -248,7 +248,6 @@ export default function Home() {
           {/* Background decorative elements */}
           <div className="absolute inset-0 bg-grid-black/[0.03] bg-[size:60px_60px]" />
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -505,7 +504,7 @@ export default function Home() {
         {/* Background Effects */}
         <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
         <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute -right-40 -top-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
+       
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
