@@ -245,8 +245,7 @@ export default function Home() {
           className="py-24 bg-gray-50 overflow-hidden"
           id="about"
         >
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 bg-grid-black/[0.03] bg-[size:60px_60px]" />
+         
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -363,8 +362,6 @@ export default function Home() {
         className=" py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
         id="services"
       >
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
       
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -500,8 +497,6 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
       >
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
         <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
        
 
