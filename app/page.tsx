@@ -318,15 +318,15 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
-                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl">
+                <div className="absolute inset-0  rounded-3xl blur-2xl" />
+                <div className="relative rounded-3xl overflow-hidden">
                   <div className="p-8">
                     <LottieAnimation
                       animationData={office}
                       className="w-full h-auto mb-8"
                       style={{ maxWidth: "600px", margin: "0 auto" }}
                     />
-                    <h4 className="text-2xl font-semibold mb-4">
+                    <h4 className="text-2xl font-semibold mb-4 text-center">
                       Notre Expertise
                     </h4>
                     <div className="grid grid-cols-2 gap-4">
