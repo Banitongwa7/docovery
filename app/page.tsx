@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -32,10 +31,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex-shrink-0 flex items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+              <div
               >
                 <Image
                   src="/docovery_white.png"
@@ -45,7 +41,7 @@ export default function Home() {
                   height={45}
                   priority
                 />
-              </motion.div>
+              </div>
             </div>
 
             <div className="hidden md:flex items-center space-x-1">
@@ -54,53 +50,40 @@ export default function Home() {
                 { href: "#about", label: "A propos" },
                 { href: "#services", label: "Nos Services" },
               ].map((item, index) => (
-                <motion.a
-                  key={item.href}
+                <a
+                  key={index}
                   href={item.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors group"
                 >
                   <span>{item.label}</span>
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </motion.a>
+                </a>
               ))}
-              <motion.a
+              <a
                 href="#footer"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
                 className="ml-4 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               >
                 Nous Contacter
-              </motion.a>
+              </a>
             </div>
 
             <div className="md:hidden flex items-center">
-              <motion.button
+              <button
                 onClick={toggleMenu}
                 className="text-gray-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
-                whileTap={{ scale: 0.95 }}
               >
                 {isOpen ? (
                   <XMarkIcon className="h-6 w-6" />
                 ) : (
                   <Bars3Icon className="h-6 w-6" />
                 )}
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
 
         {/* Mobile menu */}
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{
-            opacity: isOpen ? 1 : 0,
-            height: isOpen ? "auto" : 0,
-          }}
-          transition={{ duration: 0.3 }}
+        <div
           className={`${
             isOpen ? "block" : "hidden"
           } md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800`}
@@ -112,37 +95,30 @@ export default function Home() {
               { href: "#services", label: "Nos Services" },
               { href: "#footer", label: "Nous Contacter" },
             ].map((item, index) => (
-              <motion.a
-                key={item.href}
+              <a
+                key={index}
                 href={item.href}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="block px-4 py-3 text-gray-300 hover:text-white rounded-lg hover:bg-gray-800/50 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </motion.a>
+              </a>
             ))}
           </div>
-        </motion.div>
+        </div>
       </nav>
 
       <div className="relative w-full">
         {/* Hero Section */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+        <section
+        
           className="pt-28 lg:pt-32 bg-gray-900 min-h-screen overflow-hidden"
           id="homepage"
         >
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+              <div
+           
                 className="lg:w-1/2 text-center lg:text-left"
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
@@ -158,10 +134,9 @@ export default function Home() {
                   }
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <motion.a
+                  <a
                     href="#footer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+               
                     className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
                   >
                     Nous contacter
@@ -178,22 +153,19 @@ export default function Home() {
                         d="M13 7l5 5m0 0l-5 5m5-5H6"
                       />
                     </svg>
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#services"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+             
                     className="inline-flex items-center px-8 py-3 rounded-full border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors duration-300"
                   >
                     Découvrir nos services
-                  </motion.a>
+                  </a>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+              <div
+            
                 className="lg:w-1/2 relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
@@ -205,14 +177,12 @@ export default function Home() {
                     style={{ maxWidth: "600px", margin: "0 auto" }}
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Stats or highlights */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+            <div
+          
               className="mt-20 grid grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {[
@@ -227,15 +197,13 @@ export default function Home() {
                   <div className="mt-2 text-gray-400">{stat.label}</div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* About Section */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+        <section
+ 
           className="py-24 bg-gray-100 overflow-hidden"
           id="about"
         >
@@ -244,33 +212,27 @@ export default function Home() {
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+              <h2
+          
                 className="text-4xl font-bold mb-6"
               >
                 À propos de{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Docovery
                 </span>
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+              </h2>
+              <p
+      
                 className="text-gray-600 text-lg leading-relaxed"
               >
                 Docovery est une entreprise innovante spécialisée dans le
                 développement de solutions numériques sur mesure.
-              </motion.p>
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+              <div
+      
                 className="space-y-8"
               >
                 {[
@@ -290,25 +252,21 @@ export default function Home() {
                       "Innovation, excellence, engagement client et amélioration continue guident chacune de nos actions.",
                   },
                 ].map((item, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 * index }}
+                
                     className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <h3 className="text-xl font-semibold mb-3 text-gray-900">
                       {item.title}
                     </h3>
                     <p className="text-gray-600">{item.description}</p>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+              <div
+             
                 className="relative"
               >
                 <div className="absolute inset-0  rounded-3xl blur-2xl" />
@@ -343,26 +301,22 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.section>
+        </section>
       
 
       {/* Services Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+      <section
+
         className=" py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
         id="services"
       >
       
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
+      
             className="text-center max-w-3xl mx-auto mb-20"
           >
             <h2 className="text-4xl font-bold mb-6">
@@ -375,7 +329,7 @@ export default function Home() {
               Des solutions sur mesure pour répondre à tous vos besoins
               numériques
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -422,11 +376,9 @@ export default function Home() {
                 color: "from-sky-500/20 to-sky-600/20",
               },
             ].map((service, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+           
                 className="group relative"
               >
                 <div
@@ -442,23 +394,19 @@ export default function Home() {
                   <p className="text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
+                  <div
+                 
                     className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
                   />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
           
 
           {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          <div
+        
             className="text-center mt-20"
           >
             <a
@@ -480,26 +428,22 @@ export default function Home() {
                 />
               </svg>
             </a>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
       
 
       {/* Testimonial Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+      <section
+   
         className="py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
       >
         <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
        
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
+    
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-4xl font-bold mb-6">
@@ -511,13 +455,11 @@ export default function Home() {
             <p className="text-gray-600 text-lg">
               {"Découvrez les retours d'expérience de nos clients satisfaits"}
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
+      
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl transition-all duration-300 group-hover:scale-105" />
@@ -530,20 +472,16 @@ export default function Home() {
                   className="rounded-3xl shadow-lg transform transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+            <div
+        
               className="relative"
             >
               <div className="absolute -left-6 top-0 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
               <div className="pl-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                <div
+               
                 >
                   <svg
                     className="h-12 w-12 text-blue-500 mb-6 opacity-30"
@@ -568,16 +506,14 @@ export default function Home() {
                       <div className="text-gray-600">CEO @ Amani</div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Testimonial Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+          <div
+
             className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
@@ -593,22 +529,18 @@ export default function Home() {
                 <div className="mt-2 text-gray-600">{stat.label}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Team Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+      <section
+ 
         className="relative py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
+      
             className="text-center max-w-3xl mx-auto mb-20"
           >
             <h2 className="text-4xl font-bold mb-6">
@@ -620,7 +552,7 @@ export default function Home() {
             <p className="text-gray-600 text-lg">
               {"Des experts passionnés par l'innovation et le développement"}
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
@@ -639,11 +571,9 @@ export default function Home() {
                 color: "from-purple-500/20 to-purple-600/20",
               },
             ].map((member, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+         
                 className="group relative"
               >
                 <div
@@ -705,27 +635,26 @@ export default function Home() {
                             ),
                           },
                         ].map((social, socialIndex) => (
-                          <motion.a
+                          <a
                             key={socialIndex}
                             href={social.href}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
-                            whileHover={{ scale: 1.2 }}
-                            whileTap={{ scale: 0.9 }}
+                      
                           >
                             {social.icon}
-                          </motion.a>
+                          </a>
                         ))}
                       </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
       </div>
 
       {/* Footer */}
@@ -754,7 +683,7 @@ export default function Home() {
                 Building innovative solutions to empower businesses in the
                 digital age.
               </p>
-              <motion.div className="flex space-x-4">
+              <div className="flex space-x-4">
                 {[
                   {
                     href: socialTeam.docovery.linkedin,
@@ -793,19 +722,18 @@ export default function Home() {
                     ),
                   },
                 ].map((social, index) => (
-                  <motion.a
+                  <a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors duration-300"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
+                 
                   >
                     {social.icon}
-                  </motion.a>
+                  </a>
                 ))}
-              </motion.div>
+              </div>
             </div>
 
             {/* Contact Info */}
