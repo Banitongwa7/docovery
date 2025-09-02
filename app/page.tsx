@@ -17,7 +17,6 @@ import socialTeam from "@/utils/socialTeam";
 import devAnimation from "@/public/lottie/dev-animation.gif";
 import office from "@/public/lottie/office.gif";
 
-
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,8 +30,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex-shrink-0 flex items-center">
-              <div
-              >
+              <div>
                 <Image
                   src="/docovery_white.png"
                   alt="logo"
@@ -111,16 +109,12 @@ export default function Home() {
       <div className="relative w-full">
         {/* Hero Section */}
         <section
-        
-          className="pt-28 lg:pt-32 bg-gray-900 min-h-screen overflow-hidden"
+          className="py-28 lg:pt-32 bg-gray-900 min-h-screen overflow-hidden"
           id="homepage"
         >
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-              <div
-           
-                className="lg:w-1/2 text-center lg:text-left"
-              >
+              <div className="lg:w-1/2 text-center lg:text-left">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                   <span className="text-white">Nous créons la</span>{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
@@ -136,7 +130,6 @@ export default function Home() {
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <a
                     href="#footer"
-               
                     className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
                   >
                     Nous contacter
@@ -156,7 +149,6 @@ export default function Home() {
                   </a>
                   <a
                     href="#services"
-             
                     className="inline-flex items-center px-8 py-3 rounded-full border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors duration-300"
                   >
                     Découvrir nos services
@@ -164,10 +156,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div
-            
-                className="lg:w-1/2 relative"
-              >
+              <div className="lg:w-1/2 relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
                 <div className="relative">
                   <Image
@@ -181,10 +170,7 @@ export default function Home() {
             </div>
 
             {/* Stats or highlights */}
-            <div
-          
-              className="mt-20 grid grid-cols-2 lg:grid-cols-3 gap-8"
-            >
+            <div className="mt-20 grid grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { number: "5+", label: "Projets Réalisés" },
                 { number: "3+", label: "Clients Satisfaits" },
@@ -202,39 +188,25 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section
- 
-          className="py-24 bg-gray-100 overflow-hidden"
-          id="about"
-        >
-         
+        <section className="py-24 bg-gray-100 overflow-hidden" id="about">
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2
-          
-                className="text-4xl font-bold mb-6"
-              >
+              <h2 className="text-4xl font-bold mb-6">
                 À propos de{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Docovery
                 </span>
               </h2>
-              <p
-      
-                className="text-gray-600 text-lg leading-relaxed"
-              >
+              <p className="text-gray-600 text-lg leading-relaxed">
                 Docovery est une entreprise innovante spécialisée dans le
                 développement de solutions numériques sur mesure.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div
-      
-                className="space-y-8"
-              >
+              <div className="space-y-8">
                 {[
                   {
                     title: "Notre Mission",
@@ -254,7 +226,6 @@ export default function Home() {
                 ].map((item, index) => (
                   <div
                     key={index}
-                
                     className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <h3 className="text-xl font-semibold mb-3 text-gray-900">
@@ -265,10 +236,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div
-             
-                className="relative"
-              >
+              <div className="relative">
                 <div className="absolute inset-0  rounded-3xl blur-2xl" />
                 <div className="relative rounded-3xl overflow-hidden">
                   <div className="p-8">
@@ -305,356 +273,309 @@ export default function Home() {
             </div>
           </div>
         </section>
-      
 
-      {/* Services Section */}
-      <section
+        {/* Services Section */}
+        <section
+          className=" py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+          id="services"
+        >
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-4xl font-bold mb-6">
+                Nos{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  Services
+                </span>
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Des solutions sur mesure pour répondre à tous vos besoins
+                numériques
+              </p>
+            </div>
 
-        className=" py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
-        id="services"
-      >
-      
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-      
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <h2 className="text-4xl font-bold mb-6">
-              Nos{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Services
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Des solutions sur mesure pour répondre à tous vos besoins
-              numériques
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <UserIcon className="h-8 w-8" />,
-                title: "Accompagnement",
-                description:
-                  "Nous vous accompagnons dans la clarification de votre idée pour mieux appréhender le cœur de votre projet.",
-                color: "from-blue-500/20 to-blue-600/20",
-              },
-              {
-                icon: <PencilIcon className="h-8 w-8" />,
-                title: "Conception",
-                description:
-                  "Représenter son projet est une méthode efficace pour sa construction. Docovery se charge de vous aider à mieux conceptualiser votre projet.",
-                color: "from-purple-500/20 to-purple-600/20",
-              },
-              {
-                icon: <CodeBracketIcon className="h-8 w-8" />,
-                title: "Développement",
-                description:
-                  "L'équipe talentueuse de Docovery crée des solutions sur mesure pour votre projet.",
-                color: "from-indigo-500/20 to-indigo-600/20",
-              },
-              {
-                icon: <HomeIcon className="h-8 w-8" />,
-                title: "Service après vente",
-                description:
-                  "Un support continu est assuré par le service après-vente dédié, résolvant rapidement toute question ou préoccupation.",
-                color: "from-cyan-500/20 to-cyan-600/20",
-              },
-              {
-                icon: <WrenchIcon className="h-8 w-8" />,
-                title: "Maintenance",
-                description:
-                  "Un service de maintenance proactif effectue des contrôles réguliers et applique les mises à jour nécessaires.",
-                color: "from-teal-500/20 to-teal-600/20",
-              },
-              {
-                icon: <BookOpenIcon className="h-8 w-8" />,
-                title: "Formation",
-                description:
-                  "Des formations personnalisées adaptées à vos besoins spécifiques vous permettent de maîtriser pleinement vos outils technologiques.",
-                color: "from-sky-500/20 to-sky-600/20",
-              },
-            ].map((service, index) => (
-              <div
-                key={index}
-           
-                className="group relative"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
-                />
-                <div className="relative h-auto md:h-[300px] bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
-                    <div className="text-white">{service.icon}</div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: <UserIcon className="h-8 w-8" />,
+                  title: "Accompagnement",
+                  description:
+                    "Nous vous accompagnons dans la clarification de votre idée pour mieux appréhender le cœur de votre projet.",
+                  color: "from-blue-500/20 to-blue-600/20",
+                },
+                {
+                  icon: <PencilIcon className="h-8 w-8" />,
+                  title: "Conception",
+                  description:
+                    "Représenter son projet est une méthode efficace pour sa construction. Docovery se charge de vous aider à mieux conceptualiser votre projet.",
+                  color: "from-purple-500/20 to-purple-600/20",
+                },
+                {
+                  icon: <CodeBracketIcon className="h-8 w-8" />,
+                  title: "Développement",
+                  description:
+                    "L'équipe talentueuse de Docovery crée des solutions sur mesure pour votre projet.",
+                  color: "from-indigo-500/20 to-indigo-600/20",
+                },
+                {
+                  icon: <HomeIcon className="h-8 w-8" />,
+                  title: "Service après vente",
+                  description:
+                    "Un support continu est assuré par le service après-vente dédié, résolvant rapidement toute question ou préoccupation.",
+                  color: "from-cyan-500/20 to-cyan-600/20",
+                },
+                {
+                  icon: <WrenchIcon className="h-8 w-8" />,
+                  title: "Maintenance",
+                  description:
+                    "Un service de maintenance proactif effectue des contrôles réguliers et applique les mises à jour nécessaires.",
+                  color: "from-teal-500/20 to-teal-600/20",
+                },
+                {
+                  icon: <BookOpenIcon className="h-8 w-8" />,
+                  title: "Formation",
+                  description:
+                    "Des formations personnalisées adaptées à vos besoins spécifiques vous permettent de maîtriser pleinement vos outils technologiques.",
+                  color: "from-sky-500/20 to-sky-600/20",
+                },
+              ].map((service, index) => (
+                <div key={index} className="group relative">
                   <div
-                 
-                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
+                    className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
+                  />
+                  <div className="relative h-auto md:h-[300px] bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
+                      <div className="text-white">{service.icon}</div>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <div className="text-center mt-20">
+              <a
+                href="#footer"
+                className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+              >
+                Démarrer un projet
+                <svg
+                  className="ml-2 -mr-1 w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+          <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl font-bold mb-6">
+                Ce que disent nos{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  clients
+                </span>
+              </h2>
+              <p className="text-gray-600 text-lg">
+                {"Découvrez les retours d'expérience de nos clients satisfaits"}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl transition-all duration-300 group-hover:scale-105" />
+                <div className="relative">
+                  <Image
+                    src={avatar}
+                    alt="Client"
+                    width={500}
+                    height={500}
+                    className="rounded-3xl shadow-lg transform transition-transform duration-300 group-hover:scale-[1.02]"
                   />
                 </div>
               </div>
-            ))}
-          </div>
-          
 
-          {/* Call to Action */}
-          <div
-        
-            className="text-center mt-20"
-          >
-            <a
-              href="#footer"
-              className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
-            >
-              Démarrer un projet
-              <svg
-                className="ml-2 -mr-1 w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-      
-
-      {/* Testimonial Section */}
-      <section
-   
-        className="py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
-      >
-        <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-       
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-    
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-6">
-              Ce que disent nos{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                clients
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg">
-              {"Découvrez les retours d'expérience de nos clients satisfaits"}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div
-      
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl transition-all duration-300 group-hover:scale-105" />
               <div className="relative">
-                <Image
-                  src={avatar}
-                  alt="Client"
-                  width={500}
-                  height={500}
-                  className="rounded-3xl shadow-lg transform transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-
-            <div
-        
-              className="relative"
-            >
-              <div className="absolute -left-6 top-0 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
-              <div className="pl-8">
-                <div
-               
-                >
-                  <svg
-                    className="h-12 w-12 text-blue-500 mb-6 opacity-30"
-                    fill="currentColor"
-                    viewBox="0 0 32 32"
-                  >
-                    <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                  </svg>
-                  <blockquote className="text-xl text-gray-700 italic mb-6 leading-relaxed">
-                    {
-                      "Je suis absolument ravi de l'application développée par Docovery ! C'est exactement ce que je cherchais. L'interface est conviviale et intuitive, rendant l'utilisation de l'application simple et agréable."
-                    }
-                  </blockquote>
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-                      JD
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">
-                        John Doe
+                <div className="absolute -left-6 top-0 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
+                <div className="pl-8">
+                  <div>
+                    <svg
+                      className="h-12 w-12 text-blue-500 mb-6 opacity-30"
+                      fill="currentColor"
+                      viewBox="0 0 32 32"
+                    >
+                      <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                    </svg>
+                    <blockquote className="text-xl text-gray-700 italic mb-6 leading-relaxed">
+                      {
+                        "Je suis absolument ravi de l'application développée par Docovery ! C'est exactement ce que je cherchais. L'interface est conviviale et intuitive, rendant l'utilisation de l'application simple et agréable."
+                      }
+                    </blockquote>
+                    <div className="flex items-center gap-4">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+                        JD
                       </div>
-                      <div className="text-gray-600">CEO @ Amani</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial Stats */}
-          <div
-
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {[
-              { number: "98%", label: "Satisfaction" },
-              { number: "24/7", label: "Support Client" },
-              { number: "3+", label: "Années d'expérience" },
-              { number: "100%", label: "Engagement" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {stat.number}
-                </div>
-                <div className="mt-2 text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section
- 
-        className="relative py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
-      >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-      
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <h2 className="text-4xl font-bold mb-6">
-              {"L'équipe "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Docovery
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg">
-              {"Des experts passionnés par l'innovation et le développement"}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              {
-                name: "David BANITONGWA",
-                role: "Software Engineer & Co-founder Docovery",
-                image: "/david.png",
-                social: socialTeam.david,
-                color: "from-blue-500/20 to-blue-600/20",
-              },
-              {
-                name: "Omari KAYUMBA",
-                role: "Software Engineer & Co-founder Docovery",
-                image: "/omari.jpg",
-                social: socialTeam.omari,
-                color: "from-purple-500/20 to-purple-600/20",
-              },
-            ].map((member, index) => (
-              <div
-                key={index}
-         
-                className="group relative"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${member.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
-                />
-                <div className="relative bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="flex flex-col md:flex-row items-center gap-8">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-md opacity-50" />
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        width={160}
-                        height={160}
-                        className="relative rounded-full border-4 border-white shadow-lg"
-                      />
-                    </div>
-                    <div className="flex-1 text-center md:text-left">
-                      <h3 className="text-2xl font-bold mb-2 text-gray-900">
-                        {member.name}
-                      </h3>
-                      <p className="text-gray-600 mb-4">{member.role}</p>
-                      <div className="flex justify-center md:justify-start space-x-4">
-                        {[
-                          {
-                            href: member.social.github,
-                            icon: (
-                              <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            href: member.social.linkedin,
-                            icon: (
-                              <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            href: member.social.twitter,
-                            icon: (
-                              <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                              </svg>
-                            ),
-                          },
-                        ].map((social, socialIndex) => (
-                          <a
-                            key={socialIndex}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
-                      
-                          >
-                            {social.icon}
-                          </a>
-                        ))}
+                      <div>
+                        <div className="font-semibold text-gray-900">
+                          John Doe
+                        </div>
+                        <div className="text-gray-600">CEO @ Amani</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Testimonial Stats */}
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { number: "98%", label: "Satisfaction" },
+                { number: "24/7", label: "Support Client" },
+                { number: "3+", label: "Années d'expérience" },
+                { number: "100%", label: "Engagement" },
+              ].map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    {stat.number}
+                  </div>
+                  <div className="mt-2 text-gray-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Team Section */}
+        <section className="relative py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-4xl font-bold mb-6">
+                {"L'équipe "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  Docovery
+                </span>
+              </h2>
+              <p className="text-gray-600 text-lg">
+                {"Des experts passionnés par l'innovation et le développement"}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {[
+                {
+                  name: "David BANITONGWA",
+                  role: "Software Engineer & Co-founder Docovery",
+                  image: "/david.png",
+                  social: socialTeam.david,
+                  color: "from-blue-500/20 to-blue-600/20",
+                },
+                {
+                  name: "Omari KAYUMBA",
+                  role: "Software Engineer & Co-founder Docovery",
+                  image: "/omari.jpg",
+                  social: socialTeam.omari,
+                  color: "from-purple-500/20 to-purple-600/20",
+                },
+              ].map((member, index) => (
+                <div key={index} className="group relative">
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${member.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
+                  />
+                  <div className="relative bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="flex flex-col md:flex-row items-center gap-8">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-md opacity-50" />
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={160}
+                          height={160}
+                          className="relative rounded-full border-4 border-white shadow-lg"
+                        />
+                      </div>
+                      <div className="flex-1 text-center md:text-left">
+                        <h3 className="text-2xl font-bold mb-2 text-gray-900">
+                          {member.name}
+                        </h3>
+                        <p className="text-gray-600 mb-4">{member.role}</p>
+                        <div className="flex justify-center md:justify-start space-x-4">
+                          {[
+                            {
+                              href: member.social.github,
+                              icon: (
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                                </svg>
+                              ),
+                            },
+                            {
+                              href: member.social.linkedin,
+                              icon: (
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                              ),
+                            },
+                            {
+                              href: member.social.twitter,
+                              icon: (
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg>
+                              ),
+                            },
+                          ].map((social, socialIndex) => (
+                            <a
+                              key={socialIndex}
+                              href={social.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
+                            >
+                              {social.icon}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Footer */}
@@ -728,7 +649,6 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors duration-300"
-                 
                   >
                     {social.icon}
                   </a>
