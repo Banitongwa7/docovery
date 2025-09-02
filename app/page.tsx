@@ -15,16 +15,9 @@ import {
 } from "@heroicons/react/24/outline";
 import avatar from "./../public/male-avatar.png";
 import socialTeam from "@/utils/socialTeam";
-import devAnimation from "@/public/lottie/dev-animation.json";
-import office from "@/public/lottie/office.json";
-import dynamic from "next/dynamic";
+import devAnimation from "@/public/lottie/dev-animation.gif";
+import office from "@/public/lottie/office.gif";
 
-const LottieAnimation = dynamic(() => import("@/components/lottieanimation"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[400px] bg-gray-100 animate-pulse rounded-lg" />
-  ),
-});
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -205,8 +198,9 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
                 <div className="relative">
-                  <LottieAnimation
-                    animationData={devAnimation}
+                  <Image
+                    src={devAnimation}
+                    alt="Developer Animation"
                     className="w-full h-auto"
                     style={{ maxWidth: "600px", margin: "0 auto" }}
                   />
@@ -320,8 +314,9 @@ export default function Home() {
                 <div className="absolute inset-0  rounded-3xl blur-2xl" />
                 <div className="relative rounded-3xl overflow-hidden">
                   <div className="p-8">
-                    <LottieAnimation
-                      animationData={office}
+                    <Image
+                      src={office}
+                      alt="office"
                       className="w-full h-auto mb-8"
                       style={{ maxWidth: "600px", margin: "0 auto" }}
                     />
