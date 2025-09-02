@@ -236,7 +236,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="py-24 bg-gray-50 overflow-hidden"
+          className="py-24 bg-gray-100 overflow-hidden"
           id="about"
         >
          
@@ -332,7 +332,7 @@ export default function Home() {
                       ].map((stat, index) => (
                         <div
                           key={index}
-                          className="text-center p-4 bg-gray-50 rounded-xl"
+                          className="text-center p-4 bg-gray-50 rounded-xl shadow-lg"
                         >
                           <div className="text-2xl font-bold text-blue-600">
                             {stat.value}
