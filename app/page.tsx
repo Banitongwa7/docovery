@@ -35,7 +35,6 @@ export default function Home() {
                 <Image
                   src="/docovery_white.png"
                   alt="logo"
-                  // FIX: Replaced non-standard 'h-15' with 'h-12' (approx 48px)
                   className="h-12 md:h-16 w-auto hover:opacity-90 transition-opacity"
                   width={180}
                   height={45}
@@ -70,7 +69,6 @@ export default function Home() {
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
-                // FIX: Added A11Y attributes (aria-expanded, aria-controls)
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
                 className="text-gray-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
@@ -85,9 +83,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile menu (FIX: Added max-h and transition for smooth slide-in/out) */}
         <div
-          id="mobile-menu" // FIX: Added ID for aria-controls
+          id="mobile-menu"
           className={`${
             isOpen ? "max-h-screen py-3 opacity-100" : "max-h-0 py-0 opacity-0"
           } md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800 transition-all duration-300 ease-in-out overflow-hidden`}
@@ -113,9 +110,7 @@ export default function Home() {
       </nav>
 
       <div className="relative w-full">
-        {/* Hero Section */}
         <section
-          // FIX: Removed min-h-screen to prevent overflow on short viewports/mobile landscape
           className="py-28 lg:pt-32 bg-gray-900 overflow-hidden" 
           id="homepage"
         >
@@ -162,8 +157,6 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-
-              {/* FIX: Replaced inline style with Tailwind classes for consistency */}
               <div className="lg:w-1/2 relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
                 <div className="relative">
@@ -176,7 +169,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Stats or highlights */}
             <div className="mt-20 grid grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { number: "5+", label: "Projets Réalisés" },
@@ -194,7 +186,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Section */}
         <section className="py-24 bg-gray-100 overflow-hidden" id="about">
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
@@ -250,7 +241,6 @@ export default function Home() {
                     <Image
                       src={office}
                       alt="office"
-                      // FIX: Replaced inline style with Tailwind classes for consistency
                       className="w-full h-auto mb-8 max-w-xl mx-auto" 
                     />
                     <h4 className="text-2xl font-semibold mb-4 text-center">
@@ -281,7 +271,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services Section */}
         <section
           className=" py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
           id="services"
@@ -349,7 +338,6 @@ export default function Home() {
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
                   />
-                  {/* FIX: Removed fixed height 'md:h-[300px]' for responsive integrity */}
                   <div className="relative h-full bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
                       <div className="text-white">{service.icon}</div>
@@ -366,7 +354,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Call to Action */}
             <div className="text-center mt-20">
               <Link
                 href="#footer"
@@ -391,7 +378,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonial Section */}
         <section className="py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
           <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
 
@@ -454,7 +440,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Testimonial Stats */}
             <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { number: "98%", label: "Satisfaction" },
@@ -473,7 +458,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Team Section */}
         <section className="relative py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -586,12 +570,11 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Footer */}
       <footer
         className="relative bg-gray-900 text-white pt-20 pb-12 overflow-hidden"
         id="footer"
       >
-        {/* Background Effects */}
+
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
         <div className="absolute -left-40 -bottom-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
@@ -599,14 +582,13 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            {/* Brand Section */}
+    
             <div className="space-y-6">
               <Image
                 src="/docovery_white.png"
                 alt="Docovery"
                 width={160}
                 height={40}
-                // FIX: Replaced non-standard 'h-15' with 'h-12'
                 className="h-12 md:h-16 w-auto"
               />
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -665,7 +647,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact Info */}
             <div>
               <h4 className="text-lg font-semibold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Nous Contacter
@@ -730,7 +711,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h4 className="text-lg font-semibold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Liens Rapides
@@ -751,7 +731,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Newsletter */}
             <div>
               <h4 className="text-lg font-semibold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Newsletter
@@ -786,14 +765,13 @@ export default function Home() {
               </p>
               <div className="flex space-x-6">
                 <Link
-                  // FIX: Changed generic '#' to semantic placeholder to prevent unexpected page jumps
+
                   href="/terms"
                   className="text-gray-400 hover:text-white text-sm transition-colors"
                 >
                   {"Conditions d'utilisation"}
                 </Link>
                 <Link
-                  // FIX: Changed generic '#' to semantic placeholder to prevent unexpected page jumps
                   href="/privacy"
                   className="text-gray-400 hover:text-white text-sm transition-colors"
                 >
