@@ -80,13 +80,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu (FIX 1: Added max-h and transition for smooth slide-in/out) */}
         <div
           className={`${
-            isOpen ? "block" : "hidden"
-          } md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800`}
+            isOpen ? "max-h-screen py-3 opacity-100" : "max-h-0 py-0 opacity-0"
+          } md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800 transition-all duration-300 ease-in-out overflow-hidden`}
         >
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 space-y-2">
             {[
               { href: "#homepage", label: "Accueil" },
               { href: "#about", label: "A propos" },
@@ -156,14 +156,14 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* FIX 3: Replaced inline style with Tailwind classes */}
               <div className="lg:w-1/2 relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
                 <div className="relative">
                   <Image
                     src={devAnimation}
                     alt="Developer Animation"
-                    className="w-full h-auto"
-                    style={{ maxWidth: "600px", margin: "0 auto" }}
+                    className="w-full h-auto max-w-xl mx-auto"
                   />
                 </div>
               </div>
@@ -342,7 +342,8 @@ export default function Home() {
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
                   />
-                  <div className="relative h-auto md:h-[300px] bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  {/* FIX 2: Removed fixed height 'md:h-[300px]' for responsive integrity */}
+                  <div className="relative h-full bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
                       <div className="text-white">{service.icon}</div>
                     </div>
@@ -731,7 +732,7 @@ export default function Home() {
                   (item, index) => (
                     <li key={index}>
                       <a
-                        href={`#${item.toLowerCase()}`}
+                        href={`#${item.toLowerCase().replace("à", "a")}`}
                         className="text-gray-400 hover:text-white transition-colors"
                       >
                         {item}
