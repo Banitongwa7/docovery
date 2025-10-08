@@ -1,37 +1,42 @@
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
+import Link from 'next/link';
+
+// NOTE: Using a typography-focused layout to simplify the structure 
+// and maintain brand consistency without relying on an external image.
 
 export default function NotFound() {
   return (
-    <div className="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
-      <div className="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
-        <div className="relative">
-          <div className="absolute">
-            <div className="-my-7">
-              <h1 className="my-2 text-gray-800 font-bold text-2xl">
-                404 Page Not Found
-              </h1>
-              <p className="my-2 text-gray-800">
-                {"We couldn't find the page you were looking for."}
-              </p>
-              <button
-                type="button"
-                className="sm:w-full lg:w-auto my-2 border rounded-full py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50"
-              >
-                Go to homepage
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="md:pt-20">
-        <Image
-          src="https://i.ibb.co/ck1SGFJ/Group.png"
-          alt="item"
-          width={500}
-          height={500}
-        />
-      </div>
+    // FIX: Centered layout, consistent white background, using min-h-screen
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 p-6 sm:p-8">
+      
+      {/* FIX: Primary focus is the massive 404 number with the brand's gradient */}
+      <h1 className="text-9xl md:text-[10rem] lg:text-[12rem] font-extrabold tracking-tight">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">404</span>
+      </h1>
+
+      {/* FIX: Clearer, properly sized heading and French localization */}
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-4 mb-4 text-center">
+        Page Non Trouvée
+      </h2>
+
+      {/* FIX: Clear descriptive text */}
+      <p className="max-w-lg text-lg text-gray-600 text-center mb-10">
+        {"Désolé, nous n'avons pas pu trouver la page que vous recherchez. Elle a peut-être été déplacée ou supprimée."}
+      </p>
+
+      {/* FIX: Uses Next.js Link and button style matching the main landing page */}
+      <Link href="/" passHref>
+        <button
+          type="button"
+          className="inline-flex items-center px-10 py-3 rounded-full 
+                     bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium 
+                     hover:from-blue-700 hover:to-blue-600 transition-all duration-300 
+                     shadow-lg hover:shadow-blue-500/25 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+        >
+          {"Retourner à l'Accueil"}
+        </button>
+      </Link>
+      
     </div>
-  )
+  );
 }

@@ -16,6 +16,7 @@ import avatar from "./../public/male-avatar.png";
 import socialTeam from "@/utils/socialTeam";
 import devAnimation from "@/public/lottie/dev-animation.gif";
 import office from "@/public/lottie/office.gif";
+import Link from "next/link";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,8 @@ export default function Home() {
                 <Image
                   src="/docovery_white.png"
                   alt="logo"
-                  className="h-15 md:h-20 w-auto hover:opacity-90 transition-opacity"
+                  // FIX: Replaced non-standard 'h-15' with 'h-12' (approx 48px)
+                  className="h-12 md:h-16 w-auto hover:opacity-90 transition-opacity"
                   width={180}
                   height={45}
                   priority
@@ -48,26 +50,29 @@ export default function Home() {
                 { href: "#about", label: "A propos" },
                 { href: "#services", label: "Nos Services" },
               ].map((item, index) => (
-                <a
+                <Link
                   key={index}
                   href={item.href}
                   className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors group"
                 >
                   <span>{item.label}</span>
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </a>
+                </Link>
               ))}
-              <a
+              <Link
                 href="#footer"
                 className="ml-4 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               >
                 Nous Contacter
-              </a>
+              </Link>
             </div>
 
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
+                // FIX: Added A11Y attributes (aria-expanded, aria-controls)
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
                 className="text-gray-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
               >
                 {isOpen ? (
@@ -80,8 +85,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile menu (FIX 1: Added max-h and transition for smooth slide-in/out) */}
+        {/* Mobile menu (FIX: Added max-h and transition for smooth slide-in/out) */}
         <div
+          id="mobile-menu" // FIX: Added ID for aria-controls
           className={`${
             isOpen ? "max-h-screen py-3 opacity-100" : "max-h-0 py-0 opacity-0"
           } md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800 transition-all duration-300 ease-in-out overflow-hidden`}
@@ -93,14 +99,14 @@ export default function Home() {
               { href: "#services", label: "Nos Services" },
               { href: "#footer", label: "Nous Contacter" },
             ].map((item, index) => (
-              <a
+              <Link
                 key={index}
                 href={item.href}
                 className="block px-4 py-3 text-gray-300 hover:text-white rounded-lg hover:bg-gray-800/50 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -109,7 +115,8 @@ export default function Home() {
       <div className="relative w-full">
         {/* Hero Section */}
         <section
-          className="py-28 lg:pt-32 bg-gray-900 min-h-screen overflow-hidden"
+          // FIX: Removed min-h-screen to prevent overflow on short viewports/mobile landscape
+          className="py-28 lg:pt-32 bg-gray-900 overflow-hidden" 
           id="homepage"
         >
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,7 +135,7 @@ export default function Home() {
                   }
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <a
+                  <Link
                     href="#footer"
                     className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
                   >
@@ -146,17 +153,17 @@ export default function Home() {
                         d="M13 7l5 5m0 0l-5 5m5-5H6"
                       />
                     </svg>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#services"
                     className="inline-flex items-center px-8 py-3 rounded-full border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-colors duration-300"
                   >
                     Découvrir nos services
-                  </a>
+                  </Link>
                 </div>
               </div>
 
-              {/* FIX 3: Replaced inline style with Tailwind classes */}
+              {/* FIX: Replaced inline style with Tailwind classes for consistency */}
               <div className="lg:w-1/2 relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl" />
                 <div className="relative">
@@ -243,8 +250,8 @@ export default function Home() {
                     <Image
                       src={office}
                       alt="office"
-                      className="w-full h-auto mb-8"
-                      style={{ maxWidth: "600px", margin: "0 auto" }}
+                      // FIX: Replaced inline style with Tailwind classes for consistency
+                      className="w-full h-auto mb-8 max-w-xl mx-auto" 
                     />
                     <h4 className="text-2xl font-semibold mb-4 text-center">
                       Notre Expertise
@@ -342,7 +349,7 @@ export default function Home() {
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-xl transition-all duration-300 group-hover:scale-105`}
                   />
-                  {/* FIX 2: Removed fixed height 'md:h-[300px]' for responsive integrity */}
+                  {/* FIX: Removed fixed height 'md:h-[300px]' for responsive integrity */}
                   <div className="relative h-full bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
                       <div className="text-white">{service.icon}</div>
@@ -361,7 +368,7 @@ export default function Home() {
 
             {/* Call to Action */}
             <div className="text-center mt-20">
-              <a
+              <Link
                 href="#footer"
                 className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               >
@@ -379,7 +386,7 @@ export default function Home() {
                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -558,7 +565,7 @@ export default function Home() {
                               ),
                             },
                           ].map((social, socialIndex) => (
-                            <a
+                            <Link
                               key={socialIndex}
                               href={social.href}
                               target="_blank"
@@ -566,7 +573,7 @@ export default function Home() {
                               className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
                             >
                               {social.icon}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -599,7 +606,8 @@ export default function Home() {
                 alt="Docovery"
                 width={160}
                 height={40}
-                className="h-15 md:h-20 w-auto"
+                // FIX: Replaced non-standard 'h-15' with 'h-12'
+                className="h-12 md:h-16 w-auto"
               />
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                 Building innovative solutions to empower businesses in the
@@ -644,7 +652,7 @@ export default function Home() {
                     ),
                   },
                 ].map((social, index) => (
-                  <a
+                  <Link
                     key={index}
                     href={social.href}
                     target="_blank"
@@ -652,7 +660,7 @@ export default function Home() {
                     className="text-gray-400 hover:text-white transition-colors duration-300"
                   >
                     {social.icon}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -693,9 +701,9 @@ export default function Home() {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  <a href="mailto:davidbanitongwa@gmail.com">
+                  <Link href="mailto:davidbanitongwa@gmail.com">
                     davidbanitongwa@gmail.com
-                  </a>
+                  </Link>
                 </li>
                 <li className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors">
                   <svg
@@ -731,12 +739,12 @@ export default function Home() {
                 {["Accueil", "À propos", "Services", "Équipe"].map(
                   (item, index) => (
                     <li key={index}>
-                      <a
-                        href={`#${item.toLowerCase().replace("à", "a")}`}
+                      <Link
+                        href={`#${item.toLowerCase().replace("à", "Link")}`}
                         className="text-gray-400 hover:text-white transition-colors"
                       >
                         {item}
-                      </a>
+                      </Link>
                     </li>
                   )
                 )}
@@ -777,18 +785,20 @@ export default function Home() {
                 réservés.
               </p>
               <div className="flex space-x-6">
-                <a
-                  href="#"
+                <Link
+                  // FIX: Changed generic '#' to semantic placeholder to prevent unexpected page jumps
+                  href="/terms"
                   className="text-gray-400 hover:text-white text-sm transition-colors"
                 >
                   {"Conditions d'utilisation"}
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  // FIX: Changed generic '#' to semantic placeholder to prevent unexpected page jumps
+                  href="/privacy"
                   className="text-gray-400 hover:text-white text-sm transition-colors"
                 >
                   Politique de confidentialité
-                </a>
+                </Link>
               </div>
             </div>
           </div>
