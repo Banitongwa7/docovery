@@ -59,10 +59,10 @@ export default function Home() {
                 </Link>
               ))}
               <Link
-                href="#footer"
+                href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
                 className="ml-4 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               >
-                Nous Contacter
+                Prendre rendez-vous
               </Link>
             </div>
 
@@ -131,10 +131,10 @@ export default function Home() {
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <Link
-                    href="#footer"
+                    href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
                     className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
                   >
-                    Nous contacter
+                    Prendre rendez-vous
                     <svg
                       className="ml-2 -mr-1 w-5 h-5"
                       fill="none"
@@ -164,6 +164,8 @@ export default function Home() {
                     src={devAnimation}
                     alt="Developer Animation"
                     className="w-full h-auto max-w-xl mx-auto"
+                    unoptimized
+                    priority
                   />
                 </div>
               </div>
@@ -241,7 +243,9 @@ export default function Home() {
                     <Image
                       src={office}
                       alt="office"
-                      className="w-full h-auto mb-8 max-w-xl mx-auto" 
+                      className="w-full h-auto mb-8 max-w-xl mx-auto"
+                      unoptimized
+                      priority
                     />
                     <h4 className="text-2xl font-semibold mb-4 text-center">
                       Notre Expertise
