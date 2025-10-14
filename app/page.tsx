@@ -10,7 +10,6 @@ import {
   LuSmartphone,
   LuShieldCheck,
   LuTerminal,
-  LuRocket,
 } from "react-icons/lu";
 
 import {
@@ -82,7 +81,7 @@ export default function Home() {
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
                   <Image
-                    src={"/docovery_logo.svg"}
+                    src={"/docovery_logo_white.svg"}
                     height={60}
                     width={60}
                     alt="Docovery Logo"
@@ -1205,7 +1204,13 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                  <LuRocket className="h-6 w-6 text-white" />
+                  <Image
+                    src={"/docovery_logo_white.svg"}
+                    height={60}
+                    width={60}
+                    alt="Docovery Logo"
+                    className="h-6 w-6 text-white"
+                  />
                 </div>
                 <span className="text-2xl font-bold">Docovery</span>
               </div>
