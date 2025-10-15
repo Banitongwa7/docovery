@@ -5,22 +5,20 @@ import React, { useState, useEffect } from "react";
 import {
   LuMenu,
   LuX,
-  LuCloudUpload,
   LuCpu,
-  LuSmartphone,
-  LuShieldCheck,
   LuTerminal,
+  LuCloudUpload,
+  LuShieldCheck,
+  LuSmartphone,
 } from "react-icons/lu";
 
 import {
-  FaChartBar,
   FaArrowDown,
   FaProjectDiagram,
   FaReact,
   FaNodeJs,
   FaMobileAlt,
   FaCloud,
-  FaMicrochip,
   FaDatabase,
   FaShieldAlt,
   FaBolt,
@@ -41,6 +39,7 @@ import {
   FaHeadset,
   FaAward,
   FaHandshake,
+  FaChartBar,
   FaPlay,
   FaCalendarAlt,
   FaGlobe,
@@ -52,12 +51,17 @@ import socialTeam from "@/utils/socialTeam";
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
+
+    // Trigger animations after component mount
+    setTimeout(() => setIsVisible(true), 100);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,9 +73,9 @@ export default function Home() {
     <>
       {/* Modern Navigation */}
       <nav
-        className={`fixed w-full z-50 transition-all duration-300 ${
+        className={`fixed w-full z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-100"
+            ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-100/20"
             : "bg-transparent"
         }`}
       >
@@ -79,7 +83,7 @@ export default function Home() {
           <div className="flex justify-between h-20 items-center">
             <div className="flex-shrink-0 flex items-center">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105">
                   <Image
                     src={"/docovery_logo_white.svg"}
                     height={60}
@@ -89,8 +93,8 @@ export default function Home() {
                   />
                 </div>
                 <span
-                  className={`text-2xl font-bold ${
-                    isScrolled ? "text-gray-900" : "text-white"
+                  className={`text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${
+                    isScrolled ? "" : "text-white"
                   }`}
                 >
                   Docovery
@@ -109,16 +113,17 @@ export default function Home() {
                 <a
                   key={index}
                   href={item.href}
-                  className={`font-medium transition-colors hover:text-blue-600 ${
+                  className={`font-medium transition-all duration-300 hover:text-blue-600 relative group ${
                     isScrolled ? "text-gray-700" : "text-white"
                   }`}
                 >
                   {item.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
               <a
                 href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg font-medium hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-xl font-medium hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105"
               >
                 Prendre Rendez-vous
               </a>
@@ -127,7 +132,7 @@ export default function Home() {
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
-                className={`p-2 rounded-lg transition-colors ${
+                className={`p-2 rounded-xl transition-all duration-300 ${
                   isScrolled
                     ? "text-gray-700 hover:bg-gray-100"
                     : "text-white hover:bg-white/10"
@@ -145,9 +150,9 @@ export default function Home() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden transition-all duration-300 ${
+          className={`md:hidden transition-all duration-500 ${
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          } overflow-hidden bg-white/95 backdrop-blur-lg border-b border-gray-100`}
+          } overflow-hidden bg-white/95 backdrop-blur-xl border-b border-gray-100/20`}
         >
           <div className="px-4 py-6 space-y-4">
             {[
@@ -160,7 +165,7 @@ export default function Home() {
               <a
                 key={index}
                 href={item.href}
-                className="block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="block py-3 text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 border-b border-gray-100 last:border-b-0"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
@@ -168,7 +173,7 @@ export default function Home() {
             ))}
             <a
               href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-medium mt-4 text-center block"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-medium mt-4 text-center block hover:shadow-lg transition-all duration-300"
             >
               Prendre Rendez-vous
             </a>
@@ -176,75 +181,126 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Enhanced Hero Section */}
       <section
         id="home"
         className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden"
       >
-        {/* Animated Background Elements */}
+        {/* Enhanced Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" />
-          <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
-          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow delay-500" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-float-slow delay-1000" />
+          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-float-slow delay-500" />
+          <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl animate-float-slow delay-1500" />
         </div>
 
-        {/* Floating Particles */}
+        {/* Animated Grid Pattern */}
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px] animate-grid-flow" />
+
+        {/* Floating Tech Elements */}
         <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
+          {[
+            {
+              icon: FaReact,
+              color: "text-cyan-400",
+              delay: "0s",
+              top: "20%",
+              left: "10%",
+            },
+            {
+              icon: FaNodeJs,
+              color: "text-green-500",
+              delay: "2s",
+              top: "70%",
+              left: "85%",
+            },
+            {
+              icon: FaDatabase,
+              color: "text-blue-400",
+              delay: "4s",
+              top: "30%",
+              left: "90%",
+            },
+            {
+              icon: FaCloud,
+              color: "text-purple-400",
+              delay: "1s",
+              top: "80%",
+              left: "15%",
+            },
+          ].map((tech, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
+              className="absolute text-2xl opacity-20 animate-float-slow"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${15 + Math.random() * 10}s`,
+                animationDelay: tech.delay,
+                top: tech.top,
+                left: tech.left,
               }}
-            />
+            >
+              <tech.icon className={tech.color} />
+            </div>
           ))}
         </div>
 
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
+            {/* Enhanced Text Content */}
             <div className="text-center lg:text-left">
-              {/* Animated Badge */}
-              <div className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 mb-8 animate-fade-in-up">
+              {/* Enhanced Animated Badge */}
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 mb-8 animate-fade-in-up hover:bg-white/20 transition-all duration-300 cursor-pointer group">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-ping mr-2" />
-                <span className="text-sm text-white/80 font-medium">
+                <span className="text-sm text-white/80 font-medium group-hover:text-white transition-colors">
                   {"🚀 Innovation Aujourd'hui, Réussite Demain"}
                 </span>
               </div>
 
-              {/* Main Heading with Typing Animation */}
+              {/* Enhanced Main Heading */}
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-                <span className="block animate-fade-in-up">Transformez</span>
-                <span className="block animate-fade-in-up delay-200">
-                  Votre Entreprise
+                <span
+                  className={`block animate-fade-in-up ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                  }`}
+                >
+                  Transformez
                 </span>
-                <span className="block animate-fade-in-up delay-400">
-                  Avec{" "}
+                <span
+                  className={`block animate-fade-in-up delay-200 ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                  }`}
+                >
+                  Votre Vision
+                </span>
+                <span
+                  className={`block animate-fade-in-up delay-400 ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                  }`}
+                >
+                  En{" "}
                   <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
-                    {"l'Innovation Digitale"}
+                    Réalité Digitale
                   </span>
                 </span>
               </h1>
 
-              {/* Animated Description */}
+              {/* Enhanced Description */}
               <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl animate-fade-in-up delay-600">
                 {
-                  "Nous créons des solutions de pointe en développement, analyse de données et transformation digitale pour propulser votre entreprise vers l'avenir."
+                  "Nous concevons des solutions digitales sur mesure qui transforment vos idées en applications performantes, propulsant votre entreprise vers l'avenir."
                 }
               </p>
 
-              {/* CTA Buttons */}
+              {/* Enhanced CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-800">
                 <a
                   href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
-                  className="group relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center overflow-hidden"
+                  className="group relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1 text-center overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative flex items-center justify-center">
@@ -254,39 +310,39 @@ export default function Home() {
                 </a>
                 <a
                   href="#services"
-                  className="group border border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-center hover:border-white/50 backdrop-blur-sm"
+                  className="group border border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 text-center hover:border-white/50 backdrop-blur-sm hover:shadow-lg hover:shadow-white/10"
                 >
                   <span className="flex items-center justify-center">
-                    Voir Nos Services
-                    <FaArrowDown className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    Explorer Nos Solutions
+                    <FaArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform duration-300" />
                   </span>
                 </a>
               </div>
 
-              {/* Animated Stats */}
+              {/* Enhanced Stats */}
               <div className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto lg:mx-0 animate-fade-in-up delay-1000">
                 {[
                   {
-                    number: "5+",
-                    label: "Projets Réalisés",
+                    number: "10+",
+                    label: "Projets Innovants",
                     color: "from-blue-400 to-cyan-400",
                     icon: <FaProjectDiagram className="h-6 w-6 mx-auto mb-2" />,
                   },
                   {
-                    number: "98%",
-                    label: "Taux de Réussite",
+                    number: "100%",
+                    label: "Satisfaction Client",
                     color: "from-green-400 to-emerald-400",
                     icon: <FaChartLine className="h-6 w-6 mx-auto mb-2" />,
                   },
                   {
                     number: "24/7",
-                    label: "Support Client",
+                    label: "Support Expert",
                     color: "from-purple-400 to-pink-400",
                     icon: <FaHeadset className="h-6 w-6 mx-auto mb-2" />,
                   },
                 ].map((stat, index) => (
-                  <div key={index} className="text-center group">
-                    <div className="text-white/60 group-hover:text-white transition-colors duration-300">
+                  <div key={index} className="text-center group cursor-pointer">
+                    <div className="text-white/60 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110">
                       {stat.icon}
                     </div>
                     <div
@@ -302,39 +358,48 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Image/Animation */}
+            {/* Enhanced Hero Visual */}
             <div className="relative">
               {/* Floating Background Elements */}
-              <div className="absolute -top-8 -left-8 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-float-slow" />
-              <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-purple-500/20 rounded-full blur-2xl animate-float-slow delay-1000" />
+              <div className="absolute -top-8 -left-8 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl animate-float-slow" />
+              <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-purple-500/30 rounded-full blur-2xl animate-float-slow delay-1000" />
+              <div className="absolute top-1/2 -right-4 w-16 h-16 bg-cyan-500/20 rounded-full blur-xl animate-float-slow delay-500" />
 
               {/* Main Hero Visual */}
               <div className="relative">
                 {/* Glass Morphism Container */}
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 group">
                   {/* Animated Code Preview */}
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium animate-bounce-slow">
+                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium animate-bounce-slow shadow-lg">
                     <FaCode className="inline mr-1 h-4 w-4" />
                     Code Live
                   </div>
 
-                  {/* Tech Stack Icons */}
+                  {/* Tech Stack Icons Grid */}
                   <div className="flex justify-center space-x-6 mb-6">
                     {[
                       {
-                        icon: <FaReact className="h-8 w-8 text-cyan-400" />,
+                        icon: (
+                          <FaReact className="h-8 w-8 text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
+                        ),
                         name: "React",
                       },
                       {
-                        icon: <FaNodeJs className="h-8 w-8 text-green-500" />,
+                        icon: (
+                          <FaNodeJs className="h-8 w-8 text-green-500 group-hover:scale-110 transition-transform duration-300" />
+                        ),
                         name: "Node.js",
                       },
                       {
-                        icon: <FaMobileAlt className="h-8 w-8 text-blue-400" />,
+                        icon: (
+                          <FaMobileAlt className="h-8 w-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+                        ),
                         name: "Mobile",
                       },
                       {
-                        icon: <FaCloud className="h-8 w-8 text-purple-400" />,
+                        icon: (
+                          <FaCloud className="h-8 w-8 text-purple-400 group-hover:scale-110 transition-transform duration-300" />
+                        ),
                         name: "Cloud",
                       },
                     ].map((tech, index) => (
@@ -349,55 +414,67 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* Central Hero Image/Animation */}
-                  <div className="relative bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 aspect-video flex items-center justify-center">
-                    {/* Animated Circles */}
-                    <div className="absolute w-32 h-32 border-2 border-blue-400/30 rounded-full animate-ping-slow" />
-                    <div className="absolute w-40 h-40 border-2 border-purple-400/20 rounded-full animate-ping-slow delay-500" />
+                  {/* Central Interactive Element */}
+                  <div className="relative bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 aspect-video flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-500">
+                    {/* Animated Orbit System */}
+                    <div className="absolute w-48 h-48 border border-blue-400/20 rounded-full animate-spin-slow" />
+                    <div className="absolute w-40 h-40 border border-purple-400/30 rounded-full animate-spin-slow reverse" />
 
-                    {/* Central Icon */}
-                    <div className="relative bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
-                      <FaMicrochip className="h-16 w-16 text-white animate-pulse" />
+                    {/* Central AI Brain */}
+                    <div className="relative bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-105">
+                      <LuCpu className="h-16 w-16 text-white animate-pulse" />
                     </div>
 
-                    {/* Floating Elements */}
-                    <div className="absolute top-4 left-4 w-8 h-8 bg-green-400/20 rounded-full animate-bounce">
-                      <FaDatabase className="h-4 w-4 text-green-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    </div>
-                    <div className="absolute bottom-4 right-4 w-6 h-6 bg-yellow-400/20 rounded-full animate-bounce delay-300">
-                      <FaShieldAlt className="h-3 w-3 text-yellow-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    </div>
-                    <div className="absolute top-4 right-4 w-4 h-4 bg-red-400/20 rounded-full animate-bounce delay-700">
-                      <FaBolt className="h-2 w-2 text-red-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    </div>
-                    <div className="absolute bottom-4 left-4 w-5 h-5 bg-cyan-400/20 rounded-full animate-bounce delay-1000">
-                      <FaRocket className="h-2.5 w-2.5 text-cyan-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    </div>
+                    {/* Orbiting Elements */}
+                    {[
+                      {
+                        icon: FaDatabase,
+                        color: "text-green-400",
+                        delay: "0s",
+                      },
+                      {
+                        icon: FaShieldAlt,
+                        color: "text-yellow-400",
+                        delay: "1s",
+                      },
+                      { icon: FaBolt, color: "text-red-400", delay: "2s" },
+                      { icon: FaRocket, color: "text-cyan-400", delay: "3s" },
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className={`absolute w-8 h-8 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 animate-orbit ${item.color}`}
+                        style={{ animationDelay: item.delay }}
+                      >
+                        <item.icon className="h-4 w-4" />
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Feature Dots */}
+                  {/* Interactive Dots */}
                   <div className="flex justify-center space-x-3 mt-6">
                     {[1, 2, 3].map((dot) => (
                       <div
                         key={dot}
-                        className="w-3 h-3 bg-white/30 rounded-full hover:bg-white/60 transition-colors duration-300 cursor-pointer"
+                        className="w-3 h-3 bg-white/30 rounded-full hover:bg-white/60 transition-all duration-300 cursor-pointer hover:scale-125"
                       />
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-3xl -z-10 animate-pulse-slow" />
+              {/* Enhanced Background Glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-3xl -z-10 animate-pulse-slow group-hover:opacity-80 transition-opacity duration-500" />
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Enhanced Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center text-white/60">
-            <span className="text-sm mb-2">Découvrir</span>
-            <FaChevronDown className="w-6 h-6" />
+          <div className="flex flex-col items-center text-white/60 hover:text-white transition-colors duration-300 cursor-pointer">
+            <span className="text-sm mb-2 font-medium">Explorer</span>
+            <div className="w-8 h-8 border-2 border-white/30 rounded-full flex items-center justify-center hover:border-white/60 transition-colors duration-300">
+              <FaChevronDown className="w-3 h-3" />
+            </div>
           </div>
         </div>
 
@@ -415,10 +492,13 @@ export default function Home() {
           @keyframes float {
             0%,
             100% {
-              transform: translateY(0px);
+              transform: translateY(0px) rotate(0deg);
             }
-            50% {
-              transform: translateY(-20px);
+            33% {
+              transform: translateY(-20px) rotate(120deg);
+            }
+            66% {
+              transform: translateY(-10px) rotate(240deg);
             }
           }
           @keyframes float-slow {
@@ -427,7 +507,7 @@ export default function Home() {
               transform: translateY(0px);
             }
             50% {
-              transform: translateY(-10px);
+              transform: translateY(-15px);
             }
           }
           @keyframes gradient {
@@ -455,10 +535,10 @@ export default function Home() {
           @keyframes pulse-slow {
             0%,
             100% {
-              opacity: 0.5;
+              opacity: 0.3;
             }
             50% {
-              opacity: 0.8;
+              opacity: 0.6;
             }
           }
           @keyframes bounce-slow {
@@ -467,21 +547,45 @@ export default function Home() {
               transform: translateY(0);
             }
             50% {
-              transform: translateY(-10px);
+              transform: translateY(-15px);
+            }
+          }
+          @keyframes spin-slow {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          @keyframes orbit {
+            0% {
+              transform: rotate(0deg) translateX(60px) rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg) translateX(60px) rotate(-360deg);
+            }
+          }
+          @keyframes grid-flow {
+            0% {
+              background-position: 0 0;
+            }
+            100% {
+              background-position: 60px 60px;
             }
           }
           .animate-fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
           }
           .animate-float {
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
           }
           .animate-float-slow {
-            animation: float-slow 8s ease-in-out infinite;
+            animation: float-slow 6s ease-in-out infinite;
           }
           .animate-gradient {
             background-size: 200% 200%;
-            animation: gradient 3s ease infinite;
+            animation: gradient 4s ease infinite;
           }
           .animate-ping-slow {
             animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
@@ -490,107 +594,21 @@ export default function Home() {
             animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           }
           .animate-bounce-slow {
-            animation: bounce-slow 2s infinite;
+            animation: bounce-slow 3s infinite;
+          }
+          .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+          }
+          .animate-spin-slow.reverse {
+            animation-direction: reverse;
+          }
+          .animate-orbit {
+            animation: orbit 8s linear infinite;
+          }
+          .animate-grid-flow {
+            animation: grid-flow 20s linear infinite;
           }
         `}</style>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Nos{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Services
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Des solutions digitales complètes pour faire avancer votre
-              entreprise
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <LuTerminal className="h-8 w-8" />,
-                title: "Développement Sur Mesure",
-                description:
-                  "Des solutions logicielles adaptées construites avec des technologies de pointe pour répondre à vos besoins spécifiques.",
-                color: "from-blue-500 to-blue-600",
-              },
-              {
-                icon: <FaChartBar className="h-8 w-8" />,
-                title: "Données & Analytique",
-                description:
-                  "Transformez vos données en insights actionnables avec des outils d'analyse et de visualisation avancés.",
-                color: "from-green-500 to-green-600",
-              },
-              {
-                icon: <LuCloudUpload className="h-8 w-8" />,
-                title: "Transformation Digitale",
-                description:
-                  "Modernisez vos opérations et adoptez l'innovation digitale pour une croissance durable.",
-                color: "from-purple-500 to-purple-600",
-              },
-              {
-                icon: <LuSmartphone className="h-8 w-8" />,
-                title: "Solutions Mobiles",
-                description:
-                  "Engagez vos clients avec des applications mobiles intuitives sur toutes les plateformes.",
-                color: "from-orange-500 to-orange-600",
-              },
-              {
-                icon: <LuShieldCheck className="h-8 w-8" />,
-                title: "Cybersécurité",
-                description:
-                  "Protégez vos actifs digitaux avec des solutions de sécurité robustes et les meilleures pratiques.",
-                color: "from-red-500 to-red-600",
-              },
-              {
-                icon: <LuCpu className="h-8 w-8" />,
-                title: "IA & Machine Learning",
-                description:
-                  "Tirez parti de l'intelligence artificielle pour automatiser les processus et gagner un avantage concurrentiel.",
-                color: "from-indigo-500 to-indigo-600",
-              },
-            ].map((service, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2" />
-                <div className="relative p-8">
-                  <div
-                    className={`w-14 h-14 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div className="text-white">{service.icon}</div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <div className="mt-6 text-blue-600 font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                    En savoir plus
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* About Section - Modern Redesign */}
@@ -796,6 +814,204 @@ export default function Home() {
         `}</style>
       </section>
 
+      {/* Services Section - Enhanced */}
+      <section
+        id="services"
+        className="py-24 bg-white relative overflow-hidden"
+      >
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
+              <FaRocket className="mr-2 h-4 w-4" />
+              {"Nos Domaines d'Expertise"}
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Nos{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Services
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              {
+                "Des solutions digitales complètes et innovantes pour propulser votre entreprise vers l'avenir et maximiser votre impact numérique."
+              }
+            </p>
+          </div>
+
+          {/* Enhanced Services Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <LuTerminal className="h-8 w-8" />,
+                title: "Développement Sur Mesure",
+                description:
+                  "Des solutions logicielles adaptées construites avec des technologies de pointe pour répondre à vos besoins spécifiques.",
+                features: [
+                  "Applications Web",
+                  "Solutions SaaS",
+                  "Architecture Cloud",
+                ],
+                color: "from-blue-500 to-blue-600",
+                delay: "0ms",
+              },
+              {
+                icon: <FaChartBar className="h-8 w-8" />,
+                title: "Données & Analytique",
+                description:
+                  "Transformez vos données en insights actionnables avec des outils d'analyse et de visualisation avancés.",
+                features: [
+                  "Tableaux de Bord",
+                  "Machine Learning",
+                  "Business Intelligence",
+                ],
+                color: "from-green-500 to-green-600",
+                delay: "100ms",
+              },
+              {
+                icon: <LuCloudUpload className="h-8 w-8" />,
+                title: "Transformation Digitale",
+                description:
+                  "Modernisez vos opérations et adoptez l'innovation digitale pour une croissance durable.",
+                features: [
+                  "Stratégie Digitale",
+                  "Automatisation",
+                  "Optimisation",
+                ],
+                color: "from-purple-500 to-purple-600",
+                delay: "200ms",
+              },
+              {
+                icon: <LuSmartphone className="h-8 w-8" />,
+                title: "Solutions Mobiles",
+                description:
+                  "Engagez vos clients avec des applications mobiles intuitives sur toutes les plateformes.",
+                features: ["iOS & Android", "Apps Hybrides", "UI/UX Mobile"],
+                color: "from-orange-500 to-orange-600",
+                delay: "300ms",
+              },
+              {
+                icon: <LuShieldCheck className="h-8 w-8" />,
+                title: "Cybersécurité",
+                description:
+                  "Protégez vos actifs digitaux avec des solutions de sécurité robustes et les meilleures pratiques.",
+                features: [
+                  "Audit Sécurité",
+                  "Protection Données",
+                  "Conformité",
+                ],
+                color: "from-red-500 to-red-600",
+                delay: "400ms",
+              },
+              {
+                icon: <LuCpu className="h-8 w-8" />,
+                title: "IA & Machine Learning",
+                description:
+                  "Tirez parti de l'intelligence artificielle pour automatiser les processus et gagner un avantage concurrentiel.",
+                features: [
+                  "IA Personnalisée",
+                  "Automatisation",
+                  "Algorithmes Intelligents",
+                ],
+                color: "from-indigo-500 to-indigo-600",
+                delay: "500ms",
+              },
+            ].map((service, index) => (
+              <div
+                key={index}
+                className="group relative animate-fade-in-up"
+                style={{ animationDelay: service.delay }}
+              >
+                {/* Hover Background Effect */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+                />
+
+                {/* Main Card */}
+                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border border-gray-100 h-full flex flex-col">
+                  {/* Icon */}
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                  >
+                    <div className="text-white">{service.icon}</div>
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+                    {service.description}
+                  </p>
+
+                  {/* Features List */}
+                  <div className="space-y-2 mb-6">
+                    {service.features.map((feature, featureIndex) => (
+                      <div
+                        key={featureIndex}
+                        className="flex items-center text-sm text-gray-500"
+                      >
+                        <div
+                          className={`w-1.5 h-1.5 bg-gradient-to-r ${service.color} rounded-full mr-3`}
+                        />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-auto">
+                    <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300 cursor-pointer">
+                      En savoir plus
+                      <svg
+                        className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Corner Accent */}
+                <div
+                  className={`absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl ${service.color} opacity-0 group-hover:opacity-10 rounded-tr-2xl transition-opacity duration-500`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+          }
+        `}</style>
+      </section>
+
       {/* Testimonial Section - Modern Redesign */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Background Elements */}
@@ -971,203 +1187,324 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Team Section - Modern Redesign */}
+      {/* Team Section - Modern Card Layout */}
       <section
         id="team"
         className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
       >
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        {/* Enhanced Background Elements */}
+        <div className="absolute top-10 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-slow delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-slow" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-4">
+          {/* Enhanced Section Header */}
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-600 font-semibold text-sm mb-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
               <FaUsers className="mr-2 h-4 w-4" />
-              Notre Équipe
+              {"Équipe d'Experts"}
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Rencontrez les{" "}
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Rencontrez Nos{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Esprits Créatifs
+                Architectes Digitaux
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
-              Des experts passionnés qui transforment vos idées en réalité
-              digitale
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              {
+                "Une équipe passionnée d'experts dédiés à transformer vos idées les plus ambitieuses en réalité digitale"
+              }
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Team Stats Card */}
-            <div className="lg:col-span-1">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 text-white h-full shadow-2xl">
-                <div className="text-center mb-8">
-                  <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <FaRocket className="h-10 w-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Notre ADN</h3>
-                  <p className="text-blue-100 leading-relaxed">
-                    {
-                      "Innovation, collaboration et excellence technique sont au cœur de notre philosophie. Nous combinons expertise et créativité pour livrer des solutions d'exception."
-                    }
-                  </p>
+          {/* Team Stats Overview */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              {
+                number: "10+",
+                label: "Projets Innovants",
+                icon: FaRocket,
+                color: "from-blue-500 to-cyan-500",
+              },
+              {
+                number: "100%",
+                label: "Satisfaction Client",
+                icon: FaSmile,
+                color: "from-green-500 to-emerald-500",
+              },
+              {
+                number: "24/7",
+                label: "Support Expert",
+                icon: FaHeadset,
+                color: "from-purple-500 to-pink-500",
+              },
+              {
+                number: "4+",
+                label: "Années d'Expérience",
+                icon: FaAward,
+                color: "from-orange-500 to-red-500",
+              },
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group cursor-pointer"
+              >
+                <div
+                  className={`w-14 h-14 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <stat.icon className="h-6 w-6 text-white" />
                 </div>
-
-                {/* Team Stats */}
-                <div className="space-y-6">
-                  {[
-                    {
-                      icon: FaLightbulb,
-                      label: "Innovation Continue",
-                      value: "100%",
-                      color: "text-yellow-300",
-                    },
-                    {
-                      icon: FaCode,
-                      label: "Projets Livrés",
-                      value: "5+",
-                      color: "text-green-300",
-                    },
-                    {
-                      icon: FaChartLine,
-                      label: "Satisfaction Client",
-                      value: "98%",
-                      color: "text-blue-300",
-                    },
-                    {
-                      icon: FaClock,
-                      label: "Support Réactif",
-                      value: "24/7",
-                      color: "text-purple-300",
-                    },
-                  ].map((stat, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-4 bg-white/10 rounded-2xl p-4 backdrop-blur-sm"
-                    >
-                      <div
-                        className={`p-3 rounded-xl bg-white/20 ${stat.color}`}
-                      >
-                        <stat.icon className="h-6 w-6" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-2xl font-bold">{stat.value}</div>
-                        <div className="text-blue-100 text-sm">
-                          {stat.label}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 text-sm font-medium">
+                  {stat.label}
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Team Members */}
-            <div className="lg:col-span-2 space-y-8">
-              {[
-                {
-                  name: "David BANITONGWA",
-                  role: "Software Engineer & Co-fondateur",
-                  image: "/david.png",
-                  social: socialTeam.david,
-                  expertise: [
-                    "Développement Full-Stack",
-                    "Architecture Cloud",
-                    "DevOps",
-                  ],
-                  color: "from-blue-500 to-cyan-500",
-                },
-                {
-                  name: "Omari KAYUMBA",
-                  role: "Software Engineer & Co-fondateur",
-                  image: "/omari.jpg",
-                  social: socialTeam.omari,
-                  expertise: ["AI/ML", "Data Science", "Backend Development"],
-                  color: "from-purple-500 to-pink-500",
-                },
-              ].map((member, index) => (
-                <div
-                  key={index}
-                  className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
-                >
-                  <div className="flex flex-col lg:flex-row items-start gap-8">
-                    {/* Member Photo */}
+          {/* Enhanced Team Members Grid */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {[
+              {
+                name: "David BANITONGWA",
+                role: "Software Engineer & Co-fondateur",
+                image: "/david.png",
+                social: socialTeam.david,
+                expertise: [
+                  "Architecture Cloud Native",
+                  "Développement Full-Stack",
+                  "DevOps & Scalabilité",
+                  "React & Next.js",
+                ],
+                color: "from-blue-500 to-cyan-500",
+                description:
+                  "Expert en conception de systèmes évolutifs et architectures cloud modernes avec 4+ années d'expérience dans le développement d'applications performantes.",
+                projects: "10+ projets livrés",
+                availability: "Disponible pour nouveaux projets",
+              },
+              {
+                name: "Omari KAYUMBA",
+                role: "Software Engineer & Co-fondateur",
+                image: "/omari.jpg",
+                social: socialTeam.omari,
+                expertise: [
+                  "Intelligence Artificielle",
+                  "Data Science & Analytics",
+                  "Backend Engineering",
+                  "Machine Learning",
+                ],
+                color: "from-purple-500 to-pink-500",
+                description:
+                  "Spécialiste en IA et analyse de données pour des solutions intelligentes et innovantes. Passionné par la résolution de problèmes complexes.",
+                projects: "8+ projets IA",
+                availability: "Expertise en IA/ML",
+              },
+            ].map((member, index) => (
+              <div
+                key={index}
+                className="group relative bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-3 border border-gray-100/50 overflow-hidden"
+              >
+                {/* Header with Photo and Basic Info */}
+                <div className="relative p-8 pb-6">
+                  <div className="flex items-start gap-6">
+                    {/* Enhanced Member Photo */}
                     <div className="relative flex-shrink-0">
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-r ${member.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500`}
-                      />
                       <div className="relative">
                         <Image
                           src={member.image}
                           alt={member.name}
-                          width={140}
-                          height={140}
-                          className="rounded-2xl border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-500"
+                          width={120}
+                          height={120}
+                          className="rounded-2xl border-4 border-white shadow-2xl group-hover:scale-105 transition-transform duration-500"
                         />
-                        {/* Status Indicator */}
-                        <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-400 border-2 border-white rounded-full" />
+                        {/* Enhanced Status Indicator */}
+                        <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 border-4 border-white rounded-full flex items-center justify-center shadow-lg">
+                          <div className="w-2 h-2 bg-white rounded-full animate-ping" />
+                        </div>
                       </div>
                     </div>
 
-                    {/* Member Info */}
-                    <div className="flex-1">
-                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                        <div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                            {member.name}
-                          </h3>
-                          <p className="text-gray-600 mb-4 flex items-center">
-                            <FaBriefcase className="mr-2 h-4 w-4 text-blue-500" />
-                            {member.role}
-                          </p>
-                        </div>
+                    {/* Member Basic Info */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                        {member.name}
+                      </h3>
+                      <p className="text-gray-600 mb-3 flex items-center text-lg">
+                        <FaBriefcase className="mr-2 h-4 w-4 text-blue-500" />
+                        {member.role}
+                      </p>
+                      <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                        {member.description}
+                      </p>
 
-                        {/* Social Links */}
-                        <div className="flex space-x-3 mb-4 lg:mb-0">
-                          {Object.entries(member.social).map(
-                            ([platform, url]) => (
-                              <a
-                                key={platform}
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
-                              >
-                                {platform === "github" && (
-                                  <FaGithub className="h-5 w-5" />
-                                )}
-                                {platform === "linkedin" && (
-                                  <FaLinkedin className="h-5 w-5" />
-                                )}
-                                {platform === "twitter" && (
-                                  <FaTwitter className="h-5 w-5" />
-                                )}
-                              </a>
-                            )
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Expertise Tags */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {member.expertise.map((skill, skillIndex) => (
-                          <span
-                            key={skillIndex}
-                            className="px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 rounded-full text-sm font-medium border border-blue-200"
-                          >
-                            {skill}
-                          </span>
-                        ))}
+                      {/* Quick Stats */}
+                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <span className="flex items-center">
+                          <FaRocket className="mr-1 h-3 w-3 text-green-500" />
+                          {member.projects}
+                        </span>
+                        <span className="flex items-center">
+                          <FaClock className="mr-1 h-3 w-3 text-blue-500" />
+                          {member.availability}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
+
+                {/* Expertise Section */}
+                <div className="px-8 pb-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <FaCode className="h-4 w-4 text-gray-400" />
+                    <span className="text-sm font-semibold text-gray-600">
+                      Expertises
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {member.expertise.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="px-4 py-2 bg-gradient-to-r from-gray-50 to-blue-50 text-gray-700 rounded-xl text-sm font-medium border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:scale-105 group/skill relative overflow-hidden"
+                      >
+                        <span className="relative flex items-center">
+                          {skill}
+                        </span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Footer with Social Links and CTA */}
+                <div className="px-8 py-6 bg-gray-50/50 border-t border-gray-100">
+                  <div className="flex items-center justify-between">
+                    {/* Social Links */}
+                    <div className="flex space-x-3">
+                      {Object.entries(member.social).map(([platform, url]) => (
+                        <a
+                          key={platform}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 text-gray-600 hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl border border-gray-200"
+                        >
+                          {platform === "github" && (
+                            <FaGithub className="h-4 w-4" />
+                          )}
+                          {platform === "linkedin" && (
+                            <FaLinkedin className="h-4 w-4" />
+                          )}
+                          {platform === "twitter" && (
+                            <FaTwitter className="h-4 w-4" />
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Corner Accent */}
+                <div
+                  className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl ${member.color} opacity-5 rounded-tr-3xl`}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Team Philosophy Card */}
+          <div className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 lg:p-12 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <FaUsers className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-3xl lg:text-4xl font-bold mb-6">
+                  Notre Philosophie Collective
+                </h3>
+                <p className="text-blue-100 text-lg leading-relaxed mb-6">
+                  {
+                    "Nous croyons en la puissance de la collaboration et de l'innovation continue. Chaque projet est une opportunité de repousser les limites du possible et de créer des solutions qui ont un impact réel."
+                  }
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    { icon: FaLightbulb, text: "Innovation Continue" },
+                    { icon: FaHandshake, text: "Collaboration" },
+                    { icon: FaAward, text: "Excellence Technique" },
+                    { icon: FaRocket, text: "Impact Mesurable" },
+                  ].map((value, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-2 backdrop-blur-sm"
+                    >
+                      <value.icon className="h-4 w-4 text-white" />
+                      <span className="text-sm font-medium">{value.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  {
+                    number: "100%",
+                    label: "Engagement Qualité",
+                    icon: FaAward,
+                  },
+                  { number: "24h", label: "Temps de Réponse", icon: FaClock },
+                  {
+                    number: "10+",
+                    label: "Technologies Maîtrisées",
+                    icon: FaCode,
+                  },
+                  {
+                    number: "∞",
+                    label: "Solutions Innovantes",
+                    icon: FaLightbulb,
+                  },
+                ].map((stat, index) => (
+                  <div
+                    key={index}
+                    className="text-center group hover:scale-105 transition-transform duration-300"
+                  >
+                    <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                      <stat.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="text-2xl font-bold mb-1">{stat.number}</div>
+                    <div className="text-blue-100 text-sm">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
+        <style jsx>{`
+          @keyframes float-slow {
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          @keyframes pulse-slow {
+            0%,
+            100% {
+              opacity: 0.5;
+            }
+            50% {
+              opacity: 0.8;
+            }
+          }
+          .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+          }
+          .animate-pulse-slow {
+            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          }
+        `}</style>
       </section>
 
       {/* CTA Section */}
