@@ -323,7 +323,7 @@ export default function Home() {
               <div className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto lg:mx-0 animate-fade-in-up delay-1000">
                 {[
                   {
-                    number: "10+",
+                    number: "5+",
                     label: "Projets Innovants",
                     color: "from-blue-400 to-cyan-400",
                     icon: <FaProjectDiagram className="h-6 w-6 mx-auto mb-2" />,
@@ -1163,27 +1163,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Stats Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { number: "98%", label: "Clients Satisfaits", icon: FaSmile },
-                { number: "5+", label: "Projets Livrés", icon: FaRocket },
-                { number: "100%", label: "Délais Respectés", icon: FaClock },
-                { number: "24/7", label: "Support Client", icon: FaHeadset },
-              ].map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <stat.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="text-2xl lg:text-3xl font-bold mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-blue-100 text-sm">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+        
         </div>
       </section>
 
@@ -1221,7 +1201,7 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               {
-                number: "10+",
+                number: "5+",
                 label: "Projets Innovants",
                 icon: FaRocket,
                 color: "from-blue-500 to-cyan-500",
@@ -1281,7 +1261,7 @@ export default function Home() {
                 color: "from-blue-500 to-cyan-500",
                 description:
                   "Expert en conception de systèmes évolutifs et architectures cloud modernes avec 4+ années d'expérience dans le développement d'applications performantes.",
-                projects: "10+ projets livrés",
+                projects: "projets livrés",
                 availability: "Disponible pour nouveaux projets",
               },
               {
@@ -1298,7 +1278,7 @@ export default function Home() {
                 color: "from-purple-500 to-pink-500",
                 description:
                   "Spécialiste en IA et analyse de données pour des solutions intelligentes et innovantes. Passionné par la résolution de problèmes complexes.",
-                projects: "8+ projets IA",
+                projects: "projets IA",
                 availability: "Expertise en IA/ML",
               },
             ].map((member, index) => (
