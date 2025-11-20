@@ -1,19 +1,40 @@
-const socialTeam = {
-    "omari": {
-        "linkedin": "https://www.linkedin.com/in/omari-kayumba-2973a420b/",
-        "github": "https://github.com/Rimao416",
-        "twitter": "https://twitter.com/rimao416"
-    },
-    "david": {
-        "linkedin": "https://www.linkedin.com/in/david-banitongwa/",
-        "github": "https://github.com/Banitongwa7",
-        "twitter": "https://twitter.com/BanitongwaDavid"
-    },
-    "docovery": {
-        "linkedin": "#",
-        "facebook": "https://www.facebook.com/docoverycompany/",
-        "instagram": "https://www.instagram.com/docovery/?igshid-MzRIODBiNWFIZA=%3D"
-    }
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { IconType } from 'react-icons';
+
+interface SocialLink {
+    icon: IconType;
+    link: string;
 }
+
+interface TeamMember {
+    name: string;
+    position: string;
+    bio: string;
+    photo?: string;
+    social: SocialLink[];
+}
+
+const socialTeam: TeamMember[] = [
+    {
+        name: "Omari Kayumba",
+        position: "CEO & Co-Founder",
+        bio: "Visionnaire technologique passionné par l'innovation et le développement de solutions digitales transformantes.",
+        social: [
+            { icon: FaLinkedin, link: "https://www.linkedin.com/in/omari-kayumba-2973a420b/" },
+            { icon: FaGithub, link: "https://github.com/Rimao416" },
+            { icon: FaTwitter, link: "https://twitter.com/rimao416" }
+        ]
+    },
+    {
+        name: "David Banitongwa",
+        position: "CTO & Co-Founder",
+        bio: "Expert en développement fullstack avec une passion pour l'architecture cloud et les technologies émergentes.",
+        social: [
+            { icon: FaLinkedin, link: "https://www.linkedin.com/in/david-banitongwa/" },
+            { icon: FaGithub, link: "https://github.com/Banitongwa7" },
+            { icon: FaTwitter, link: "https://twitter.com/BanitongwaDavid" }
+        ]
+    }
+];
 
 export default socialTeam;
