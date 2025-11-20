@@ -75,6 +75,7 @@ export default function DemoRequestModal({
             }
         } catch (error) {
             setResponseMessage("❌ Une erreur est survenue. Veuillez réessayer.");
+            console.log("Error submitting form:", error);
         } finally {
             setIsSubmitting(false);
         }
@@ -233,8 +234,8 @@ export default function DemoRequestModal({
                     <div className="px-8 pb-8">
                         <div
                             className={`p-4 rounded-xl ${responseMessage.startsWith("✅")
-                                    ? "bg-green-50 text-green-700 border border-green-200"
-                                    : "bg-red-50 text-red-700 border border-red-200"
+                                ? "bg-green-50 text-green-700 border border-green-200"
+                                : "bg-red-50 text-red-700 border border-red-200"
                                 }`}
                         >
                             {responseMessage}

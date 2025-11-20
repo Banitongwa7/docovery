@@ -24,11 +24,11 @@ export default function TermsOfServicePage() {
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                        Conditions d'Utilisation
+                        Conditions d&apos;Utilisation
                     </h1>
 
                     <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                        Dernière mise à jour: {new Date().toLocaleDateString('fr-FR')}
+                        Dernière mise à jour: {new Date().toLocaleDateString("fr-FR")}
                     </p>
                 </div>
             </section>
@@ -39,8 +39,8 @@ export default function TermsOfServicePage() {
                     {/* Introduction */}
                     <div className="prose prose-lg max-w-none mb-12">
                         <p className="text-lg text-gray-700 leading-relaxed">
-                            Bienvenue sur le site web de Docovery. En accédant et en utilisant ce site, vous acceptez d'être lié
-                            par les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas
+                            Bienvenue sur le site web de Docovery. En accédant et en utilisant ce site, vous acceptez d&apos;être lié
+                            par les présentes conditions d&apos;utilisation. Si vous n&apos;acceptez pas ces conditions, veuillez ne pas
                             utiliser ce site.
                         </p>
                     </div>
@@ -57,8 +57,8 @@ export default function TermsOfServicePage() {
                             </div>
                             <div className="ml-16 space-y-4 text-gray-700">
                                 <p>
-                                    En utilisant nos services, vous reconnaissez avoir lu, compris et accepté d'être lié par ces
-                                    conditions d'utilisation ainsi que par notre politique de confidentialité.
+                                    En utilisant nos services, vous reconnaissez avoir lu, compris et accepté d&apos;être lié par ces
+                                    conditions d&apos;utilisation ainsi que par notre politique de confidentialité.
                                 </p>
                                 <p>
                                     Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications
@@ -73,7 +73,7 @@ export default function TermsOfServicePage() {
                             <div className="space-y-4 text-gray-700">
                                 <p>Docovery fournit les services suivants:</p>
                                 <ul className="list-disc pl-5 space-y-2">
-                                    <li>Développement d'applications web et mobiles sur mesure</li>
+                                    <li>Développement d&apos;applications web et mobiles sur mesure</li>
                                     <li>Conseil en architecture logicielle</li>
                                     <li>Intégration de solutions cloud</li>
                                     <li>Services de maintenance et support technique</li>
@@ -84,14 +84,14 @@ export default function TermsOfServicePage() {
 
                         {/* Section 3 */}
                         <div className="border-l-4 border-green-600 pl-6 py-4">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Obligations de l'Utilisateur</h2>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Obligations de l&apos;Utilisateur</h2>
                             <div className="space-y-4 text-gray-700">
                                 <p>En utilisant nos services, vous vous engagez à:</p>
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li>Fournir des informations exactes et à jour</li>
                                     <li>Maintenir la confidentialité de vos identifiants de connexion</li>
                                     <li>Utiliser les services de manière légale et éthique</li>
-                                    <li>Ne pas tenter d'accéder de manière non autorisée à nos systèmes</li>
+                                    <li>Ne pas tenter d&apos;accéder de manière non autorisée à nos systèmes</li>
                                     <li>Respecter les droits de propriété intellectuelle</li>
                                 </ul>
                             </div>
@@ -113,7 +113,7 @@ export default function TermsOfServicePage() {
                                     <li>Utiliser nos services pour du spam ou du phishing</li>
                                     <li>Tenter de décompiler ou de reverse-engineer nos applications</li>
                                     <li>Interférer avec le fonctionnement de nos services</li>
-                                    <li>Collecter des informations sur d'autres utilisateurs sans consentement</li>
+                                    <li>Collecter des informations sur d&apos;autres utilisateurs sans consentement</li>
                                 </ul>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ export default function TermsOfServicePage() {
                                 <p>Les modalités de paiement seront définies dans les contrats individuels:</p>
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li>Paiement par virement bancaire</li>
-                                    <li>Modalités d'acompte et de paiement final selon le projet</li>
+                                    <li>Modalités d&apos;acompte et de paiement final selon le projet</li>
                                     <li>Facturation selon le calendrier convenu</li>
                                 </ul>
                             </div>
@@ -160,16 +160,16 @@ export default function TermsOfServicePage() {
                             </div>
                             <div className="ml-16 space-y-4 text-gray-700">
                                 <p>
-                                    Docovery s'efforce de fournir des services de qualité mais ne peut garantir:
+                                    Docovery s&apos;efforce de fournir des services de qualité mais ne peut garantir:
                                 </p>
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li>Un fonctionnement ininterrompu des services</li>
-                                    <li>L'absence totale d'erreurs ou de bugs</li>
-                                    <li>L'exactitude complète des informations fournies</li>
+                                    <li>L&apos;absence totale d&apos;erreurs ou de bugs</li>
+                                    <li>L&apos;exactitude complète des informations fournies</li>
                                 </ul>
                                 <p className="mt-4">
                                     En aucun cas, Docovery ne sera responsable des dommages indirects, consécutifs ou spéciaux
-                                    résultant de l'utilisation ou de l'impossibilité d'utiliser nos services.
+                                    résultant de l&apos;utilisation ou de l&apos;impossibilité d&apos;utiliser nos services.
                                 </p>
                             </div>
                         </div>
@@ -185,7 +185,7 @@ export default function TermsOfServicePage() {
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li>Les modifications demandées après livraison</li>
                                     <li>Les problèmes causés par des modifications tierces</li>
-                                    <li>L'utilisation non conforme du logiciel</li>
+                                    <li>L&apos;utilisation non conforme du logiciel</li>
                                 </ul>
                             </div>
                         </div>
@@ -196,7 +196,7 @@ export default function TermsOfServicePage() {
                             <div className="space-y-4 text-gray-700">
                                 <p>
                                     Nous nous réservons le droit de suspendre ou de résilier votre accès à nos services
-                                    en cas de violation de ces conditions d'utilisation.
+                                    en cas de violation de ces conditions d&apos;utilisation.
                                 </p>
                                 <p>
                                     Les clients peuvent résilier leurs contrats de service selon les modalités définies
@@ -210,7 +210,7 @@ export default function TermsOfServicePage() {
                             <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Droit Applicable et Juridiction</h2>
                             <div className="space-y-4 text-gray-700">
                                 <p>
-                                    Ces conditions d'utilisation sont régies par les lois de la République Démocratique du Congo.
+                                    Ces conditions d&apos;utilisation sont régies par les lois de la République Démocratique du Congo.
                                     Tout litige sera soumis à la juridiction exclusive des tribunaux de Kinshasa.
                                 </p>
                             </div>
@@ -220,7 +220,7 @@ export default function TermsOfServicePage() {
                         <div className="border-l-4 border-cyan-600 pl-6 py-4">
                             <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Contact</h2>
                             <div className="space-y-4 text-gray-700">
-                                <p>Pour toute question concernant ces conditions d'utilisation, vous pouvez nous contacter:</p>
+                                <p>Pour toute question concernant ces conditions d&apos;utilisation, vous pouvez nous contacter:</p>
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li>Email: <a href="mailto:legal@docovery.com" className="text-blue-600 hover:underline">legal@docovery.com</a></li>
                                     <li>Téléphone: +243 123 456 789</li>

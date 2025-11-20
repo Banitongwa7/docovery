@@ -200,7 +200,7 @@ export default function Footer() {
                                 Politique de Confidentialité
                             </Link>
                             <Link href="/terms-of-service" className="text-gray-500 hover:text-white transition-colors">
-                                Conditions d'Utilisation
+                                Conditions d&apos;Utilisation
                             </Link>
                             <Link href="/sitemap" className="text-gray-500 hover:text-white transition-colors">
                                 Plan du site
