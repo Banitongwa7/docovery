@@ -41,8 +41,6 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 
-import { socialTeam } from "@/utils/socialTeam";
-
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
