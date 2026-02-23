@@ -37,4 +37,8 @@ const socialTeam: TeamMember[] = [
     }
 ];
 
-export default socialTeam;
+const Links = {
+    meeting: "https://outlook.office.com/book/RendezvousaveclquipeDocovery@docovery.net/s/uZU__XDEa0qnbcmwokDrZg2?ismsaljsauthenabled"
+}
+
+export { socialTeam, Links };
