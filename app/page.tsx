@@ -40,7 +40,6 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 
-import avatar from "./../public/male-avatar.png";
 import { socialTeam } from "@/utils/socialTeam";
 
 export default function Home() {
@@ -766,7 +765,7 @@ export default function Home() {
                   <div className="relative inline-block mb-6">
                     <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:shadow-xl transition-shadow duration-300 group-hover:scale-105 transform">
                       <Image
-                        src={member.photo || avatar}
+                        src={member.photo || "/male-avatar.png"}
                         alt={member.name}
                         width={128}
                         height={128}
