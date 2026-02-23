@@ -13,6 +13,7 @@ import {
     FaUser,
     FaComment,
 } from "react-icons/fa";
+import { contactDocovery } from "@/utils/socialTeam";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -105,31 +106,31 @@ export default function ContactPage() {
                                 {
                                     icon: FaEnvelope,
                                     title: "Email",
-                                    content: "contact@docovery.com",
+                                    content: contactDocovery.email,
                                     subtext: "Réponse sous 24h",
                                     color: "from-blue-500 to-cyan-500",
-                                    href: "mailto:contact@docovery.com",
+                                    href: `mailto:${contactDocovery.email}`,
                                 },
                                 {
                                     icon: FaPhone,
                                     title: "Téléphone",
-                                    content: "+243 123 456 789",
+                                    content: contactDocovery.phone.label,
                                     subtext: "Lun - Ven, 9h - 18h",
                                     color: "from-green-500 to-emerald-500",
-                                    href: "tel:+243123456789",
+                                    href: `tel:${contactDocovery.phone.value}`,
                                 },
                                 {
                                     icon: FaMapMarkerAlt,
                                     title: "Adresse",
                                     content: "Kinshasa, RD Congo",
-                                    subtext: "Gombe, Centre-ville",
+                                    subtext: "",
                                     color: "from-purple-500 to-pink-500",
                                 },
                                 {
                                     icon: FaClock,
                                     title: "Horaires",
                                     content: "Lun - Ven: 9h - 18h",
-                                    subtext: "Sam: 10h - 14h",
+                                    subtext: "Sam et Dim: Fermé",
                                     color: "from-orange-500 to-red-500",
                                 },
                             ].map((item, index) => (

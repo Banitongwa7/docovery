@@ -41,4 +41,12 @@ const Links = {
     meeting: "https://outlook.office.com/book/RendezvousaveclquipeDocovery@docovery.net/s/uZU__XDEa0qnbcmwokDrZg2?ismsaljsauthenabled"
 }
 
-export { socialTeam, Links };
+const contactDocovery = {
+    email: "contact@docovery.net",
+    phone: {
+        label: "+243 81 072 6861",
+        value: "+243810726861"
+    }
+}
+
+export { socialTeam, Links, contactDocovery };
