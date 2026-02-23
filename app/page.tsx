@@ -41,7 +41,7 @@ import {
 } from "react-icons/fa";
 
 import avatar from "./../public/male-avatar.png";
-import socialTeam from "@/utils/socialTeam";
+import { socialTeam } from "@/utils/socialTeam";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
