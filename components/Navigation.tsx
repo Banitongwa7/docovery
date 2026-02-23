@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { LuMenu, LuX } from "react-icons/lu";
 import Link from "next/link";
+import { Links } from "@/utils/socialTeam";
 
 interface NavItem {
     href: string;
@@ -37,8 +38,8 @@ export default function Navigation() {
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
-                    ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-100/20"
-                    : "bg-transparent"
+                ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-100/20"
+                : "bg-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +77,7 @@ export default function Navigation() {
                             </Link>
                         ))}
                         <Link
-                            href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
+                            href={Links.meeting}
                             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-xl font-medium hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105"
                         >
                             Prendre Rendez-vous
@@ -87,8 +88,8 @@ export default function Navigation() {
                         <button
                             onClick={toggleMenu}
                             className={`p-2 rounded-xl transition-all duration-300 ${isScrolled
-                                    ? "text-gray-700 hover:bg-gray-100"
-                                    : "text-white hover:bg-white/10"
+                                ? "text-gray-700 hover:bg-gray-100"
+                                : "text-white hover:bg-white/10"
                                 }`}
                         >
                             {isOpen ? (
@@ -118,7 +119,7 @@ export default function Navigation() {
                         </Link>
                     ))}
                     <Link
-                        href="https://outlook.office365.com/owa/calendar/Docovery@docovery.vercel.app/bookings/"
+                        href={Links.meeting}
                         className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-medium mt-4 text-center block hover:shadow-lg transition-all duration-300"
                     >
                         Prendre Rendez-vous
