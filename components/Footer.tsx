@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt, FaRocket, FaArrowUp } from "react-icons/fa";
+import { contactDocovery } from "@/utils/socialTeam";
 
 export default function Footer() {
     const [email, setEmail] = useState("");
@@ -129,7 +130,7 @@ export default function Footer() {
                                 <div>
                                     <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-0.5">Email</p>
                                     <a href="mailto:contact@docovery.com" className="text-gray-300 hover:text-white transition-colors text-sm">
-                                        contact@docovery.com
+                                        {contactDocovery.email}
                                     </a>
                                 </div>
                             </li>
@@ -139,8 +140,8 @@ export default function Footer() {
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-0.5">Téléphone</p>
-                                    <a href="tel:+243123456789" className="text-gray-300 hover:text-white transition-colors text-sm">
-                                        +243 123 456 789
+                                    <a href={`tel:${contactDocovery.phone.value}`} className="text-gray-300 hover:text-white transition-colors text-sm">
+                                        {contactDocovery.phone.label}
                                     </a>
                                 </div>
                             </li>

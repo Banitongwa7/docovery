@@ -12,6 +12,7 @@ import {
   LuShieldCheck,
   LuSmartphone,
   LuCode,
+  LuGraduationCap,
 } from "react-icons/lu";
 import {
   FaArrowRight,
@@ -464,6 +465,19 @@ export default function Home() {
                 color: "from-indigo-500 to-indigo-600",
                 delay: "500ms",
               },
+              {
+                icon: <LuGraduationCap className="h-8 w-8" />,
+                title: "Formation en Informatique et Nouvelles Technologies",
+                description:
+                  "Développement d'applications mobiles natives et cross-platform pour iOS et Android.",
+                features: [
+                  "React Native",
+                  "Flutter",
+                  "Design Mobile-First",
+                ],
+                color: "from-purple-500 to-purple-600",
+                delay: "600ms",
+              }
             ].map((service, index) => (
               <div
                 key={index}
@@ -716,94 +730,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section
-        id="team"
-        className="py-24 bg-white relative overflow-hidden"
-      >
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-600 font-medium text-sm mb-6">
-              <FaUsers className="mr-2 h-4 w-4" />
-              Notre Équipe
-            </div>
-
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Rencontrez{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Les Experts
-              </span>
-            </h2>
-
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Une équipe passionnée de professionnels dévoués à transformer vos
-              idées en réalité digitale.
-            </p>
-          </div>
-
-          {/* Team Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {socialTeam.map((member, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100"
-              >
-                {/* Background Gradient on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative text-center">
-                  {/* Avatar */}
-                  <div className="relative inline-block mb-6">
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:shadow-xl transition-shadow duration-300 group-hover:scale-105 transform">
-                      <Image
-                        src={member.photo || "/male-avatar.png"}
-                        alt={member.name}
-                        width={128}
-                        height={128}
-                        className="object-cover"
-                      />
-                    </div>
-                    {/* Online Status */}
-                    <div className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 rounded-full border-4 border-white" />
-                  </div>
-
-                  {/* Info */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-blue-600 font-medium mb-4">
-                    {member.position}
-                  </p>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                    {member.bio}
-                  </p>
-
-                  {/* Social Links */}
-                  <div className="flex justify-center space-x-3">
-                    {member.social.map((social, socialIndex) => (
-                      <a
-                        key={socialIndex}
-                        href={social.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 bg-gray-100 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group/social"
-                      >
-                        <social.icon className="h-5 w-5 text-gray-600 group-hover/social:text-white transition-colors" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
