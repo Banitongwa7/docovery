@@ -1,9 +1,11 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 // Create reusable transporter object using SMTP transport
 export const createTransporter = () => {
   return nodemailer.createTransport({
-    service: 'gmail', // You can change this to your email service
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
@@ -13,7 +15,12 @@ export const createTransporter = () => {
 
 // Email templates
 export const emailTemplates = {
-  contact: (data: { name: string; email: string; phone?: string; message: string }) => ({
+  contact: (data: {
+    name: string;
+    email: string;
+    phone?: string;
+    message: string;
+  }) => ({
     subject: `Nouveau message de contact de ${data.name}`,
     html: `
       <!DOCTYPE html>
@@ -45,12 +52,16 @@ export const emailTemplates = {
                 <span class="label">Email:</span>
                 <span><a href="mailto:${data.email}" style="color: #667eea;">${data.email}</a></span>
               </div>
-              ${data.phone ? `
+              ${
+                data.phone
+                  ? `
               <div class="info-row">
                 <span class="label">Téléphone:</span>
                 <span>${data.phone}</span>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
               <div class="info-row">
                 <span class="label">Message:</span>
                 <p style="margin-top: 10px; line-height: 1.8;">${data.message}</p>
@@ -69,7 +80,7 @@ export const emailTemplates = {
       
       Nom: ${data.name}
       Email: ${data.email}
-      ${data.phone ? `Téléphone: ${data.phone}` : ''}
+      ${data.phone ? `Téléphone: ${data.phone}` : ""}
       
       Message:
       ${data.message}
@@ -77,7 +88,7 @@ export const emailTemplates = {
   }),
 
   newsletter: (data: { email: string; name?: string }) => ({
-    subject: 'Nouvelle inscription à la newsletter',
+    subject: "Nouvelle inscription à la newsletter",
     html: `
       <!DOCTYPE html>
       <html>
@@ -97,19 +108,19 @@ export const emailTemplates = {
               <h1>📰 Nouvelle Inscription Newsletter</h1>
             </div>
             <div class="content">
-              ${data.name ? `<div class="info-row"><strong>Nom:</strong> ${data.name}</div>` : ''}
+              ${data.name ? `<div class="info-row"><strong>Nom:</strong> ${data.name}</div>` : ""}
               <div class="info-row"><strong>Email:</strong> ${data.email}</div>
-              <p style="margin-top: 20px; color: #718096;">Date: ${new Date().toLocaleString('fr-FR')}</p>
+              <p style="margin-top: 20px; color: #718096;">Date: ${new Date().toLocaleString("fr-FR")}</p>
             </div>
           </div>
         </body>
       </html>
     `,
-    text: `Nouvelle inscription à la newsletter\n\n${data.name ? `Nom: ${data.name}\n` : ''}Email: ${data.email}`,
+    text: `Nouvelle inscription à la newsletter\n\n${data.name ? `Nom: ${data.name}\n` : ""}Email: ${data.email}`,
   }),
 
   welcomeNewsletter: (data: { email: string; name?: string }) => ({
-    subject: 'Bienvenue dans la communauté Docovery! 🎉',
+    subject: "Bienvenue dans la communauté Docovery! 🎉",
     html: `
       <!DOCTYPE html>
       <html>
@@ -131,7 +142,7 @@ export const emailTemplates = {
               <p>Merci de rejoindre notre communauté</p>
             </div>
             <div class="content">
-              <h2>Bonjour ${data.name || 'cher abonné'}! 👋</h2>
+              <h2>Bonjour ${data.name || "cher abonné"}! 👋</h2>
               <p>Nous sommes ravis de vous compter parmi nos abonnés. Vous recevrez désormais:</p>
               <ul style="line-height: 2;">
                 <li>📰 Nos dernières actualités et innovations</li>
@@ -154,7 +165,7 @@ export const emailTemplates = {
     text: `
 Bienvenue chez Docovery!
 
-Bonjour ${data.name || 'cher abonné'}!
+Bonjour ${data.name || "cher abonné"}!
 
 Nous sommes ravis de vous compter parmi nos abonnés. Vous recevrez désormais:
 - Nos dernières actualités et innovations
@@ -168,7 +179,13 @@ Docovery - Building solutions, Shaping the future
     `,
   }),
 
-  demoRequest: (data: { name: string; email: string; company?: string; service: string; message?: string }) => ({
+  demoRequest: (data: {
+    name: string;
+    email: string;
+    company?: string;
+    service: string;
+    message?: string;
+  }) => ({
     subject: `Demande de démo - ${data.service}`,
     html: `
       <!DOCTYPE html>
@@ -202,19 +219,27 @@ Docovery - Building solutions, Shaping the future
                 <span class="label">Email:</span>
                 <span><a href="mailto:${data.email}" style="color: #667eea;">${data.email}</a></span>
               </div>
-              ${data.company ? `
+              ${
+                data.company
+                  ? `
               <div class="info-row">
                 <span class="label">Entreprise:</span>
                 <span>${data.company}</span>
               </div>
-              ` : ''}
-              ${data.message ? `
+              `
+                  : ""
+              }
+              ${
+                data.message
+                  ? `
               <div class="info-row">
                 <span class="label">Message:</span>
                 <p style="margin-top: 10px; line-height: 1.8;">${data.message}</p>
               </div>
-              ` : ''}
-              <p style="margin-top: 20px; color: #718096;">Date: ${new Date().toLocaleString('fr-FR')}</p>
+              `
+                  : ""
+              }
+              <p style="margin-top: 20px; color: #718096;">Date: ${new Date().toLocaleString("fr-FR")}</p>
             </div>
           </div>
         </body>
@@ -226,18 +251,21 @@ Docovery - Building solutions, Shaping the future
       Service: ${data.service}
       Nom: ${data.name}
       Email: ${data.email}
-      ${data.company ? `Entreprise: ${data.company}` : ''}
-      ${data.message ? `\nMessage:\n${data.message}` : ''}
+      ${data.company ? `Entreprise: ${data.company}` : ""}
+      ${data.message ? `\nMessage:\n${data.message}` : ""}
     `,
   }),
 };
 
-export const sendEmail = async (to: string, template: { subject: string; html: string; text: string }) => {
+export const sendEmail = async (
+  to: string,
+  template: { subject: string; html: string; text: string },
+) => {
   try {
     const transporter = createTransporter();
 
     const mailOptions = {
-      from: `Docovery <${process.env.EMAIL_FROM || process.env.EMAIL_USER}>`,
+      from: process.env.EMAIL_USER,
       to,
       subject: template.subject,
       html: template.html,
@@ -245,10 +273,10 @@ export const sendEmail = async (to: string, template: { subject: string; html: s
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: %s', info.messageId);
+    console.log("Email sent: %s", info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
     throw error;
   }
 };

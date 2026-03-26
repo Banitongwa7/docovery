@@ -1,36 +1,45 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { sendEmail, emailTemplates } from '@/utils/emailConfig';
+import { NextRequest, NextResponse } from "next/server";
+import { sendEmail, emailTemplates } from "@/utils/emailConfig";
 
 export async function POST(request: NextRequest) {
-    try {
-        const body = await request.json();
-        const { name, email, company, service, message } = body;
+  try {
+    const body = await request.json();
+    const { name, email, company, service, message } = body;
 
-        // Validation
-        if (!name || !email || !service) {
-            return NextResponse.json(
-                { success: false, error: 'Tous les champs obligatoires doivent être remplis' },
-                { status: 400 }
-            );
-        }
+    // Validation
+    if (!name || !email || !service) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Tous les champs obligatoires doivent être remplis",
+        },
+        { status: 400 },
+      );
+    }
 
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return NextResponse.json(
-                { success: false, error: 'Format d\'email invalide' },
-                { status: 400 }
-            );
-        }
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: "Format d'email invalide" },
+        { status: 400 },
+      );
+    }
 
-        // Send demo request to admin
-        const template = emailTemplates.demoRequest({ name, email, company, service, message });
-        await sendEmail(process.env.EMAIL_TO || process.env.EMAIL_USER || '', template);
+    // Send demo request to admin
+    const template = emailTemplates.demoRequest({
+      name,
+      email,
+      company,
+      service,
+      message,
+    });
+    await sendEmail(process.env.EMAIL_USER || "", template);
 
-        // Send confirmation to user
-        const confirmationTemplate = {
-            subject: 'Votre demande de démo a été reçue - Docovery',
-            html: `
+    // Send confirmation to user
+    const confirmationTemplate = {
+      subject: "Votre demande de démo a été reçue - Docovery",
+      html: `
         <!DOCTYPE html>
         <html>
           <head>
@@ -73,20 +82,26 @@ export async function POST(request: NextRequest) {
           </body>
         </html>
       `,
-            text: `Bonjour ${name},\n\nMerci pour votre demande de démo pour ${service}.\n\nNotre équipe vous contactera dans les 24-48 heures.\n\n---\nDocovery\nBuilding solutions, Shaping the future`,
-        };
+      text: `Bonjour ${name},\n\nMerci pour votre demande de démo pour ${service}.\n\nNotre équipe vous contactera dans les 24-48 heures.\n\n---\nDocovery\nBuilding solutions, Shaping the future`,
+    };
 
-        await sendEmail(email, confirmationTemplate);
+    await sendEmail(process.env.EMAIL_USER || "", confirmationTemplate);
 
-        return NextResponse.json(
-            { success: true, message: 'Demande envoyée avec succès! Nous vous contacterons bientôt.' },
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error('Demo request error:', error);
-        return NextResponse.json(
-            { success: false, error: 'Une erreur est survenue lors de l\'envoi de la demande' },
-            { status: 500 }
-        );
-    }
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Demande envoyée avec succès! Nous vous contacterons bientôt.",
+      },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("Demo request error:", error);
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Une erreur est survenue lors de l'envoi de la demande",
+      },
+      { status: 500 },
+    );
+  }
 }

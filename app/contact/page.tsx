@@ -16,7 +16,7 @@ import {
 import { contactDocovery } from "@/utils/socialTeam";
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
+    const [sentData, setSentData] = useState({
         name: "",
         email: "",
         phone: "",
@@ -25,30 +25,27 @@ export default function ContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [responseMessage, setResponseMessage] = useState("");
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
         setResponseMessage("");
 
+        console.log("sentData : ", sentData)
+
         try {
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(sentData),
             });
 
             const data = await response.json();
 
+            console.log("data : ", data)
+
             if (data.success) {
                 setResponseMessage("✅ " + data.message);
-                setFormData({ name: "", email: "", phone: "", message: "" });
+                setSentData({ name: "", email: "", phone: "", message: "" });
             } else {
                 setResponseMessage("❌ " + data.error);
             }
@@ -185,8 +182,8 @@ export default function ContactPage() {
                                                 type="text"
                                                 id="name"
                                                 name="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
+                                                value={sentData.name}
+                                                onChange={(e) => setSentData({ ...sentData, name: e.target.value })}
                                                 required
                                                 className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                                 placeholder="Jean Dupont"
@@ -207,8 +204,8 @@ export default function ContactPage() {
                                                 type="email"
                                                 id="email"
                                                 name="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
+                                                value={sentData.email}
+                                                onChange={(e) => setSentData({ ...sentData, email: e.target.value })}
                                                 required
                                                 className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                                 placeholder="jean.dupont@example.com"
@@ -229,8 +226,8 @@ export default function ContactPage() {
                                                 type="tel"
                                                 id="phone"
                                                 name="phone"
-                                                value={formData.phone}
-                                                onChange={handleChange}
+                                                value={sentData.phone}
+                                                onChange={(e) => setSentData({ ...sentData, phone: e.target.value })}
                                                 className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                                 placeholder="+243 123 456 789"
                                             />
@@ -249,8 +246,8 @@ export default function ContactPage() {
                                             <textarea
                                                 id="message"
                                                 name="message"
-                                                value={formData.message}
-                                                onChange={handleChange}
+                                                value={sentData.message}
+                                                onChange={(e) => setSentData({ ...sentData, message: e.target.value })}
                                                 required
                                                 rows={6}
                                                 className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"

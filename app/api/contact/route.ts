@@ -1,36 +1,39 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { sendEmail, emailTemplates } from '@/utils/emailConfig';
+import { NextRequest, NextResponse } from "next/server";
+import { sendEmail, emailTemplates } from "@/utils/emailConfig";
 
 export async function POST(request: NextRequest) {
-    try {
-        const body = await request.json();
-        const { name, email, phone, message } = body;
+  try {
+    const body = await request.json();
+    const { name, email, phone, message } = body;
 
-        // Validation
-        if (!name || !email || !message) {
-            return NextResponse.json(
-                { success: false, error: 'Tous les champs obligatoires doivent être remplis' },
-                { status: 400 }
-            );
-        }
+    // Validation
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Tous les champs obligatoires doivent être remplis",
+        },
+        { status: 400 },
+      );
+    }
 
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return NextResponse.json(
-                { success: false, error: 'Format d\'email invalide' },
-                { status: 400 }
-            );
-        }
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: "Format d'email invalide" },
+        { status: 400 },
+      );
+    }
 
-        // Send email to admin
-        const template = emailTemplates.contact({ name, email, phone, message });
-        await sendEmail(process.env.EMAIL_TO || process.env.EMAIL_USER || '', template);
+    // Send email to admin
+    const template = emailTemplates.contact({ name, email, phone, message });
+    await sendEmail(process.env.EMAIL_USER || "", template);
 
-        // Optional: Send auto-reply to user
-        const autoReplyTemplate = {
-            subject: 'Nous avons bien reçu votre message - Docovery',
-            html: `
+    // Optional: Send auto-reply to user
+    const autoReplyTemplate = {
+      subject: "Nous avons bien reçu votre message - Docovery",
+      html: `
         <!DOCTYPE html>
         <html>
           <head>
@@ -67,20 +70,23 @@ export async function POST(request: NextRequest) {
           </body>
         </html>
       `,
-            text: `Bonjour ${name},\n\nNous avons bien reçu votre message et nous vous en remercions.\n\nNotre équipe vous répondra dans les plus brefs délais.\n\nVotre message:\n${message}\n\n---\nDocovery\nBuilding solutions, Shaping the future`,
-        };
+      text: `Bonjour ${name},\n\nNous avons bien reçu votre message et nous vous en remercions.\n\nNotre équipe vous répondra dans les plus brefs délais.\n\nVotre message:\n${message}\n\n---\nDocovery\nBuilding solutions, Shaping the future`,
+    };
 
-        await sendEmail(email, autoReplyTemplate);
+    await sendEmail(process.env.EMAIL_USER || "", autoReplyTemplate);
 
-        return NextResponse.json(
-            { success: true, message: 'Message envoyé avec succès!' },
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error('Contact form error:', error);
-        return NextResponse.json(
-            { success: false, error: 'Une erreur est survenue lors de l\'envoi du message' },
-            { status: 500 }
-        );
-    }
+    return NextResponse.json(
+      { success: true, message: "Message envoyé avec succès!" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("Contact form error:", error);
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Une erreur est survenue lors de l'envoi du message",
+      },
+      { status: 500 },
+    );
+  }
 }
