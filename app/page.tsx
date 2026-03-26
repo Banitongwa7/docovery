@@ -467,11 +467,11 @@ export default function Home() {
                 icon: <LuGraduationCap className="h-8 w-8" />,
                 title: "Formation en Informatique et Nouvelles Technologies",
                 description:
-                  "Développement d'applications mobiles natives et cross-platform pour iOS et Android.",
+                  "Programmes de formation adaptés pour développer les compétences techniques de vos équipes et accélérer votre transformation digitale.",
                 features: [
-                  "React Native",
-                  "Flutter",
-                  "Design Mobile-First",
+                  "Formation Personnalisée",
+                  "Ateliers Pratiques",
+                  "Certification & Suivi",
                 ],
                 color: "from-purple-500 to-purple-600",
                 delay: "600ms",

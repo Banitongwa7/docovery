@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 
     // Send welcome email to subscriber
     const welcomeTemplate = emailTemplates.welcomeNewsletter({ email, name });
-    await sendEmail(process.env.EMAIL_USER || "", welcomeTemplate);
+    await sendEmail(email, welcomeTemplate);
 
     return NextResponse.json(
       { success: true, message: "Inscription réussie! Vérifiez votre email." },

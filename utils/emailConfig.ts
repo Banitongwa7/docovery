@@ -3,9 +3,7 @@ import nodemailer from "nodemailer";
 // Create reusable transporter object using SMTP transport
 export const createTransporter = () => {
   return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
@@ -68,7 +66,7 @@ export const emailTemplates = {
               </div>
               <div class="footer">
                 <p>Ce message a été envoyé depuis le formulaire de contact de Docovery</p>
-                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">www.docovery.com</a></p>
+                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
               </div>
             </div>
           </div>
@@ -156,7 +154,7 @@ export const emailTemplates = {
             <div class="footer">
               <p><strong>Docovery</strong></p>
               <p>Building solutions, Shaping the future</p>
-              <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">www.docovery.com</a></p>
+               <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
             </div>
           </div>
         </body>

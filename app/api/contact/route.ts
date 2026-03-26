@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
               <div class="footer">
                 <p><strong>Docovery</strong></p>
                 <p>Building solutions, Shaping the future</p>
-                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">www.docovery.com</a></p>
+                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
               </div>
             </div>
           </body>
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       text: `Bonjour ${name},\n\nNous avons bien reçu votre message et nous vous en remercions.\n\nNotre équipe vous répondra dans les plus brefs délais.\n\nVotre message:\n${message}\n\n---\nDocovery\nBuilding solutions, Shaping the future`,
     };
 
-    await sendEmail(process.env.EMAIL_USER || "", autoReplyTemplate);
+    await sendEmail(email, autoReplyTemplate);
 
     return NextResponse.json(
       { success: true, message: "Message envoyé avec succès!" },

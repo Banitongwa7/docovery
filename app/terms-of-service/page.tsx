@@ -4,6 +4,7 @@ import React from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FaFileContract, FaCheckCircle, FaBan, FaExclamationTriangle } from "react-icons/fa";
+import { contactDocovery } from "@/utils/socialTeam";
 
 export default function TermsOfServicePage() {
     return (
@@ -222,8 +223,8 @@ export default function TermsOfServicePage() {
                             <div className="space-y-4 text-gray-700">
                                 <p>Pour toute question concernant ces conditions d&apos;utilisation, vous pouvez nous contacter:</p>
                                 <ul className="list-disc pl-5 space-y-2">
-                                    <li>Email: <a href="mailto:legal@docovery.com" className="text-blue-600 hover:underline">legal@docovery.com</a></li>
-                                    <li>Téléphone: +243 123 456 789</li>
+                                    <li>Email: <a href={`mailto:${contactDocovery.email}`} className="text-blue-600 hover:underline">{contactDocovery.email}</a></li>
+                                    <li>Téléphone: {contactDocovery.phone.label}</li>
                                     <li>Adresse: Kinshasa, RD Congo</li>
                                 </ul>
                             </div>

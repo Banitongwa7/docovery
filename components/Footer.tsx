@@ -77,9 +77,9 @@ export default function Footer() {
                         </p>
                         <div className="flex space-x-3 pt-2">
                             {[
-                                { icon: FaGithub, href: "https://github.com/docovery", label: "GitHub" },
-                                { icon: FaLinkedin, href: "https://linkedin.com/company/docovery", label: "LinkedIn" },
-                                { icon: FaTwitter, href: "https://twitter.com/docovery", label: "Twitter" },
+                                { icon: FaGithub, href: "https://github.com/Banitongwa7", label: "GitHub" },
+                                { icon: FaLinkedin, href: "https://www.linkedin.com/in/david-banitongwa/", label: "LinkedIn" },
+                                { icon: FaTwitter, href: "https://twitter.com/BanitongwaDavid", label: "Twitter" },
                             ].map((social, index) => (
                                 <a
                                     key={index}
@@ -129,7 +129,7 @@ export default function Footer() {
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-0.5">Email</p>
-                                    <a href="mailto:contact@docovery.com" className="text-gray-300 hover:text-white transition-colors text-sm">
+                                    <a href={`mailto:${contactDocovery.email}`} className="text-gray-300 hover:text-white transition-colors text-sm">
                                         {contactDocovery.email}
                                     </a>
                                 </div>
@@ -202,9 +202,6 @@ export default function Footer() {
                             </Link>
                             <Link href="/terms-of-service" className="text-gray-500 hover:text-white transition-colors">
                                 Conditions d&apos;Utilisation
-                            </Link>
-                            <Link href="/sitemap" className="text-gray-500 hover:text-white transition-colors">
-                                Plan du site
                             </Link>
                         </div>
                     </div>

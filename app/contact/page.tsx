@@ -30,7 +30,6 @@ export default function ContactPage() {
         setIsSubmitting(true);
         setResponseMessage("");
 
-        console.log("sentData : ", sentData)
 
         try {
             const response = await fetch("/api/contact", {
@@ -41,7 +40,6 @@ export default function ContactPage() {
 
             const data = await response.json();
 
-            console.log("data : ", data)
 
             if (data.success) {
                 setResponseMessage("✅ " + data.message);

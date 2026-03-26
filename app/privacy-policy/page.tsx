@@ -4,6 +4,7 @@ import React from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FaShieldAlt, FaLock, FaUserShield, FaCookie } from "react-icons/fa";
+import { contactDocovery } from "@/utils/socialTeam";
 
 export default function PrivacyPolicyPage() {
     return (
@@ -142,7 +143,7 @@ export default function PrivacyPolicyPage() {
                                     <li>Demander la portabilité de vos données</li>
                                 </ul>
                                 <p className="mt-4">
-                                    Pour exercer vos droits, contactez-nous à: <a href="mailto:privacy@docovery.com" className="text-blue-600 hover:underline">privacy@docovery.com</a>
+                                    Pour exercer vos droits, contactez-nous à: <a href={`mailto:${contactDocovery.email}`} className="text-blue-600 hover:underline">{contactDocovery.email}</a>
                                 </p>
                             </div>
                         </div>
