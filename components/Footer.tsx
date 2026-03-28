@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt, FaRocket, FaArrowUp } from "react-icons/fa";
 import { contactDocovery } from "@/utils/socialTeam";
+import Image from "next/image";
 
 export default function Footer() {
     const [email, setEmail] = useState("");
@@ -65,12 +66,16 @@ export default function Footer() {
                     {/* Company Info - Spans 4 columns */}
                     <div className="lg:col-span-4 space-y-6">
                         <div className="flex items-center space-x-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
-                                <FaRocket className="h-5 w-5 text-white" />
+                            <div className="w-10 h-10 rounded-xl flex items-center justify-center">
+                                <Image
+                                    src="/docovery_logo_white.svg"
+                                    height={100}
+                                    width={100}
+                                    alt="logo"
+                                    aria-hidden="true"
+                                    className="h-10 w-10 sm:h-10 sm:w-10"
+                                />
                             </div>
-                            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                                Docovery
-                            </span>
                         </div>
                         <p className="text-gray-400 leading-relaxed max-w-sm">
                             Building solutions, Shaping the future. Nous transformons vos idées les plus ambitieuses en réalité digitale performante et scalable.
