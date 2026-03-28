@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { LuMenu, LuX } from "react-icons/lu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -147,11 +146,10 @@ export default function Navigation() {
     <nav
       role="navigation"
       aria-label="Navigation principale"
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
           ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 sm:h-20 items-center gap-4">
@@ -163,11 +161,10 @@ export default function Navigation() {
           >
             <div className="flex items-center space-x-2.5">
               <span
-                className={`text-xl sm:text-2xl font-bold transition-all duration-300 ${
-                  isScrolled
+                className={`text-xl sm:text-2xl font-bold transition-all duration-300 ${isScrolled
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                     : "text-white"
-                }`}
+                  }`}
               >
                 Docovery
               </span>
@@ -182,23 +179,21 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 py-2 rounded-lg font-medium text-sm lg:text-base transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
-                    isScrolled
+                  className={`relative px-3 py-2 rounded-lg font-medium text-sm lg:text-base transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${isScrolled
                       ? active
                         ? "text-blue-600"
                         : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                       : active
-                      ? "text-white"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  }`}
+                        ? "text-white"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
+                    }`}
                   aria-current={active ? "page" : undefined}
                 >
                   {item.label}
                   {/* Active / hover underline */}
                   <span
-                    className={`absolute bottom-1 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-300 ${
-                      active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
-                    }`}
+                    className={`absolute bottom-1 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-300 ${active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+                      }`}
                   />
                 </Link>
               );
@@ -224,24 +219,21 @@ export default function Navigation() {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className={`md:hidden p-2 rounded-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex-shrink-0 ${
-              isScrolled
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex-shrink-0 ${isScrolled
                 ? "text-gray-700 hover:bg-gray-100"
                 : "text-white hover:bg-white/10"
-            }`}
+              }`}
           >
             <span className="sr-only">{isOpen ? "Fermer le menu" : "Ouvrir le menu"}</span>
             <div className="relative w-6 h-6">
               <LuMenu
-                className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
-                  isOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
-                }`}
+                className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${isOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
+                  }`}
                 aria-hidden="true"
               />
               <LuX
-                className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
-                  isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
-                }`}
+                className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
+                  }`}
                 aria-hidden="true"
               />
             </div>
@@ -256,9 +248,8 @@ export default function Navigation() {
         role="dialog"
         aria-label="Menu de navigation mobile"
         aria-modal="true"
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-        } bg-white/98 backdrop-blur-xl border-b border-gray-100 shadow-xl`}
+        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+          } bg-white/98 backdrop-blur-xl border-b border-gray-100 shadow-xl`}
       >
         <div className="px-4 py-5 space-y-1">
           {/* Nav Links */}
@@ -270,11 +261,10 @@ export default function Navigation() {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
-                  active
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${active
                     ? "bg-blue-50 text-blue-600"
                     : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
-                }`}
+                  }`}
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 {active && (
