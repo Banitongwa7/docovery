@@ -8,7 +8,6 @@ import {
     FaUser,
     FaArrowRight,
     FaSearch,
-    FaTag,
     FaRocket,
 } from "react-icons/fa";
 import Link from "next/link";
@@ -175,7 +174,7 @@ export default function BlogPage() {
                     {filteredPosts.length === 0 ? (
                         <div className="text-center py-20">
                             <p className="text-xl text-gray-500 font-medium">
-                                Aucun article trouvé pour "{searchTerm}" dans la catégorie "{selectedCategory}".
+                                Aucun article trouvé pour &quot;{searchTerm}&quot; dans la catégorie &quot;{selectedCategory}&quot;.
                             </p>
                         </div>
                     ) : (
@@ -254,7 +253,7 @@ export default function BlogPage() {
                             <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white rounded-full blur-[80px]" />
                         </div>
                         <div className="relative z-10 max-w-3xl mx-auto">
-                            <span className="text-blue-200 font-semibold tracking-wider text-sm uppercase mb-4 block">Let's talk</span>
+                            <span className="text-blue-200 font-semibold tracking-wider text-sm uppercase mb-4 block">Let&apos;s talk</span>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
                                 Vous avez un Projet en Tête?
                             </h2>

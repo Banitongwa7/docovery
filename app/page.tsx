@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -11,20 +11,12 @@ import {
   LuCloudUpload,
   LuShieldCheck,
   LuSmartphone,
-  LuCode,
   LuGraduationCap,
 } from "react-icons/lu";
 import {
   FaArrowRight,
-  FaProjectDiagram,
-  FaReact,
-  FaNodeJs,
-  FaMobileAlt,
-  FaCloud,
   FaDatabase,
   FaShieldAlt,
-  FaBolt,
-  FaChevronDown,
   FaUsers,
   FaLightbulb,
   FaChartLine,
@@ -34,20 +26,13 @@ import {
   FaHeadset,
   FaAward,
   FaHandshake,
-  FaSmile,
   FaBriefcase,
   FaPlay,
-  FaCheckCircle,
   FaGlobe,
 } from "react-icons/fa";
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setIsVisible(true), 100);
-  }, []);
 
   return (
     <>
@@ -466,7 +451,7 @@ export default function Home() {
 
                 {/* Text */}
                 <p className="text-gray-700 leading-relaxed mb-8 font-medium">
-                  "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                 </p>
 
                 {/* Author */}
