@@ -327,6 +327,7 @@ export default function Home() {
                   Rencontrer l&apos;Équipe
                 </a>
               </div>
+              
             </div>
 
             {/* Stats & Visual Side */}
