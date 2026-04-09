@@ -146,12 +146,15 @@ export default function Navigation() {
     <nav
       role="navigation"
       aria-label="Navigation principale"
-      className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100"
-          : "bg-transparent"
-        }`}
+      className={`fixed w-full z-50 transition-all duration-500 px-4 sm:px-6 lg:px-8 ${isScrolled ? "pt-4" : "pt-6"}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className={`max-w-7xl mx-auto transition-all duration-500 rounded-2xl ${
+          isScrolled
+            ? "bg-[#0a0a0a]/80 backdrop-blur-2xl shadow-2xl border border-white/10 px-6"
+            : "bg-transparent px-2"
+        }`}
+      >
         <div className="flex justify-between h-16 sm:h-20 items-center gap-4">
           {/* Logo */}
           <Link
@@ -159,14 +162,10 @@ export default function Navigation() {
             className="flex-shrink-0 flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg"
             aria-label="Docovery - Accueil"
           >
-            <div className="flex items-center space-x-2.5">
-              <span
-                className={`text-xl sm:text-2xl font-bold transition-all duration-300 ${isScrolled
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-                    : "text-white"
-                  }`}
-              >
-                Docovery
+            <div className="flex items-center space-x-2.5 relative">
+              <div className="absolute -inset-2 bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+              <span className="text-xl sm:text-2xl font-bold tracking-tighter text-white relative z-10 transition-all duration-300">
+                Docovery<span className="text-blue-500">.</span>
               </span>
             </div>
           </Link>
@@ -179,21 +178,19 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 py-2 rounded-lg font-medium text-sm lg:text-base transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${isScrolled
-                      ? active
-                        ? "text-blue-600"
-                        : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                      : active
-                        ? "text-white"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
-                    }`}
+                  className={`relative px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                    active
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white hover:bg-white/5"
+                  }`}
                   aria-current={active ? "page" : undefined}
                 >
                   {item.label}
-                  {/* Active / hover underline */}
+                  {/* Active / hover subtle indicator */}
                   <span
-                    className={`absolute bottom-1 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-300 ${active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
-                      }`}
+                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-1/2 bg-blue-500 rounded-full transition-all duration-300 ${
+                      active ? "opacity-100" : "opacity-0 group-hover:opacity-50"
+                    }`}
                   />
                 </Link>
               );
@@ -206,9 +203,10 @@ export default function Navigation() {
               href={Links.meeting}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-xl text-sm lg:text-base font-semibold hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
+              className="group relative inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 backdrop-blur-md border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
             >
               <span>Prendre Rendez-vous</span>
+              <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           </div>
 
@@ -219,10 +217,7 @@ export default function Navigation() {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className={`md:hidden p-2 rounded-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex-shrink-0 ${isScrolled
-                ? "text-gray-700 hover:bg-gray-100"
-                : "text-white hover:bg-white/10"
-              }`}
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex-shrink-0 text-white hover:bg-white/10`}
           >
             <span className="sr-only">{isOpen ? "Fermer le menu" : "Ouvrir le menu"}</span>
             <div className="relative w-6 h-6">
@@ -249,7 +244,7 @@ export default function Navigation() {
         aria-label="Menu de navigation mobile"
         aria-modal="true"
         className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          } bg-white/98 backdrop-blur-xl border-b border-gray-100 shadow-xl`}
+          } bg-[#0a0a0a]/98 backdrop-blur-xl border-b border-white/10 shadow-2xl rounded-b-2xl`}
       >
         <div className="px-4 py-5 space-y-1">
           {/* Nav Links */}
@@ -262,8 +257,8 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
                 aria-current={active ? "page" : undefined}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${active
-                    ? "bg-blue-50 text-blue-600"
-                    : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                    ? "bg-blue-500/10 text-white"
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
                   }`}
                 style={{ animationDelay: `${index * 40}ms` }}
               >
@@ -282,8 +277,9 @@ export default function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3.5 rounded-xl font-semibold text-base hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="group relative flex items-center justify-center gap-2 w-full bg-white/5 border border-white/10 text-white py-3.5 rounded-xl font-semibold text-base hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 focus:outline-none"
             >
+              <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               Prendre Rendez-vous
             </Link>
           </div>

@@ -53,15 +53,15 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[#0B0F19] text-white relative overflow-hidden border-t border-white/5">
+        <footer className="bg-[#0a0a0a] text-white relative overflow-hidden border-t border-white/10">
             {/* Subtle Background Pattern */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px]" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
             </div>
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
                     {/* Company Info - Spans 4 columns */}
                     <div className="lg:col-span-4 space-y-6">
@@ -77,7 +77,7 @@ export default function Footer() {
                                 />
                             </div>
                         </div>
-                        <p className="text-gray-400 leading-relaxed max-w-sm">
+                        <p className="text-gray-400 leading-relaxed max-w-sm text-sm">
                             Building solutions, Shaping the future. Nous transformons vos idées les plus ambitieuses en réalité digitale performante et scalable.
                         </p>
                         <div className="flex space-x-3 pt-2">
@@ -164,8 +164,8 @@ export default function Footer() {
 
                     {/* Newsletter - Spans 3 columns */}
                     <div className="lg:col-span-3">
-                        <h4 className="text-lg font-semibold mb-6 text-white">Newsletter</h4>
-                        <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        <h4 className="text-3xl font-bold tracking-tighter mb-4 text-white">Newsletter</h4>
+                        <p className="text-gray-400 text-sm mb-6 leading-relaxed">
                             Rejoignez notre communauté pour recevoir nos dernières actualités et conseils tech.
                         </p>
                         <form onSubmit={handleNewsletterSubmit} className="space-y-3">
@@ -176,14 +176,15 @@ export default function Footer() {
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Votre adresse email"
                                     required
-                                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all text-sm"
+                                    className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all text-sm shadow-inner"
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm"
+                                className="group relative w-full bg-white/5 border border-white/10 text-white px-6 py-3 rounded-xl font-medium hover:border-blue-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm overflow-hidden"
                             >
+                                <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 {isSubmitting ? "Inscription..." : "S'abonner"}
                             </button>
                         </form>

@@ -53,17 +53,16 @@ export default function Home() {
     <>
       <Navigation />
 
-      {/* Enhanced Hero Section */}
+      {/* Premium Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-20"
+        className="relative min-h-screen bg-[#0a0a0a] overflow-hidden pt-32 lg:pt-40"
       >
-        {/* Enhanced Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float-slow" />
-          <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-float-slow delay-1000" />
-          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-float-slow delay-500" />
-          <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl animate-float-slow delay-1500" />
+        {/* Synck Aesthetic Orbs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
         </div>
 
         {/* Animated Grid Pattern */}
@@ -127,20 +126,20 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Enhanced Main Heading */}
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+              {/* Premium Main Heading */}
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl xl:text-[7rem] font-bold text-white mb-8 leading-[1.1] tracking-tighter">
                 <span
-                  className={`block animate-fade-in-up ${isVisible
+                  className={`block drop-shadow-2xl animate-fade-in-up ${isVisible
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                    : "opacity-0 translate-y-12"
                     }`}
                 >
                   Transformez
                 </span>
                 <span
-                  className={`block animate-fade-in-up delay-200 ${isVisible
+                  className={`block drop-shadow-2xl animate-fade-in-up delay-200 ${isVisible
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                    : "opacity-0 translate-y-12"
                     }`}
                 >
                   Votre Vision
@@ -148,12 +147,12 @@ export default function Home() {
                 <span
                   className={`block animate-fade-in-up delay-400 ${isVisible
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                    : "opacity-0 translate-y-12"
                     }`}
                 >
                   En{" "}
-                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
-                    Réalité Digitale
+                  <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                    Réalité Digitale.
                   </span>
                 </span>
               </h1>
@@ -165,24 +164,23 @@ export default function Home() {
                 votre entreprise vers l&apos;avenir.
               </p>
 
-              {/* Enhanced CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-800">
+              {/* Premium CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start animate-fade-in-up" style={{ animationDelay: '600ms' }}>
                 <button
                   onClick={() => setIsDemoModalOpen(true)}
-                  className="group relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1 text-center overflow-hidden"
+                  className="group relative bg-white text-black px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:-translate-y-1 text-center overflow-hidden hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative flex items-center justify-center">
                     Démarrer un Projet
-                    <FaRocket className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                 </button>
                 <a
                   href="#services"
-                  className="group border border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 text-center hover:border-white/50 backdrop-blur-sm hover:shadow-lg hover:shadow-white/10"
+                  className="group relative px-8 py-4 rounded-full font-semibold text-white transition-all duration-300 text-center bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/30 hover:bg-white/10"
                 >
                   <span className="flex items-center justify-center">
-                    Explorer Nos Solutions
+                    Explorer
                     <FaChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform duration-300" />
                   </span>
                 </a>
@@ -236,8 +234,8 @@ export default function Home() {
 
               {/* Main Hero Visual */}
               <div className="relative">
-                {/* Glass Morphism Container */}
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 group">
+                {/* Glass Morphism Interactive Container */}
+                <div className="relative bg-[#0a0a0a]/50 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_60px_rgba(59,130,246,0.15)] transition-all duration-700 group overflow-hidden">
                   {/* Animated Code Preview */}
                   <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium animate-bounce-slow shadow-lg">
                     <LuCode className="inline mr-1 h-4 w-4" />
@@ -351,39 +349,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section - Enhanced */}
+      {/* Services Section - Bento Grid */}
       <section
         id="services"
-        className="py-24 bg-gradient-to-br from-white to-gray-50/50 relative overflow-hidden"
+        className="py-32 bg-white relative overflow-hidden"
       >
-        {/* Background Elements */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        {/* Abstract Backgrounds */}
+        <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-gray-50 to-transparent pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-6">
-              <FaBolt className="mr-2 h-4 w-4" />
-              Nos Services
+          {/* Minimalist Section Header */}
+          <div className="mb-20 grid lg:grid-cols-2 gap-12 items-end">
+            <div>
+              <div className="inline-flex items-center space-x-2 mb-6">
+                <span className="w-8 h-px bg-blue-600"></span>
+                <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm">Expertise</span>
+              </div>
+              <h2 className="text-5xl lg:text-7xl font-bold text-gray-900 tracking-tighter leading-[1.1]">
+                Solutions <br />
+                <span className="text-gray-400">Digitales.</span>
+              </h2>
             </div>
-
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Solutions{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Digitales
-              </span>{" "}
-              Sur Mesure
-            </h2>
-
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Nous transformons vos défis en opportunités avec nos services
-              innovants adaptés à vos besoins spécifiques.
+            <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              Nous concevons des écosystèmes digitaux sur mesure, alliant performance, esthétique et innovation pour redéfinir votre présence numérique.
             </p>
           </div>
 
-          {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(300px,auto)] gap-6">
             {[
               {
                 icon: <LuTerminal className="h-8 w-8" />,
@@ -479,66 +472,52 @@ export default function Home() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group relative animate-fade-in-up"
-                style={{ animationDelay: service.delay }}
+                className={`group relative animate-bento-reveal opacity-0 ${
+                  index === 0 ? "md:col-span-2 lg:col-span-2 row-span-2" : 
+                  index === 1 ? "md:col-span-1 lg:col-span-2" :
+                  index === 6 ? "md:col-span-2 lg:col-span-4" : 
+                  "md:col-span-1 lg:col-span-1"
+                }`}
+                style={{ animationDelay: `${parseInt(service.delay) + 200}ms` }}
               >
-                {/* Hover Background Effect */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                />
+                {/* Main Bento Card */}
+                <div className="relative bg-gray-50 overflow-hidden rounded-[2rem] p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-gray-100 h-full flex flex-col group">
+                  
+                  {/* Decorative Background Accent */}
+                  <div className={`absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-full blur-[50px] transition-all duration-700`} />
 
-                {/* Main Card */}
-                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border border-gray-100 h-full flex flex-col">
-                  {/* Icon */}
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                  >
-                    <div className="text-white">{service.icon}</div>
-                  </div>
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Icon */}
+                    <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm text-gray-900 group-hover:scale-110 transition-transform duration-500">
+                      {service.icon}
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
-                    {service.title}
-                  </h3>
+                    {/* Content */}
+                    <h3 className={`font-bold text-gray-900 mb-4 tracking-tight ${index === 0 || index === 6 ? 'text-3xl' : 'text-2xl'}`}>
+                      {service.title}
+                    </h3>
 
-                  <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
-                    {service.description}
-                  </p>
+                    <p className={`text-gray-600 leading-relaxed mb-8 flex-grow ${index === 0 || index === 6 ? 'text-lg max-w-xl' : 'text-base'}`}>
+                      {service.description}
+                    </p>
 
-                  {/* Features List */}
-                  <div className="space-y-2 mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <div
-                        key={featureIndex}
-                        className="flex items-center text-sm text-gray-500"
-                      >
-                        <FaCheckCircle
-                          className={`mr-3 h-4 w-4 text-gradient-to-r ${service.color}`}
-                          style={{
-                            background: `linear-gradient(to right, var(--tw-gradient-stops))`,
-                          }}
-                        />
-                        {feature}
+                    {/* Minimal CTA */}
+                    <div className="mt-auto flex items-center justify-between">
+                      <div className="flex -space-x-2">
+                        {/* Interactive dots representing features */}
+                        {service.features.slice(0,3).map((_, i) => (
+                           <div key={i} className={`w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br ${service.color} opacity-80`} />
+                        ))}
                       </div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <div className="mt-auto">
-                    <button
-                      onClick={() => setIsDemoModalOpen(true)}
-                      className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300 cursor-pointer"
-                    >
-                      Demander une démo
-                      <FaArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
+                      <button
+                        onClick={() => setIsDemoModalOpen(true)}
+                        className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300"
+                      >
+                        <FaArrowRight className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                {/* Corner Accent */}
-                <div
-                  className={`absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl ${service.color} opacity-0 group-hover:opacity-10 rounded-tr-2xl transition-opacity duration-500`}
-                />
               </div>
             ))}
           </div>

@@ -60,11 +60,12 @@ export default function ContactPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative min-h-[40vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-32 pb-20">
-                {/* Background Elements */}
-                <div className="absolute inset-0">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-                    <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+            <section className="relative min-h-[50vh] bg-[#0a0a0a] overflow-hidden pt-40 pb-20">
+                {/* Synck Aesthetic Orbs */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -73,10 +74,10 @@ export default function ContactPage() {
                         <span className="text-sm text-white/80 font-medium">Contactez-nous</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tighter">
                         Donnons Vie À{" "}
-                        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                            Votre Projet
+                        <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                            Votre Projet.
                         </span>
                     </h1>
 
@@ -88,10 +89,7 @@ export default function ContactPage() {
             </section>
 
             {/* Contact Section */}
-            <section className="py-20 bg-gradient-to-br from-white to-gray-50/50 relative overflow-hidden">
-                {/* Background Elements */}
-                <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+            <section className="py-32 bg-white relative overflow-hidden">
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-3 gap-12">
@@ -258,8 +256,9 @@ export default function ContactPage() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                                        className="group relative overflow-hidden w-full bg-[#0a0a0a] text-white px-8 py-4 rounded-xl font-semibold border border-gray-800 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                                     >
+                                        <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                         {isSubmitting ? (
                                             "Envoi en cours..."
                                         ) : (

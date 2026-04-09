@@ -12,10 +12,12 @@ export default function PrivacyPolicyPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative min-h-[30vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-32 pb-16">
-                <div className="absolute inset-0">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
-                    <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
+            <section className="relative min-h-[30vh] bg-[#0a0a0a] overflow-hidden pt-40 pb-16">
+                {/* Synck Aesthetic Orbs */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -24,8 +26,8 @@ export default function PrivacyPolicyPage() {
                         <span className="text-sm text-white/80 font-medium">Confidentialité</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                        Politique de Confidentialité
+                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-[1.1] tracking-tighter">
+                        Politique de Confidentialité.
                     </h1>
 
                     <p className="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -172,17 +174,20 @@ export default function PrivacyPolicyPage() {
                     </div>
 
                     {/* Contact Section */}
-                    <div className="mt-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 text-white text-center">
-                        <h3 className="text-2xl font-bold mb-4">Des Questions?</h3>
-                        <p className="text-blue-100 mb-6">
-                            Si vous avez des questions concernant notre politique de confidentialité, n&apos;hésitez pas à nous contacter.
-                        </p>
-                        <a
-                            href="/contact"
-                            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
-                        >
-                            Nous Contacter
-                        </a>
+                    <div className="mt-16 relative bg-[#0a0a0a] overflow-hidden rounded-[2.5rem] p-12 text-center text-white shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px]" />
+                        <div className="relative z-10">
+                            <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tighter">Des Questions?</h3>
+                            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+                                Si vous avez des questions concernant notre politique de confidentialité, n&apos;hésitez pas à nous contacter.
+                            </p>
+                            <a
+                                href="/contact"
+                                className="inline-block bg-white text-[#0a0a0a] px-8 py-4 rounded-full font-semibold hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+                            >
+                                Nous Contacter
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section >

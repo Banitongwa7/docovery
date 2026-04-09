@@ -105,11 +105,12 @@ export default function BlogPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative min-h-[50vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-32 pb-20">
-                {/* Background Elements */}
-                <div className="absolute inset-0">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-                    <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+            <section className="relative min-h-[50vh] bg-[#0a0a0a] overflow-hidden pt-40 pb-20">
+                {/* Synck Aesthetic Orbs */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -118,10 +119,10 @@ export default function BlogPage() {
                         <span className="text-sm text-white/80 font-medium">Blog & Insights</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tighter">
                         Actualités &{" "}
-                        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                            Innovations Tech
+                        <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                            Innovations Tech.
                         </span>
                     </h1>
 
@@ -248,20 +249,23 @@ export default function BlogPage() {
                     )}
 
                     {/* CTA Section */}
-                    <div className="mt-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Vous avez un Projet en Tête?
-                        </h2>
-                        <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            Parlons-en! Notre équipe est prête à transformer vos idées en solutions digitales performantes.
-                        </p>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-                        >
-                            <FaRocket className="mr-2 h-5 w-5" />
-                            Démarrer un Projet
-                        </Link>
+                    <div className="mt-20 relative bg-[#0a0a0a] overflow-hidden rounded-[2.5rem] p-12 lg:p-20 text-center text-white shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px]" />
+                        <div className="relative z-10">
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tighter">
+                                Vous avez un Projet en Tête?
+                            </h2>
+                            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                                Parlons-en! Notre équipe est prête à transformer vos idées en solutions digitales performantes et innovantes.
+                            </p>
+                            <Link
+                                href="/contact"
+                                className="group/btn relative inline-flex items-center px-8 py-4 bg-white text-[#0a0a0a] rounded-full font-semibold hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                            >
+                                Démarrer un Projet
+                                <FaArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
