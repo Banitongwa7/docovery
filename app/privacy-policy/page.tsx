@@ -12,25 +12,24 @@ export default function PrivacyPolicyPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative min-h-[30vh] bg-[#0a0a0a] overflow-hidden pt-40 pb-16">
+            <section className="relative min-h-[30vh] bg-slate-50 overflow-hidden pt-40 pb-16">
                 {/* Synck Aesthetic Orbs */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
-                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px]" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 mb-6">
-                        <FaShieldAlt className="mr-2 h-4 w-4 text-blue-400" />
-                        <span className="text-sm text-white/80 font-medium">Confidentialité</span>
+                    <div className="inline-flex items-center px-6 py-2 rounded-full border border-gray-200 bg-white shadow-sm mb-6">
+                        <FaShieldAlt className="mr-2 h-4 w-4 text-blue-600" />
+                        <span className="text-sm text-gray-700 font-medium">Confidentialité</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-[1.1] tracking-tighter">
+                    <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4 leading-[1.1] tracking-tighter">
                         Politique de Confidentialité.
                     </h1>
 
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Dernière mise à jour: {new Date().toLocaleDateString('fr-FR')}
                     </p>
                 </div>
@@ -174,16 +173,18 @@ export default function PrivacyPolicyPage() {
                     </div>
 
                     {/* Contact Section */}
-                    <div className="mt-16 relative bg-[#0a0a0a] overflow-hidden rounded-[2.5rem] p-12 text-center text-white shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px]" />
+                    <div className="mt-16 relative bg-blue-600 overflow-hidden rounded-[2.5rem] p-12 text-center text-white shadow-2xl border border-blue-500 group">
+                        <div className="absolute inset-0 opacity-10">
+                            <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white rounded-full blur-[80px]" />
+                        </div>
                         <div className="relative z-10">
-                            <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tighter">Des Questions?</h3>
-                            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+                            <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tighter text-white">Des Questions?</h3>
+                            <p className="text-blue-50 mb-8 max-w-xl mx-auto text-lg">
                                 Si vous avez des questions concernant notre politique de confidentialité, n&apos;hésitez pas à nous contacter.
                             </p>
                             <a
                                 href="/contact"
-                                className="inline-block bg-white text-[#0a0a0a] px-8 py-4 rounded-full font-semibold hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+                                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                             >
                                 Nous Contacter
                             </a>

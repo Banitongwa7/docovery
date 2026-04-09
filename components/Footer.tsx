@@ -53,15 +53,15 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[#0a0a0a] text-white relative overflow-hidden border-t border-white/10">
+        <footer className="bg-[#15171e] text-white relative overflow-hidden border-t border-white/5">
             {/* Subtle Background Pattern */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02]" />
             </div>
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
                     {/* Company Info - Spans 4 columns */}
                     <div className="lg:col-span-4 space-y-6">
@@ -114,9 +114,9 @@ export default function Footer() {
                                 <li key={index}>
                                     <Link
                                         href={link.href}
-                                        className="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center group text-sm font-medium"
+                                        className="text-gray-400 hover:text-blue-500 transition-colors duration-300 flex items-center group text-sm font-medium"
                                     >
-                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500/0 group-hover:bg-blue-500 mr-0 group-hover:mr-2 transition-all duration-300" />
+                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500/0 group-hover:bg-blue-600 mr-0 group-hover:mr-2 transition-all duration-300" />
                                         {link.label}
                                     </Link>
                                 </li>
@@ -176,15 +176,14 @@ export default function Footer() {
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Votre adresse email"
                                     required
-                                    className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all text-sm shadow-inner"
+                                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all text-sm"
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="group relative w-full bg-white/5 border border-white/10 text-white px-6 py-3 rounded-xl font-medium hover:border-blue-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm overflow-hidden"
+                                className="group w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md text-sm"
                             >
-                                <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 {isSubmitting ? "Inscription..." : "S'abonner"}
                             </button>
                         </form>
@@ -217,11 +216,11 @@ export default function Footer() {
             {/* Scroll to Top Button */}
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-8 right-8 w-12 h-12 bg-white/10 backdrop-blur-lg border border-white/20 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 hover:border-blue-600 transition-all duration-500 z-40 group ${showScrollTop ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
+                className={`fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-1 transition-all duration-500 z-40 group ${showScrollTop ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
                     }`}
                 aria-label="Haut de page"
             >
-                <FaArrowUp className="h-4 w-4 group-hover:-translate-y-1 transition-transform duration-300" />
+                <FaArrowUp className="h-4 w-4" />
             </button>
         </footer>
     );

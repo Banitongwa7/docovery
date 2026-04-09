@@ -149,9 +149,9 @@ export default function Navigation() {
       className={`fixed w-full z-50 transition-all duration-500 px-4 sm:px-6 lg:px-8 ${isScrolled ? "pt-4" : "pt-6"}`}
     >
       <div
-        className={`max-w-7xl mx-auto transition-all duration-500 rounded-2xl ${
+        className={`max-w-7xl mx-auto transition-all duration-500 rounded-full ${
           isScrolled
-            ? "bg-[#0a0a0a]/80 backdrop-blur-2xl shadow-2xl border border-white/10 px-6"
+            ? "bg-white/90 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-gray-100 px-6"
             : "bg-transparent px-2"
         }`}
       >
@@ -163,9 +163,8 @@ export default function Navigation() {
             aria-label="Docovery - Accueil"
           >
             <div className="flex items-center space-x-2.5 relative">
-              <div className="absolute -inset-2 bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-              <span className="text-xl sm:text-2xl font-bold tracking-tighter text-white relative z-10 transition-all duration-300">
-                Docovery<span className="text-blue-500">.</span>
+              <span className={`text-xl sm:text-2xl font-bold tracking-tighter relative z-10 transition-all duration-300 ${isScrolled ? "text-gray-900" : "text-gray-900"}`}>
+                Docovery<span className="text-blue-600">.</span>
               </span>
             </div>
           </Link>
@@ -178,10 +177,10 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  className={`relative px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                     active
-                      ? "text-white"
-                      : "text-gray-300 hover:text-white hover:bg-white/5"
+                      ? "text-blue-600"
+                      : "text-gray-600 hover:text-gray-900"
                   }`}
                   aria-current={active ? "page" : undefined}
                 >
@@ -203,10 +202,9 @@ export default function Navigation() {
               href={Links.meeting}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 backdrop-blur-md border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
+              className="group relative inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 whitespace-nowrap"
             >
               <span>Prendre Rendez-vous</span>
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           </div>
 
@@ -217,7 +215,7 @@ export default function Navigation() {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className={`md:hidden p-2 rounded-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 flex-shrink-0 text-white hover:bg-white/10`}
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0 text-gray-900 hover:bg-gray-100`}
           >
             <span className="sr-only">{isOpen ? "Fermer le menu" : "Ouvrir le menu"}</span>
             <div className="relative w-6 h-6">
@@ -243,8 +241,8 @@ export default function Navigation() {
         role="dialog"
         aria-label="Menu de navigation mobile"
         aria-modal="true"
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          } bg-[#0a0a0a]/98 backdrop-blur-xl border-b border-white/10 shadow-2xl rounded-b-2xl`}
+        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden absolute w-[calc(100%-2rem)] mx-4 left-0 mt-4 z-40 ${isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+          } bg-white border border-gray-100 shadow-xl rounded-2xl`}
       >
         <div className="px-4 py-5 space-y-1">
           {/* Nav Links */}
@@ -256,9 +254,9 @@ export default function Navigation() {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${active
-                    ? "bg-blue-500/10 text-white"
-                    : "text-gray-400 hover:bg-white/5 hover:text-white"
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${active
+                    ? "bg-blue-50 text-blue-600"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                   }`}
                 style={{ animationDelay: `${index * 40}ms` }}
               >
@@ -277,9 +275,8 @@ export default function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="group relative flex items-center justify-center gap-2 w-full bg-white/5 border border-white/10 text-white py-3.5 rounded-xl font-semibold text-base hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 focus:outline-none"
+              className="group relative flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-3.5 rounded-xl font-medium text-base hover:bg-blue-700 shadow-md transition-all duration-300 focus:outline-none"
             >
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               Prendre Rendez-vous
             </Link>
           </div>

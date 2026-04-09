@@ -60,28 +60,27 @@ export default function ContactPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative min-h-[50vh] bg-[#0a0a0a] overflow-hidden pt-40 pb-20">
+            <section className="relative min-h-[50vh] bg-slate-50 overflow-hidden pt-40 pb-20">
                 {/* Synck Aesthetic Orbs */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
-                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px]" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 mb-6">
-                        <FaRocket className="mr-2 h-4 w-4 text-blue-400" />
-                        <span className="text-sm text-white/80 font-medium">Contactez-nous</span>
+                    <div className="inline-flex items-center px-6 py-2 rounded-full border border-gray-200 bg-white shadow-sm mb-6">
+                        <FaRocket className="mr-2 h-4 w-4 text-blue-600" />
+                        <span className="text-sm text-gray-700 font-medium">Contactez-nous</span>
                     </div>
 
-                    <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tighter">
+                    <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter">
                         Donnons Vie À{" "}
-                        <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                        <span className="text-blue-600 block sm:inline">
                             Votre Projet.
                         </span>
                     </h1>
 
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         Notre équipe est là pour vous accompagner dans votre transformation digitale.
                         Parlons ensemble de vos besoins et de vos objectifs.
                     </p>
@@ -101,7 +100,6 @@ export default function ContactPage() {
                                     title: "Email",
                                     content: contactDocovery.email,
                                     subtext: "Réponse sous 24h",
-                                    color: "from-blue-500 to-cyan-500",
                                     href: `mailto:${contactDocovery.email}`,
                                 },
                                 {
@@ -109,7 +107,6 @@ export default function ContactPage() {
                                     title: "Téléphone",
                                     content: contactDocovery.phone.label,
                                     subtext: "Lun - Ven, 9h - 18h",
-                                    color: "from-green-500 to-emerald-500",
                                     href: `tel:${contactDocovery.phone.value}`,
                                 },
                                 {
@@ -117,26 +114,24 @@ export default function ContactPage() {
                                     title: "Adresse",
                                     content: "Kinshasa, RD Congo",
                                     subtext: "",
-                                    color: "from-purple-500 to-pink-500",
                                 },
                                 {
                                     icon: FaClock,
                                     title: "Horaires",
                                     content: "Lun - Ven: 9h - 18h",
                                     subtext: "Sam et Dim: Fermé",
-                                    color: "from-orange-500 to-red-500",
                                 },
                             ].map((item, index) => (
                                 <div
                                     key={index}
-                                    className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                                    className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col items-start"
                                 >
                                     <div
-                                        className={`w-14 h-14 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                                        className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300"
                                     >
-                                        <item.icon className="h-7 w-7 text-white" />
+                                        <item.icon className="h-6 w-6" />
                                     </div>
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
                                     {item.href ? (
                                         <a
                                             href={item.href}
@@ -256,9 +251,8 @@ export default function ContactPage() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="group relative overflow-hidden w-full bg-[#0a0a0a] text-white px-8 py-4 rounded-xl font-semibold border border-gray-800 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                                        className="w-full bg-blue-600 text-white px-8 py-4 rounded-xl font-bold shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:bg-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transform hover:-translate-y-0.5"
                                     >
-                                        <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                         {isSubmitting ? (
                                             "Envoi en cours..."
                                         ) : (

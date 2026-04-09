@@ -105,28 +105,27 @@ export default function BlogPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative min-h-[50vh] bg-[#0a0a0a] overflow-hidden pt-40 pb-20">
+            <section className="relative min-h-[50vh] bg-slate-50 overflow-hidden pt-40 pb-20">
                 {/* Synck Aesthetic Orbs */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-float-slow" />
-                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-float-slow delay-1000" />
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px]" />
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 mb-6">
-                        <FaRocket className="mr-2 h-4 w-4 text-blue-400" />
-                        <span className="text-sm text-white/80 font-medium">Blog & Insights</span>
+                    <div className="inline-flex items-center px-6 py-2 rounded-full border border-gray-200 bg-white shadow-sm mb-6">
+                        <FaRocket className="mr-2 h-4 w-4 text-blue-600" />
+                        <span className="text-sm text-gray-700 font-medium">Blog & Insights</span>
                     </div>
 
-                    <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tighter">
+                    <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter">
                         Actualités &{" "}
-                        <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                        <span className="text-blue-600 block sm:inline">
                             Innovations Tech.
                         </span>
                     </h1>
 
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
                         Découvrez nos articles, conseils et analyses sur les dernières tendances
                         du développement digital et de l&apos;innovation technologique.
                     </p>
@@ -142,7 +141,7 @@ export default function BlogPage() {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 placeholder="Rechercher un article..."
-                                className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                                className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-blue-600 shadow-sm transition-all"
                             />
                         </div>
                     </div>
@@ -150,16 +149,16 @@ export default function BlogPage() {
             </section>
 
             {/* Categories Filter */}
-            <section className="bg-white border-b border-gray-200 sticky top-20 z-40">
+            <section className="bg-white border-b border-gray-100 sticky top-20 z-40">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <div className="flex flex-wrap gap-3 justify-center">
                         {categories.map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category
-                                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${selectedCategory === category
+                                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                                    : "bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100"
                                     }`}
                             >
                                 {category}
@@ -170,12 +169,13 @@ export default function BlogPage() {
             </section>
 
             {/* Blog Posts Grid */}
-            <section className="py-20 bg-gradient-to-br from-white to-gray-50/50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section className="py-24 bg-white relative">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-slate-50 rounded-full blur-[80px]" />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     {filteredPosts.length === 0 ? (
                         <div className="text-center py-20">
-                            <p className="text-xl text-gray-600">
-                                Aucun article trouvé pour &quot;{searchTerm}&quot; dans la catégorie &quot;{selectedCategory}&quot;.
+                            <p className="text-xl text-gray-500 font-medium">
+                                Aucun article trouvé pour "{searchTerm}" dans la catégorie "{selectedCategory}".
                             </p>
                         </div>
                     ) : (
@@ -183,63 +183,63 @@ export default function BlogPage() {
                             {filteredPosts.map((post) => (
                                 <article
                                     key={post.id}
-                                    className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                                    className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col"
                                 >
                                     {/* Image */}
-                                    <div className="relative h-48 overflow-hidden">
+                                    <div className="relative h-56 overflow-hidden">
                                         <Image
                                             src={post.image}
                                             alt={post.title}
                                             fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute top-4 left-4">
-                                            <span className="px-4 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-full">
+                                            <span className="px-4 py-1.5 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold uppercase tracking-wider rounded-full shadow-sm">
                                                 {post.category}
                                             </span>
                                         </div>
                                     </div>
 
                                     {/* Content */}
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                                            {post.title}
-                                        </h3>
-                                        <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
-                                            {post.excerpt}
-                                        </p>
-
+                                    <div className="p-8 flex flex-col flex-grow">
                                         {/* Tags */}
                                         <div className="flex flex-wrap gap-2 mb-4">
                                             {post.tags.map((tag, index) => (
                                                 <span
                                                     key={index}
-                                                    className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-lg"
+                                                    className="inline-flex items-center text-gray-500 text-xs font-medium uppercase tracking-wider"
                                                 >
-                                                    <FaTag className="mr-1 h-3 w-3" />
-                                                    {tag}
+                                                    #{tag}
                                                 </span>
                                             ))}
                                         </div>
 
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
+                                            {post.title}
+                                        </h3>
+                                        <p className="text-gray-500 mb-6 line-clamp-3 leading-relaxed flex-grow">
+                                            {post.excerpt}
+                                        </p>
+
                                         {/* Meta Info */}
-                                        <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
-                                            <div className="flex items-center space-x-4">
+                                        <div className="flex items-center justify-between text-sm text-gray-500 pt-6 border-t border-gray-100 mt-auto">
+                                            <div className="flex items-center space-x-3">
                                                 <span className="flex items-center">
-                                                    <FaUser className="mr-1.5 h-3.5 w-3.5" />
-                                                    {post.author.split(" ")[0]}
+                                                    <FaUser className="mr-1.5 h-3.5 w-3.5 text-blue-600" />
+                                                    <span className="font-medium text-gray-900">{post.author.split(" ")[0]}</span>
                                                 </span>
+                                                <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                                                 <span className="flex items-center">
-                                                    <FaClock className="mr-1.5 h-3.5 w-3.5" />
+                                                    <FaClock className="mr-1.5 h-3.5 w-3.5 text-gray-400" />
                                                     {post.readTime}
                                                 </span>
                                             </div>
                                             <Link
                                                 href={`/blog/${post.id}`}
-                                                className="flex items-center text-blue-600 hover:text-blue-700 font-medium group-hover:translate-x-1 transition-transform"
+                                                className="flex items-center text-blue-600 font-semibold group-hover:translate-x-1 transition-transform"
                                             >
                                                 Lire
-                                                <FaArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                                                <FaArrowRight className="ml-1.5 h-3 w-3" />
                                             </Link>
                                         </div>
                                     </div>
@@ -249,18 +249,21 @@ export default function BlogPage() {
                     )}
 
                     {/* CTA Section */}
-                    <div className="mt-20 relative bg-[#0a0a0a] overflow-hidden rounded-[2.5rem] p-12 lg:p-20 text-center text-white shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px]" />
-                        <div className="relative z-10">
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tighter">
+                    <div className="mt-24 relative bg-blue-600 overflow-hidden rounded-[2.5rem] p-12 lg:p-20 text-center text-white shadow-2xl group border border-blue-500">
+                        <div className="absolute inset-0 opacity-10">
+                            <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white rounded-full blur-[80px]" />
+                        </div>
+                        <div className="relative z-10 max-w-3xl mx-auto">
+                            <span className="text-blue-200 font-semibold tracking-wider text-sm uppercase mb-4 block">Let's talk</span>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
                                 Vous avez un Projet en Tête?
                             </h2>
-                            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-lg md:text-xl text-blue-50 mb-10 leading-relaxed">
                                 Parlons-en! Notre équipe est prête à transformer vos idées en solutions digitales performantes et innovantes.
                             </p>
                             <Link
                                 href="/contact"
-                                className="group/btn relative inline-flex items-center px-8 py-4 bg-white text-[#0a0a0a] rounded-full font-semibold hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                                className="group/btn relative inline-flex items-center px-10 py-5 bg-white text-blue-600 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                             >
                                 Démarrer un Projet
                                 <FaArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
