@@ -39,7 +39,7 @@ export const emailTemplates = {
           <div class="container">
             <div class="header">
               <h1>📬 Nouveau Message de Contact</h1>
-              <p>Docovery - Building solutions, Shaping the future</p>
+              <p>Docovery - Construire des solutions, façonner l'avenir</p>
             </div>
             <div class="content">
               <div class="info-row">
@@ -153,7 +153,7 @@ export const emailTemplates = {
             </div>
             <div class="footer">
               <p><strong>Docovery</strong></p>
-              <p>Building solutions, Shaping the future</p>
+              <p>Construire des solutions, façonner l'avenir</p>
                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
             </div>
           </div>
@@ -173,7 +173,7 @@ Nous sommes ravis de vous compter parmi nos abonnés. Vous recevrez désormais:
 
 Visitez notre site: ${process.env.NEXT_PUBLIC_SITE_URL}
 
-Docovery - Building solutions, Shaping the future
+Docovery - Construire des solutions, façonner l'avenir
     `,
   }),
 

@@ -78,7 +78,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <p className="text-gray-400 leading-relaxed max-w-sm text-sm">
-                            Building solutions, Shaping the future. Nous transformons vos idées les plus ambitieuses en réalité digitale performante et scalable.
+                            Construire des solutions, façonner l'avenir. Nous transformons vos idées les plus ambitieuses en réalité digitale performante et scalable.
                         </p>
                         <div className="flex space-x-3 pt-2">
                             {[

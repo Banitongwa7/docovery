@@ -63,14 +63,14 @@ export async function POST(request: NextRequest) {
               </div>
               <div class="footer">
                 <p><strong>Docovery</strong></p>
-                <p>Building solutions, Shaping the future</p>
+                <p>Construire des solutions, façonner l'avenir</p>
                 <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
               </div>
             </div>
           </body>
         </html>
       `,
-      text: `Bonjour ${name},\n\nNous avons bien reçu votre message et nous vous en remercions.\n\nNotre équipe vous répondra dans les plus brefs délais.\n\nVotre message:\n${message}\n\n---\nDocovery\nBuilding solutions, Shaping the future`,
+      text: `Bonjour ${name},\n\nNous avons bien reçu votre message et nous vous en remercions.\n\nNotre équipe vous répondra dans les plus brefs délais.\n\nVotre message:\n${message}\n\n---\nDocovery\nConstruire des solutions, façonner l\'avenir`,
     };
 
     await sendEmail(email, autoReplyTemplate);

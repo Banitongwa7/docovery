@@ -57,7 +57,7 @@ export default function Home() {
               <div className="inline-flex items-center px-6 py-2 rounded-full bg-white border border-gray-200 mb-8 shadow-sm">
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse mr-2" />
                 <span className="text-sm text-gray-700 font-medium">
-                  IT Services & Software
+                  Services IT & logiciels
                 </span>
               </div>
 
@@ -86,13 +86,13 @@ export default function Home() {
                   href="#services"
                   className="px-8 py-4 rounded-full font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 text-center shadow-sm"
                 >
-                  Explore Services
+                  Explorer les services
                 </a>
               </div>
             </div>
 
             {/* Enhanced Hero Visual */}
-            <div className="relative hidden lg:block">
+            <div className="relative hidden md:block">
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 bg-white p-2">
                 <div className="w-full relative aspect-video bg-gray-100 rounded-[1.5rem] flex items-center justify-center overflow-hidden">
                     <Image
@@ -120,19 +120,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dark "How we do" Workflow Banner */}
+      {/* Bannière sombre "Notre méthode" */}
       <section className="py-24 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-[#111827] rounded-[2.5rem] p-12 lg:p-20 relative overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05]" />
                 <div className="relative z-10 lg:w-1/2">
-                    <span className="text-blue-400 font-semibold tracking-wider text-sm uppercase">HOW WE DO</span>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white mt-4 mb-8 tracking-tight leading-tight">
-                        Notre processus, clair et transparent.
-                    </h2>
-                    <a href="#services" className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors">
-                        Discover More <FaArrowRight className="ml-2 h-4 w-4" />
-                    </a>
+                  <span className="text-blue-400 font-semibold tracking-wider text-sm uppercase">NOTRE MÉTHODE</span>
+                  <h2 className="text-4xl lg:text-5xl font-bold text-white mt-4 mb-8 tracking-tight leading-tight">
+                    Notre processus, clair et transparent.
+                  </h2>
+                  <a href="#services" className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors">
+                    En savoir plus <FaArrowRight className="ml-2 h-4 w-4" />
+                  </a>
                 </div>
                 {/* Decorative Flowchart/Stats inside the dark block */}
                 <div className="relative z-10 lg:absolute lg:right-12 lg:top-1/2 lg:-translate-y-1/2 mt-12 lg:mt-0 grid grid-cols-2 gap-4 lg:w-1/3">
@@ -159,9 +159,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-16">
              <div>
-                <span className="text-blue-600 font-semibold tracking-wider text-sm uppercase">IT SERVICES</span>
+                <span className="text-blue-600 font-semibold tracking-wider text-sm uppercase">SERVICES INFORMATIQUES</span>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mt-2 tracking-tight">
-                  Dealing in all professional IT services.
+                  Nous proposons une gamme complète de services informatiques professionnels.
                 </h2>
              </div>
              <p className="text-gray-500 max-w-sm mt-6 md:mt-0">
@@ -410,7 +410,7 @@ export default function Home() {
 
           {/* Testimonials Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
+              {[
               {
                 name: "Marie Kabongo",
                 position: "CEO, TechStart",
