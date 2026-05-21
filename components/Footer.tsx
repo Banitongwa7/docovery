@@ -78,7 +78,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <p className="text-gray-400 leading-relaxed max-w-sm text-sm">
-                            Construire des solutions, façonner l'avenir. Nous transformons vos idées les plus ambitieuses en réalité digitale performante et scalable.
+                            Construire des solutions, façonner l&apos;avenir. Nous transformons vos idées les plus ambitieuses en réalité digitale performante et scalable.
                         </p>
                         <div className="flex space-x-3 pt-2">
                             {[
@@ -184,7 +184,7 @@ export default function Footer() {
                                 disabled={isSubmitting}
                                 className="group w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md text-sm"
                             >
-                                {isSubmitting ? "Inscription..." : "S'abonner"}
+                                {isSubmitting ? "Inscription..." : "S&apos;abonner"}
                             </button>
                         </form>
                         {message && (
