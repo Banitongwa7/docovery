@@ -12,7 +12,6 @@ préalable, attribution appréciée mais non obligatoire.
 
 | Fichier | Identifiant source | Usage |
 | --- | --- | --- |
-| `hero-boardroom.jpg` | `photo-1573164574572-cb89e39749b4` | Panneau visuel du hero (page d'accueil) |
 | `about-team.jpg` | `photo-1522071820081-009f0129c71c` | Page À Propos |
 | `services-cloud.jpg` | `photo-1695668548342-c0c1ad479aee` | Poster de la vidéo « métriques » |
 | `case-payments.jpg` | `photo-1635950340810-2fb374521a7b` | Cas — plateforme de paiement mobile |
@@ -37,8 +36,12 @@ interdite ; l'usage comme habillage de site est autorisé.
 
 | Fichier | Source | Auteur | Usage |
 | --- | --- | --- | --- |
-| `hero-loop.mp4` | [pexels.com/video/1085656](https://www.pexels.com/video/blue-colored-cables-1085656/) | Dima Krivoy | Boucle du hero (960×540) |
+| `hero-loop.mp4` | [pexels.com/video/7693468](https://www.pexels.com/video/colleagues-brainstorming-7693468/) | MART PRODUCTION | Boucle du hero — équipe en revue de projet (960×540) |
 | `data-loop.mp4` | [pexels.com/video/3141208](https://www.pexels.com/video/data-center-3141208/) | Pressmaster | Fond de la bande « Notre impact » (960×540) |
+
+`hero-meeting.jpg` est l'image de poster de `hero-loop.mp4`, extraite de la même
+séquence (source : `images.pexels.com/videos/7693468/`) — la vidéo prend donc le
+relais du poster sans saut visuel.
 
 ## Notes techniques
 

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import { team, metrics, capabilities } from "@/lib/company";
-import { contact, siteConfig, audiences } from "@/lib/site";
-import { brandIcons } from "@/components/ui/BrandIcons";
+import { metrics, capabilities } from "@/lib/company";
+import { contact, audiences } from "@/lib/site";
 import PageHero from "@/components/ui/PageHero";
 import { Reveal, Stagger } from "@/components/motion/Reveal";
 import Counter from "@/components/motion/Counter";
@@ -131,78 +130,6 @@ export default function AboutPage() {
         title="Quatre principes, appliqués sur chaque mission."
         description="Ce ne sont pas des slogans : ils déterminent la façon dont nous cadrons, construisons et livrons."
       />
-
-      {/* Team */}
-      <section className="bg-surface py-20 sm:py-28">
-        <div className="container-x">
-          <Reveal y={12} duration={0.6} className="flex items-center gap-3">
-            <span className="h-px w-8 bg-line" aria-hidden="true" />
-            <span className="eyebrow">L&apos;équipe</span>
-          </Reveal>
-
-          <Reveal y={22} delay={0.06}>
-            <h2 className="display mt-6 max-w-3xl text-[2rem] sm:text-[2.75rem]">
-              Les fondateurs, directement impliqués sur vos projets.
-            </h2>
-          </Reveal>
-
-          <Stagger className="mt-14 grid gap-6 sm:grid-cols-2">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                data-anim
-                className="group overflow-hidden rounded-panel border border-line bg-canvas"
-              >
-                <div className="relative aspect-4/3 overflow-hidden bg-surface-2">
-                  <Image
-                    src={member.photo}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-
-                <div className="p-7">
-                  <h3 className="text-xl font-semibold tracking-[-0.02em] text-ink">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-accent">{member.position}</p>
-                  <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted text-pretty">
-                    {member.bio}
-                  </p>
-
-                  <div className="mt-6 flex gap-2">
-                    {member.social.map((social) => {
-                      const Icon = brandIcons[social.label];
-                      return (
-                        <a
-                          key={social.label}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${member.name} sur ${social.label}`}
-                          className="grid size-9 place-items-center rounded-full border border-line text-muted transition-colors hover:border-ink/25 hover:text-ink"
-                        >
-                          <Icon className="size-3.5" />
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Stagger>
-
-          <Reveal y={16} delay={0.1} className="mt-10">
-            <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
-              {siteConfig.motto} — c&apos;est la ligne que nous suivons depuis le
-              premier projet, et celle qui guide chaque décision technique que
-              nous prenons pour vous.
-            </p>
-          </Reveal>
-        </div>
-      </section>
 
       <Testimonials />
 

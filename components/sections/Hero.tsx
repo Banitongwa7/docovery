@@ -146,8 +146,8 @@ export default function Hero() {
             <div ref={image} className="relative aspect-16/10 w-full sm:aspect-21/9">
               <BackgroundVideo
                 src="/media/hero-loop.mp4"
-                poster="/media/hero-boardroom.jpg"
-                posterAlt="Équipe Docovery en session de travail sur une plateforme digitale"
+                poster="/media/hero-meeting.jpg"
+                posterAlt="Équipe de professionnels analysant les données d'un projet digital autour d'un ordinateur portable"
                 priority
                 sizes="(max-width: 1280px) 100vw, 1280px"
                 className="scale-105"
