@@ -10,7 +10,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { navItems, links, contact } from "@/lib/site";
+import { navItems, links } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const PANEL_EASE = [0.16, 1, 0.3, 1] as const;
@@ -106,13 +106,6 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href={`tel:${contact.phone.value}`}
-            className="hidden text-sm text-muted transition-colors hover:text-ink xl:block"
-          >
-            {contact.phone.label}
-          </a>
-
           <motion.a
             href={links.meeting}
             target="_blank"
