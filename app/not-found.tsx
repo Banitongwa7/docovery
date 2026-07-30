@@ -1,38 +1,56 @@
-import React from 'react';
-import Link from 'next/link';
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { navItems } from "@/lib/site";
+import { Reveal } from "@/components/motion/Reveal";
+import SplitHeading from "@/components/motion/SplitHeading";
 
 export default function NotFound() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-slate-50 text-gray-900 p-6 sm:p-8 overflow-hidden">
-      
-      {/* Synck Aesthetic Orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[100px]" />
-          <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-50/50 rounded-full blur-[100px]" />
+    <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-canvas pt-32 pb-20">
+      <div className="pointer-events-none absolute inset-0 grid-lines-light opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+
+      <div className="container-x relative">
+        <Reveal y={12} duration={0.6}>
+          <span className="eyebrow">Erreur 404</span>
+        </Reveal>
+
+        <SplitHeading
+          as="h1"
+          className="display mt-6 max-w-3xl text-[2.5rem] leading-[1] sm:text-[4rem]"
+        >
+          Cette page n&apos;existe pas — ou plus.
+        </SplitHeading>
+
+        <Reveal y={20} delay={0.12}>
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
+            Le lien que vous avez suivi est peut-être obsolète. Voici les pages
+            principales du site.
+          </p>
+        </Reveal>
+
+        <Reveal y={20} delay={0.2} className="mt-10 flex flex-wrap gap-3">
+          <Link href="/" className="btn-primary btn-lg group">
+            <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
+            Retour à l&apos;accueil
+          </Link>
+        </Reveal>
+
+        <Reveal
+          y={18}
+          delay={0.26}
+          className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8"
+        >
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm text-muted transition-colors hover:text-ink"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </Reveal>
       </div>
-
-      <div className="relative z-10 text-center">
-        <h1 className="text-9xl md:text-[12rem] lg:text-[14rem] font-bold tracking-tighter leading-none mb-4">
-          <span className="text-blue-600">404</span>
-        </h1>
-
-        <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 tracking-tight text-gray-900">
-          Page Non Trouvée
-        </h2>
-
-        <p className="max-w-lg mx-auto text-lg text-gray-600 mb-12">
-          {"Désolé, nous n'avons pas pu trouver la page que vous recherchez. Elle a peut-être été déplacée ou n'existe plus."}
-        </p>
-
-        <Link href="/" passHref>
-          <button
-            type="button"
-            className="group relative inline-flex items-center px-10 py-5 bg-blue-600 text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            {"Retourner à l'Accueil"}
-          </button>
-        </Link>
-      </div>
-    </div>
+    </section>
   );
 }

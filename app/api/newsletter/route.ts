@@ -1,27 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail, emailTemplates } from "@/utils/emailConfig";
+import { newsletterSchema } from "@/lib/validation";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, name } = body;
 
-    // Validation
-    if (!email) {
+    const parsed = newsletterSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, error: "L'email est requis" },
+        {
+          success: false,
+          error: parsed.error.issues[0]?.message ?? "L'email est requis",
+        },
         { status: 400 },
       );
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { success: false, error: "Format d'email invalide" },
-        { status: 400 },
-      );
-    }
+    const { email } = parsed.data;
+    const name = typeof body?.name === "string" ? body.name : undefined;
 
     // Send notification to admin
     const adminTemplate = emailTemplates.newsletter({ email, name });

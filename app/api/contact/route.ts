@@ -1,33 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail, emailTemplates } from "@/utils/emailConfig";
+import { contactSchema } from "@/lib/validation";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, message } = body;
 
-    // Validation
-    if (!name || !email || !message) {
+    // Same schema as the client form — never trust the browser's validation.
+    const parsed = contactSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
         {
           success: false,
-          error: "Tous les champs obligatoires doivent être remplis",
+          error:
+            parsed.error.issues[0]?.message ??
+            "Tous les champs obligatoires doivent être remplis",
         },
         { status: 400 },
       );
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { success: false, error: "Format d'email invalide" },
-        { status: 400 },
-      );
-    }
+    const { name, email, phone, company, message } = parsed.data;
 
     // Send email to admin
-    const template = emailTemplates.contact({ name, email, phone, message });
+    const template = emailTemplates.contact({
+      name,
+      email,
+      phone,
+      company,
+      message,
+    });
     await sendEmail(process.env.EMAIL_USER || "", template);
 
     // Optional: Send auto-reply to user
@@ -41,7 +43,7 @@ export async function POST(request: NextRequest) {
             <style>
               body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
               .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-              .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; border-radius: 10px 10px 0 0; }
+              .header { background: linear-gradient(135deg, #0b0d12 0%, #1d4ed8 100%); color: white; padding: 40px; text-align: center; border-radius: 10px 10px 0 0; }
               .content { background: #ffffff; padding: 40px; }
               .footer { text-align: center; margin-top: 30px; padding: 20px; background: #f7fafc; border-radius: 0 0 10px 10px; color: #718096; }
             </style>
@@ -55,7 +57,7 @@ export async function POST(request: NextRequest) {
                 <p>Bonjour ${name},</p>
                 <p>Nous avons bien reçu votre message et nous vous en remercions.</p>
                 <p>Notre équipe examine votre demande et vous répondra dans les plus brefs délais, généralement sous 24-48 heures.</p>
-                <p style="margin-top: 30px; padding: 20px; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #667eea;">
+                <p style="margin-top: 30px; padding: 20px; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #2563eb;">
                   <strong>Votre message:</strong><br><br>
                   ${message}
                 </p>
@@ -64,7 +66,7 @@ export async function POST(request: NextRequest) {
               <div class="footer">
                 <p><strong>Docovery</strong></p>
                 <p>Construire des solutions, façonner l'avenir</p>
-                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
+                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #2563eb;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
               </div>
             </div>
           </body>

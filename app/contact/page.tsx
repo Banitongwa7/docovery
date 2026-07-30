@@ -1,286 +1,193 @@
-"use client";
+import type { Metadata } from "next";
+import { Clock, Mail, MapPin, Phone, CalendarCheck } from "lucide-react";
+import { contact, links } from "@/lib/site";
+import PageHero from "@/components/ui/PageHero";
+import { Reveal, Stagger } from "@/components/motion/Reveal";
+import ContactForm from "@/components/forms/ContactForm";
 
-import React, { useState } from "react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import {
-    FaEnvelope,
-    FaPhone,
-    FaMapMarkerAlt,
-    FaClock,
-    FaRocket,
-    FaPaperPlane,
-    FaUser,
-    FaComment,
-} from "react-icons/fa";
-import { contactDocovery } from "@/utils/socialTeam";
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contactez l'équipe Docovery à Kinshasa : email, téléphone, prise de rendez-vous et formulaire de projet. Réponse sous 24h ouvrées.",
+  alternates: { canonical: "/contact" },
+};
+
+const channels = [
+  {
+    icon: Mail,
+    title: "Email",
+    value: contact.email,
+    caption: contact.hours.responseTime,
+    href: `mailto:${contact.email}`,
+  },
+  {
+    icon: Phone,
+    title: "Téléphone",
+    value: contact.phone.label,
+    caption: contact.hours.weekdays,
+    href: `tel:${contact.phone.value}`,
+  },
+  {
+    icon: MapPin,
+    title: "Bureau",
+    value: contact.office.label,
+    caption: contact.office.timezone,
+  },
+  {
+    icon: Clock,
+    title: "Horaires",
+    value: contact.hours.weekdays,
+    caption: contact.hours.weekend,
+  },
+];
 
 export default function ContactPage() {
-    const [sentData, setSentData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [responseMessage, setResponseMessage] = useState("");
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setResponseMessage("");
-
-
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(sentData),
-            });
-
-            const data = await response.json();
-
-
-            if (data.success) {
-                setResponseMessage("✅ " + data.message);
-                setSentData({ name: "", email: "", phone: "", message: "" });
-            } else {
-                setResponseMessage("❌ " + data.error);
-            }
-        } catch {
-            setResponseMessage("❌ Une erreur est survenue. Veuillez réessayer.");
-        } finally {
-            setIsSubmitting(false);
-            setTimeout(() => setResponseMessage(""), 5000);
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact"
+        title="Donnons vie à votre projet."
+        description="Notre équipe est là pour vous accompagner dans votre transformation digitale. Parlons ensemble de vos besoins et de vos objectifs."
+        meta={
+          <a
+            href={links.meeting}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-dark btn-lg group"
+          >
+            <CalendarCheck className="size-4" />
+            Réserver un créneau
+          </a>
         }
-    };
+      />
 
-    return (
-        <>
-            <Navigation />
+      <section className="bg-canvas py-16 sm:py-20">
+        <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Channels */}
+          <div className="lg:col-span-4">
+            <Stagger className="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-1">
+              {channels.map((channel) => (
+                <div key={channel.title} data-anim className="bg-canvas p-6">
+                  <span className="grid size-10 place-items-center rounded-xl bg-accent-soft text-accent">
+                    <channel.icon className="size-4.5" />
+                  </span>
 
-            {/* Hero Section */}
-            <section className="relative min-h-[50vh] bg-slate-50 overflow-hidden pt-40 pb-20">
-                {/* Synck Aesthetic Orbs */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px]" />
-                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px]" />
-                </div>
+                  <p className="eyebrow mt-5">{channel.title}</p>
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center px-6 py-2 rounded-full border border-gray-200 bg-white shadow-sm mb-6">
-                        <FaRocket className="mr-2 h-4 w-4 text-blue-600" />
-                        <span className="text-sm text-gray-700 font-medium">Contactez-nous</span>
-                    </div>
-
-                    <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter">
-                        Donnons Vie À{" "}
-                        <span className="text-blue-600 block sm:inline">
-                            Votre Projet.
-                        </span>
-                    </h1>
-
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Notre équipe est là pour vous accompagner dans votre transformation digitale.
-                        Parlons ensemble de vos besoins et de vos objectifs.
+                  {channel.href ? (
+                    <a
+                      href={channel.href}
+                      className="mt-2 block text-[0.9375rem] font-medium text-ink transition-colors hover:text-accent"
+                    >
+                      {channel.value}
+                    </a>
+                  ) : (
+                    <p className="mt-2 text-[0.9375rem] font-medium text-ink">
+                      {channel.value}
                     </p>
+                  )}
+
+                  {channel.caption && (
+                    <p className="mt-1 text-xs text-muted">{channel.caption}</p>
+                  )}
                 </div>
-            </section>
+              ))}
+            </Stagger>
 
-            {/* Contact Section */}
-            <section className="py-32 bg-white relative overflow-hidden">
+            <Reveal
+              y={20}
+              delay={0.1}
+              className="mt-6 rounded-card border border-line bg-surface p-6"
+            >
+              <h2 className="text-[0.9375rem] font-semibold text-ink">
+                Vous préférez en parler de vive voix ?
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Réservez directement un créneau de 30 minutes dans l&apos;agenda
+                de l&apos;équipe — sans engagement.
+              </p>
+              <a
+                href={links.meeting}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost btn-md mt-5 w-full"
+              >
+                <CalendarCheck className="size-4" />
+                Prendre rendez-vous
+              </a>
+            </Reveal>
+          </div>
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-3 gap-12">
-                        {/* Contact Info Cards */}
-                        <div className="space-y-6">
-                            {[
-                                {
-                                    icon: FaEnvelope,
-                                    title: "Email",
-                                    content: contactDocovery.email,
-                                    subtext: "Réponse sous 24h",
-                                    href: `mailto:${contactDocovery.email}`,
-                                },
-                                {
-                                    icon: FaPhone,
-                                    title: "Téléphone",
-                                    content: contactDocovery.phone.label,
-                                    subtext: "Lun - Ven, 9h - 18h",
-                                    href: `tel:${contactDocovery.phone.value}`,
-                                },
-                                {
-                                    icon: FaMapMarkerAlt,
-                                    title: "Adresse",
-                                    content: "Kinshasa, RD Congo",
-                                    subtext: "",
-                                },
-                                {
-                                    icon: FaClock,
-                                    title: "Horaires",
-                                    content: "Lun - Ven: 9h - 18h",
-                                    subtext: "Sam et Dim: Fermé",
-                                },
-                            ].map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col items-start"
-                                >
-                                    <div
-                                        className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300"
-                                    >
-                                        <item.icon className="h-6 w-6" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                                    {item.href ? (
-                                        <a
-                                            href={item.href}
-                                            className="text-gray-700 hover:text-blue-600 transition-colors font-medium block mb-1"
-                                        >
-                                            {item.content}
-                                        </a>
-                                    ) : (
-                                        <p className="text-gray-700 font-medium mb-1">{item.content}</p>
-                                    )}
-                                    <p className="text-sm text-gray-500">{item.subtext}</p>
-                                </div>
-                            ))}
-                        </div>
+          {/* Form */}
+          <Reveal y={28} className="lg:col-span-8">
+            <ContactForm />
+          </Reveal>
+        </div>
+      </section>
 
-                        {/* Contact Form */}
-                        <div className="lg:col-span-2">
-                            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-100">
-                                <div className="mb-8">
-                                    <h2 className="text-3xl font-bold text-gray-900 mb-3">
-                                        Envoyez-nous un Message
-                                    </h2>
-                                    <p className="text-gray-600">
-                                        Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
-                                    </p>
-                                </div>
+      {/* Office band */}
+      <section className="border-t border-line bg-surface py-16 sm:py-20">
+        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <Reveal y={24}>
+            <span className="eyebrow">Notre bureau</span>
+            <h2 className="display mt-5 text-[1.75rem] sm:text-[2.25rem]">
+              {contact.office.city}, {contact.office.country}.
+            </h2>
+            <p className="mt-4 max-w-lg text-[1.0625rem] leading-relaxed text-muted text-pretty">
+              Nous recevons sur rendez-vous et travaillons à distance avec des
+              clients hors de la RD Congo. Le fuseau {contact.office.timezone}{" "}
+              recouvre les heures ouvrées européennes et africaines.
+            </p>
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    {/* Name */}
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                                            Nom complet <span className="text-red-500">*</span>
-                                        </label>
-                                        <div className="relative">
-                                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                <FaUser className="h-5 w-5 text-gray-400" />
-                                            </div>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                value={sentData.name}
-                                                onChange={(e) => setSentData({ ...sentData, name: e.target.value })}
-                                                required
-                                                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                                placeholder="Jean Dupont"
-                                            />
-                                        </div>
-                                    </div>
+            <dl className="mt-8 grid gap-6 sm:grid-cols-2">
+              <div>
+                <dt className="eyebrow">Jours ouvrés</dt>
+                <dd className="mt-2 text-[0.9375rem] text-ink">
+                  {contact.hours.weekdays}
+                </dd>
+              </div>
+              <div>
+                <dt className="eyebrow">Week-end</dt>
+                <dd className="mt-2 text-[0.9375rem] text-ink">
+                  {contact.hours.weekend}
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
 
-                                    {/* Email */}
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                                            Email <span className="text-red-500">*</span>
-                                        </label>
-                                        <div className="relative">
-                                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                <FaEnvelope className="h-5 w-5 text-gray-400" />
-                                            </div>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value={sentData.email}
-                                                onChange={(e) => setSentData({ ...sentData, email: e.target.value })}
-                                                required
-                                                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                                placeholder="jean.dupont@example.com"
-                                            />
-                                        </div>
-                                    </div>
+          <Reveal y={28} delay={0.1}>
+            <div className="relative overflow-hidden rounded-panel bg-night p-8 text-white sm:p-10">
+              <div className="pointer-events-none absolute inset-0 grid-lines" />
+              <div className="relative">
+                <MapPin className="size-6 text-accent" />
+                <p className="mt-6 text-2xl font-semibold tracking-[-0.03em]">
+                  {contact.office.full}
+                </p>
+                <p className="mt-3 text-sm text-white/50">
+                  {contact.office.timezone}
+                </p>
 
-                                    {/* Phone */}
-                                    <div>
-                                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                                            Téléphone
-                                        </label>
-                                        <div className="relative">
-                                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                <FaPhone className="h-5 w-5 text-gray-400" />
-                                            </div>
-                                            <input
-                                                type="tel"
-                                                id="phone"
-                                                name="phone"
-                                                value={sentData.phone}
-                                                onChange={(e) => setSentData({ ...sentData, phone: e.target.value })}
-                                                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                                placeholder="+243 123 456 789"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    {/* Message */}
-                                    <div>
-                                        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                                            Message <span className="text-red-500">*</span>
-                                        </label>
-                                        <div className="relative">
-                                            <div className="absolute top-3 left-4 pointer-events-none">
-                                                <FaComment className="h-5 w-5 text-gray-400" />
-                                            </div>
-                                            <textarea
-                                                id="message"
-                                                name="message"
-                                                value={sentData.message}
-                                                onChange={(e) => setSentData({ ...sentData, message: e.target.value })}
-                                                required
-                                                rows={6}
-                                                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                                                placeholder="Parlez-nous de votre projet..."
-                                            />
-                                        </div>
-                                    </div>
-
-                                    {/* Submit Button */}
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="w-full bg-blue-600 text-white px-8 py-4 rounded-xl font-bold shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:bg-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transform hover:-translate-y-0.5"
-                                    >
-                                        {isSubmitting ? (
-                                            "Envoi en cours..."
-                                        ) : (
-                                            <>
-                                                <FaPaperPlane className="mr-2 h-5 w-5" />
-                                                Envoyer le Message
-                                            </>
-                                        )}
-                                    </button>
-                                </form>
-
-                                {responseMessage && (
-                                    <div
-                                        className={`mt-6 p-4 rounded-xl ${responseMessage.startsWith("✅")
-                                            ? "bg-green-50 text-green-700 border border-green-200"
-                                            : "bg-red-50 text-red-700 border border-red-200"
-                                            }`}
-                                    >
-                                        {responseMessage}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                <div className="mt-8 flex flex-col gap-3 border-t border-night-line pt-6 sm:flex-row">
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="btn-invert btn-md"
+                  >
+                    <Mail className="size-4" />
+                    {contact.email}
+                  </a>
+                  <a
+                    href={`tel:${contact.phone.value}`}
+                    className="btn btn-md border border-night-line text-white hover:bg-white/5"
+                  >
+                    <Phone className="size-4" />
+                    {contact.phone.label}
+                  </a>
                 </div>
-            </section>
-
-            <Footer />
-        </>
-    );
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
 }

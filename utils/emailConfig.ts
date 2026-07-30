@@ -17,6 +17,7 @@ export const emailTemplates = {
     name: string;
     email: string;
     phone?: string;
+    company?: string;
     message: string;
   }) => ({
     subject: `Nouveau message de contact de ${data.name}`,
@@ -28,10 +29,10 @@ export const emailTemplates = {
           <style>
             body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #0b0d12 0%, #1d4ed8 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f7fafc; padding: 30px; border-radius: 0 0 10px 10px; }
-            .info-row { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #667eea; }
-            .label { font-weight: bold; color: #667eea; display: inline-block; min-width: 100px; }
+            .info-row { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #2563eb; }
+            .label { font-weight: bold; color: #2563eb; display: inline-block; min-width: 100px; }
             .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0; color: #718096; }
           </style>
         </head>
@@ -48,7 +49,7 @@ export const emailTemplates = {
               </div>
               <div class="info-row">
                 <span class="label">Email:</span>
-                <span><a href="mailto:${data.email}" style="color: #667eea;">${data.email}</a></span>
+                <span><a href="mailto:${data.email}" style="color: #2563eb;">${data.email}</a></span>
               </div>
               ${
                 data.phone
@@ -60,13 +61,23 @@ export const emailTemplates = {
               `
                   : ""
               }
+              ${
+                data.company
+                  ? `
+              <div class="info-row">
+                <span class="label">Entreprise:</span>
+                <span>${data.company}</span>
+              </div>
+              `
+                  : ""
+              }
               <div class="info-row">
                 <span class="label">Message:</span>
                 <p style="margin-top: 10px; line-height: 1.8;">${data.message}</p>
               </div>
               <div class="footer">
                 <p>Ce message a été envoyé depuis le formulaire de contact de Docovery</p>
-                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
+                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #2563eb;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
               </div>
             </div>
           </div>
@@ -79,7 +90,8 @@ export const emailTemplates = {
       Nom: ${data.name}
       Email: ${data.email}
       ${data.phone ? `Téléphone: ${data.phone}` : ""}
-      
+      ${data.company ? `Entreprise: ${data.company}` : ""}
+
       Message:
       ${data.message}
     `,
@@ -95,7 +107,7 @@ export const emailTemplates = {
           <style>
             body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #0b0d12 0%, #1d4ed8 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f7fafc; padding: 30px; border-radius: 0 0 10px 10px; }
             .info-row { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; }
           </style>
@@ -127,9 +139,9 @@ export const emailTemplates = {
           <style>
             body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #0b0d12 0%, #1d4ed8 100%); color: white; padding: 40px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #ffffff; padding: 40px; }
-            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 8px; margin: 20px 0; }
+            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #0b0d12 0%, #1d4ed8 100%); color: white; text-decoration: none; border-radius: 8px; margin: 20px 0; }
             .footer { text-align: center; margin-top: 30px; padding: 20px; background: #f7fafc; border-radius: 0 0 10px 10px; color: #718096; }
           </style>
         </head>
@@ -149,12 +161,12 @@ export const emailTemplates = {
                 <li>🎯 Des offres spéciales réservées aux abonnés</li>
               </ul>
               <p style="margin-top: 30px;">Envie de découvrir nos services dès maintenant?</p>
-              <a href="${process.env.NEXT_PUBLIC_SITE_URL}/#services" class="button">Explorer Nos Services</a>
+              <a href="${process.env.NEXT_PUBLIC_SITE_URL}/services" class="button">Explorer Nos Services</a>
             </div>
             <div class="footer">
               <p><strong>Docovery</strong></p>
               <p>Construire des solutions, façonner l'avenir</p>
-               <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #667eea;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
+               <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}" style="color: #2563eb;">${process.env.NEXT_PUBLIC_SITE_URL}</a></p>
             </div>
           </div>
         </body>
@@ -193,10 +205,10 @@ Docovery - Construire des solutions, façonner l'avenir
           <style>
             body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #0b0d12 0%, #1d4ed8 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f7fafc; padding: 30px; border-radius: 0 0 10px 10px; }
-            .info-row { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #667eea; }
-            .label { font-weight: bold; color: #667eea; display: inline-block; min-width: 120px; }
+            .info-row { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #2563eb; }
+            .label { font-weight: bold; color: #2563eb; display: inline-block; min-width: 120px; }
             .highlight { background: #fef3c7; padding: 20px; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 20px 0; }
           </style>
         </head>
@@ -215,7 +227,7 @@ Docovery - Construire des solutions, façonner l'avenir
               </div>
               <div class="info-row">
                 <span class="label">Email:</span>
-                <span><a href="mailto:${data.email}" style="color: #667eea;">${data.email}</a></span>
+                <span><a href="mailto:${data.email}" style="color: #2563eb;">${data.email}</a></span>
               </div>
               ${
                 data.company

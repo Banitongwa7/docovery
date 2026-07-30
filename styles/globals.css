@@ -1,36 +1,240 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  Docovery — Design tokens                                           */
+/*  Clean · structured · finance-oriented                              */
+/* ------------------------------------------------------------------ */
 @theme {
-  --animate-fade-up: fade-up 1s ease-in-out;
-  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
-  --animate-float-slow: float 6s ease-in-out infinite;
-  --animate-bento-reveal: bento-reveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  
-  @keyframes fade-up {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes fade-in-up {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+  /* Surfaces */
+  --color-canvas: #ffffff;
+  --color-surface: #f6f7f9;
+  --color-surface-2: #eef0f4;
+
+  /* Ink */
+  --color-ink: #0b0d12;
+  --color-ink-soft: #3d434f;
+  --color-muted: #6b7280;
+  --color-line: #e6e8ee;
+
+  /* Brand accent (preserved from the original identity) */
+  --color-accent: #2563eb;
+  --color-accent-dark: #1d4ed8;
+  --color-accent-soft: #eff4ff;
+  --color-accent-ink: #172554;
+
+  /* Dark sections */
+  --color-night: #0b0d12;
+  --color-night-2: #12151d;
+  --color-night-line: #232833;
+
+  /* Signal */
+  --color-positive: #059669;
+  --color-negative: #dc2626;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-card: 1.25rem;
+  --radius-panel: 2rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--color-line);
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+  html {
+    /* Lenis owns the scrolling — native smooth scroll must stay off. */
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
   }
 
-  @keyframes bento-reveal {
-    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ------------------------------------------------------------------ */
+/*  Anti-FOUC                                                          */
+/*  Animated nodes are marked [data-anim] and start invisible so GSAP  */
+/*  never "flashes" un-animated content. Three safety nets guarantee   */
+/*  the copy is always readable:                                       */
+/*    1. reduced-motion users get everything shown immediately         */
+/*    2. no-JS users get everything shown via <noscript> in layout     */
+/*    3. GSAP itself reveals the nodes on mount / on scroll            */
+/* ------------------------------------------------------------------ */
+@layer base {
+  [data-anim] {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-body {
-  @apply bg-white text-gray-900 antialiased;
+/* ------------------------------------------------------------------ */
+/*  Lenis                                                              */
+/* ------------------------------------------------------------------ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Composition helpers                                                */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[80rem] px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-muted;
+  }
+
+  .display {
+    @apply font-semibold tracking-[-0.035em] leading-[0.98];
+  }
+
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+
+  /* Hairline grid used behind dark panels */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .grid-lines-light {
+    background-image:
+      linear-gradient(to right, rgb(11 13 18 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(11 13 18 / 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /*
+    Tailwind v4 only lets `@apply` reference real utilities, never other custom
+    classes — so the shared button base is declared on every variant selector
+    rather than @applied from a `.btn` class.
+  */
+  .btn,
+  .btn-primary,
+  .btn-dark,
+  .btn-ghost,
+  .btn-invert {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium
+           whitespace-nowrap transition-all duration-300
+           disabled:cursor-not-allowed disabled:opacity-55;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-dark
+           shadow-[0_1px_2px_rgba(11,13,18,0.08),0_8px_24px_-8px_rgba(37,99,235,0.55)]
+           hover:shadow-[0_1px_2px_rgba(11,13,18,0.08),0_12px_32px_-8px_rgba(37,99,235,0.6)];
+  }
+
+  .btn-dark {
+    @apply bg-ink text-white hover:bg-night-2;
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-canvas text-ink hover:border-ink/25 hover:bg-surface;
+  }
+
+  .btn-invert {
+    @apply bg-white text-ink hover:bg-white/90;
+  }
+
+  .btn-md {
+    @apply h-11 px-5;
+  }
+
+  .btn-lg {
+    @apply h-13 px-7 text-[0.9375rem];
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-canvas px-4 py-3 text-[0.9375rem] text-ink
+           placeholder:text-muted/70 transition-colors duration-200
+           focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10;
+  }
+
+  .field-error {
+    @apply border-negative/60 focus:border-negative focus:ring-negative/10;
+  }
+
+  .card {
+    @apply rounded-card border border-line bg-canvas;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
 }

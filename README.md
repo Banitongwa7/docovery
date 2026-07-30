@@ -4,21 +4,41 @@ Build solutions, Shape the future
 
 ## Overview
 
-Docovery is a modern, full-featured Next.js web application for a tech company specializing in digital solutions. The application features a beautiful, responsive design with comprehensive pages, components, and API routes using email notifications via Nodemailer.
+Docovery is a Next.js (App Router) marketing site for a digital studio based in
+Kinshasa, positioned for fintech startups, SaaS platforms and financial
+institutions. The design language is clean, structured and finance-oriented,
+with GSAP-driven scroll choreography and Lenis smooth scrolling.
 
 ## Features
 
 ### Pages
-- **Home** (`/`) - Landing page with hero section, services, about, team, and testimonials
-- **Contact** (`/contact`) - Contact form with email integration
-- **Blog** (`/blog`) - Blog posts with search and category filtering
+- **Home** (`/`) - Hero, key metrics, services grid, process, case studies, values, testimonials, CTA
+- **Services** (`/services`) - The eight areas of expertise, each with deliverables and stack
+- **Case Studies** (`/case-studies`, `/case-studies/[slug]`) - Anonymised fintech / SaaS engagements
+- **Blog** (`/blog`, `/blog/[slug]`) - Articles with search, category filter and related posts
+- **About** (`/about`) - Story, metrics, values and founding team
+- **Contact** (`/contact`) - Validated contact form, contact channels and booking link
 - **Privacy Policy** (`/privacy-policy`) - GDPR-compliant privacy policy
 - **Terms of Service** (`/terms-of-service`) - Legal terms and conditions
 
-### Components
-- **Navigation** - Responsive navigation bar with mobile menu
-- **Footer** - Comprehensive footer with newsletter subscription, social links, and quick links
-- **Reusable sections** - Hero sections, service cards, testimonials, etc.
+Legacy `/blog/<numeric-id>` URLs still resolve to the matching article.
+
+### Architecture
+- `lib/` holds every piece of content as typed data (`site`, `services`, `company`, `case-studies`, `posts`, `legal`, `validation`) — pages stay presentational.
+- `components/motion/` holds the animation primitives: `Reveal`, `Stagger`, `SplitHeading`, `Counter`.
+- `components/sections/` holds composable page sections reused across routes.
+- `components/providers/` wires global smooth scrolling and the shared project-request dialog.
+
+### Animation rules
+- GSAP is only ever started through `useGSAP(..., { scope })` so tweens and
+  ScrollTriggers are reverted automatically on route changes — never `useEffect`.
+- Plugins are registered once, client-side only, in `lib/gsap.ts`.
+- Animated nodes carry `data-anim` and start at `opacity: 0` (anti-FOUC). Three
+  safety nets keep content readable: a reduced-motion override, a `<noscript>`
+  override in the root layout, and the animation itself.
+- Lenis is driven by `gsap.ticker` (`autoRaf: false`) so ScrollTrigger and the
+  smooth scroll share one loop. Reduced-motion visitors get native scrolling —
+  Lenis is unmounted rather than paused.
 
 ### API Routes
 All API routes use email-only (no database) as requested:
@@ -92,12 +112,20 @@ All API routes use email-only (no database) as requested:
 
 ## Tech Stack
 
-- **Framework**: Next.js 15.3.2
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Icons**: React Icons
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript (strict)
+- **Styling**: Tailwind CSS 4 (`@theme` tokens in `styles/globals.css`)
+- **Scroll animation**: GSAP + ScrollTrigger + SplitText via `@gsap/react` (`useGSAP`)
+- **Smooth scroll**: Lenis (`lenis/react` → `<ReactLenis root>`)
+- **Micro-interactions**: Framer Motion
+- **Forms**: React Hook Form + Zod (shared schemas, validated on client *and* server)
+- **Icons**: lucide-react (brand glyphs are local SVGs in `components/ui/BrandIcons.tsx`)
 - **Email**: Nodemailer
 - **Analytics**: Vercel Analytics
+
+> Tailwind v4 compiles through `@tailwindcss/postcss`, which handles vendor
+> prefixing itself — a separate `autoprefixer` step is not used and would
+> conflict with the v4 pipeline.
 
 ## Installation
 
@@ -133,15 +161,18 @@ All templates are located in `utils/emailConfig.ts` and can be customized.
 ## Customization
 
 ### Updating Company Information
-- Logo: Replace `/public/docovery_logo.svg` and `/public/docovery_logo_white.svg`
-- Company details: Update in components (Navigation, Footer, etc.)
-- Contact info: Update in `/app/contact/page.tsx` and Footer component
+All shared facts live in `lib/`, not in components:
+- Contact details, socials, navigation: `lib/site.ts`
+- Metrics, values, process, team, testimonials: `lib/company.ts`
+- Services: `lib/services.ts` · Case studies: `lib/case-studies.ts` · Articles: `lib/posts.ts`
+- Legal copy: `lib/legal.ts`
+- Logo: replace `/public/docovery_logo.svg` and `/public/docovery_logo_white.svg`
 
 ### Adding New Pages
-1. Create new page in `app/[page-name]/page.tsx`
-2. Add Navigation component at top
-3. Add Footer component at bottom
-4. Add route to Navigation component
+1. Create `app/[page-name]/page.tsx` and export a `metadata` object.
+2. Compose it from `components/ui/PageHero` and `components/sections/*` — the
+   navbar and footer come from the root layout, so don't add them per page.
+3. Add the route to `navItems` in `lib/site.ts` and to `app/sitemap.ts`.
 
 ### Modifying Email Templates
 Edit templates in `utils/emailConfig.ts`:
@@ -161,26 +192,29 @@ export const emailTemplates = {
 ```
 docovery/
 ├── app/
-│   ├── api/
-│   │   ├── contact/route.ts
-│   │   ├── newsletter/route.ts
-│   │   └── demo-request/route.ts
-│   ├── blog/page.tsx
+│   ├── api/{contact,newsletter,demo-request}/route.ts
+│   ├── about/page.tsx
+│   ├── blog/page.tsx · blog/[slug]/page.tsx
+│   ├── case-studies/page.tsx · case-studies/[slug]/page.tsx
 │   ├── contact/page.tsx
-│   ├── privacy-policy/page.tsx
-│   ├── terms-of-service/page.tsx
-│   ├── layout.tsx
-│   └── page.tsx (home)
+│   ├── services/page.tsx
+│   ├── privacy-policy/page.tsx · terms-of-service/page.tsx
+│   ├── layout.tsx · page.tsx · not-found.tsx · sitemap.ts
 ├── components/
-│   ├── Navigation.tsx
-│   └── Footer.tsx
-├── utils/
-│   ├── emailConfig.ts
-│   └── socialTeam.ts
-├── public/
-│   └── [images and assets]
-├── styles/
-│   └── globals.css
+│   ├── blog/        ArticleBody, BlogExplorer, ShareLinks
+│   ├── forms/       ContactForm, NewsletterForm, ProjectRequestModal
+│   ├── layout/      Navbar, Footer, ScrollToTop
+│   ├── legal/       LegalDocument
+│   ├── motion/      Reveal, SplitHeading, Counter
+│   ├── providers/   SmoothScroll, ProjectModalProvider
+│   ├── sections/    Hero, Metrics, ServicesGrid, Process, CaseStudiesPreview,
+│   │                Values, Testimonials, CTASection
+│   └── ui/          PageHero, SectionHeader, Button, ProjectCTA, BrandIcons
+├── lib/             site, services, company, case-studies, posts, legal,
+│                    validation, gsap, utils
+├── utils/emailConfig.ts
+├── public/          [images and assets]
+├── styles/globals.css
 └── .env.local (create this)
 ```
 
@@ -286,8 +320,9 @@ Error: Connection timeout
 ## Support
 
 For questions or issues:
-- Email: contact@docovery.com
-- Phone: +243 123 456 789
+- Email: contact@docovery.net
+- Phone: +243 81 072 6861
+- Office: Kinshasa, RD Congo
 
 ## License
 
