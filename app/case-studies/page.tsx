@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import { Info } from "lucide-react";
 import { caseStudies, caseStudiesDisclaimer } from "@/lib/case-studies";
 import PageHero from "@/components/ui/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import CaseStudiesExplorer from "@/components/case-studies/CaseStudiesExplorer";
 
-export const metadata: Metadata = {
-  title: "Réalisations",
+export const metadata: Metadata = pageMetadata({
+  title: "Réalisations : fintech, SaaS et institutions financières",
   description:
     "Dossiers fintech, SaaS et institutions financières : comment Docovery conçoit des plateformes qui tiennent la charge, la conformité et le temps.",
-  alternates: { canonical: "/case-studies" },
-};
+  path: "/case-studies",
+});
 
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Réalisations", path: "/case-studies" }])} />
       <PageHero
         image="/media/v2/abstrait-vert-soie.jpg"
         title="Des cas concrets, du cadrage à la production."

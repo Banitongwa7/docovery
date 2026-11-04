@@ -17,7 +17,10 @@ export default function Values({
 }) {
   return (
     <section className={cn("px-3 sm:px-4", className)}>
-      <div className="relative mx-auto max-w-[88rem] overflow-hidden rounded-panel bg-accent px-6 py-10 text-white sm:px-12 sm:py-14 lg:px-16">
+      <div
+        data-tone="dark"
+        className="relative mx-auto max-w-[88rem] overflow-hidden rounded-panel bg-accent px-6 py-10 text-white sm:px-12 sm:py-14 lg:px-16"
+      >
         <div
           aria-hidden="true"
           className="orb pointer-events-none absolute -top-40 right-[-8rem] size-[28rem] rounded-full bg-brand/30 blur-[110px]"

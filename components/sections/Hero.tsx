@@ -27,23 +27,10 @@ export default function Hero() {
 
       const intro = gsap.timeline({ defaults: { ease: EASE } });
 
+      // The panel opening and photo zoom are pure CSS (.hero-open / .hero-zoom)
+      // so the photo — the LCP element — paints on the very first frame,
+      // before any JavaScript runs. GSAP only choreographs the copy.
       intro
-        .fromTo(
-          "[data-hero-panel]",
-          { opacity: 1, clipPath: "inset(10% 8% 10% 8% round 48px)" },
-          {
-            clipPath: "inset(0% 0% 0% 0% round 24px)",
-            duration: 1.5,
-            ease: "expo.inOut",
-          },
-          0,
-        )
-        .fromTo(
-          "[data-hero-image]",
-          { scale: 1.3 },
-          { scale: 1.08, duration: 2.2, ease: "expo.out" },
-          0,
-        )
         .fromTo(
           "[data-hero-lede]",
           { opacity: 0, y: 22 },
@@ -82,9 +69,9 @@ export default function Hero() {
     <section ref={root} className="bg-canvas pt-[4.75rem]">
       <div className="px-3 sm:px-4">
         <div
-          data-anim
           data-hero-panel
-          className="relative mx-auto h-[min(42rem,calc(100svh-6rem))] min-h-[34rem] max-w-[88rem] overflow-hidden rounded-panel bg-[#12201f] will-change-transform"
+          data-tone="dark"
+          className="hero-open relative mx-auto h-[min(42rem,calc(100svh-6rem))] min-h-[34rem] max-w-[88rem] overflow-hidden rounded-panel bg-[#12201f] will-change-transform"
         >
           <div data-hero-image className="absolute inset-0 will-change-transform">
             <Image
@@ -93,7 +80,7 @@ export default function Hero() {
               fill
               priority
               sizes="(max-width: 1408px) 100vw, 1408px"
-              className="object-cover object-[center_35%]"
+              className="hero-zoom object-cover object-[center_35%]"
             />
           </div>
           <div

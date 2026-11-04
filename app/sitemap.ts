@@ -5,7 +5,9 @@ import { caseStudies } from "@/lib/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
-  const now = new Date();
+  // Date of the last content/design update — bump it when pages change, so
+  // crawlers are not told every page changed on every build.
+  const updated = new Date("2026-11-04");
 
   const routes: MetadataRoute.Sitemap = [
     { url: baseUrl, changeFrequency: "monthly", priority: 1 },
@@ -32,12 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
     ...route,
-    lastModified: now,
+    lastModified: updated,
   }));
 
   const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${baseUrl}/case-studies/${study.slug}`,
-    lastModified: now,
+    lastModified: updated,
+    images: [`${baseUrl}${study.image}`],
     changeFrequency: "yearly",
     priority: 0.6,
   }));
@@ -45,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.datetime),
+    images: [`${baseUrl}${post.image}`],
     changeFrequency: "yearly",
     priority: 0.6,
   }));

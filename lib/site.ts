@@ -5,10 +5,10 @@
 
 export const siteConfig = {
   name: "Docovery",
-  tagline: "Solutions Digitales Sur Mesure — Développement Web & Mobile",
+  tagline: "Développement web, mobile et cloud à Kinshasa",
   motto: "Construire des solutions, façonner l'avenir",
   description:
-    "Docovery transforme vos idées en solutions digitales performantes. Développement web, applications mobiles, solutions cloud et IA à Kinshasa, RD Congo.",
+    "Applications web et mobiles, cloud et IA sur mesure pour startups fintech, éditeurs SaaS et institutions financières. Studio logiciel basé à Kinshasa, RD Congo.",
   url: "https://www.docovery.net",
   locale: "fr_FR",
   author: "David BANITONGWA",

@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import { posts } from "@/lib/posts";
 import PageHero from "@/components/ui/PageHero";
 import BlogExplorer from "@/components/blog/BlogExplorer";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog : développement, cloud, IA et sécurité",
   description:
     "Articles, conseils et analyses sur le développement web et mobile, le cloud, la sécurité et l'intelligence artificielle par l'équipe Docovery.",
-  alternates: { canonical: "/blog" },
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Blog", path: "/blog" }])} />
       <PageHero
         image="/media/v2/code-html-sombre.jpg"
         title="Actualités & innovations tech."

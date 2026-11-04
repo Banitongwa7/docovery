@@ -213,6 +213,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6, ease: EASE }}
+              data-tone="dark"
               className="mx-3 mt-auto mb-3 rounded-[1.375rem] bg-accent p-6 text-white"
             >
               <p className="font-display text-xl font-medium">

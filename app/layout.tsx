@@ -8,7 +8,9 @@ import { ProjectModalProvider } from "@/components/providers/ProjectModalProvide
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MobileProjectBar from "@/components/layout/MobileProjectBar";
-import { siteConfig, contact } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -47,52 +49,43 @@ export const metadata: Metadata = {
   ],
   authors: { name: siteConfig.author },
   creator: siteConfig.author,
+  publisher: siteConfig.name,
   metadataBase: new URL(siteConfig.url),
-  alternates: { canonical: "/" },
-  icons: { icon: "/docovery_logo.svg" },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} | Solutions Digitales Sur Mesure`,
-    description:
-      "Transformez votre vision en réalité digitale. Développement web, mobile, cloud & IA.",
-    images: ["/docovery_logo.svg"],
+  // Canonicals are set per page (see lib/seo.ts) — a layout-level canonical
+  // would be inherited by every route that forgets its own.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  formatDetection: { telephone: false, email: false, address: false },
+  category: "technology",
   openGraph: {
     type: "website",
-    url: siteConfig.url,
+    url: "/",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Solutions Digitales Sur Mesure`,
-    images: ["/docovery_logo.svg"],
-    description:
-      "Transformez votre vision en réalité digitale. Développement web, mobile, cloud & IA à Kinshasa.",
     locale: siteConfig.locale,
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
   },
 };
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
   colorScheme: "light",
-};
-
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: siteConfig.name,
-  description: siteConfig.description,
-  url: siteConfig.url,
-  email: contact.email,
-  telephone: contact.phone.value,
-  slogan: siteConfig.motto,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: contact.office.city,
-    addressCountry: "CD",
-  },
-  areaServed: "Worldwide",
-  founder: [
-    { "@type": "Person", name: "Omari Kayumba" },
-    { "@type": "Person", name: "David Banitongwa" },
-  ],
 };
 
 export default function RootLayout({
@@ -109,12 +102,7 @@ export default function RootLayout({
         <noscript>
           <style>{`[data-anim]{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd),
-          }}
-        />
+        <JsonLd data={[organizationJsonLd, websiteJsonLd]} />
       </head>
       <body className="antialiased">
         <a

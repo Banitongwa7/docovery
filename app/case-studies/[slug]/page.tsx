@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
+import { pageMetadata, breadcrumbJsonLd, orgId } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,17 +27,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   if (!study) return { title: "Dossier introuvable" };
 
-  return {
+  return pageMetadata({
     title: study.title,
     description: study.summary,
-    alternates: { canonical: `/case-studies/${study.slug}` },
-    openGraph: {
-      title: study.title,
-      description: study.summary,
-      images: [study.image],
-      type: "article",
-    },
-  };
+    path: `/case-studies/${study.slug}`,
+    type: "article",
+  });
 }
 
 export default async function CaseStudyPage({ params }: Params) {
@@ -45,8 +43,30 @@ export default async function CaseStudyPage({ params }: Params) {
 
   const others = caseStudies.filter((item) => item.slug !== study.slug).slice(0, 2);
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: study.title,
+      headline: study.title,
+      description: study.summary,
+      image: `${siteConfig.url}${study.image}`,
+      dateCreated: study.year,
+      inLanguage: "fr-FR",
+      about: study.sector,
+      keywords: study.stack.join(", "),
+      creator: { "@id": orgId },
+      url: `${siteConfig.url}/case-studies/${study.slug}`,
+    },
+    breadcrumbJsonLd([
+      { name: "Réalisations", path: "/case-studies" },
+      { name: study.title, path: `/case-studies/${study.slug}` },
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={jsonLd} />
       <section className="relative overflow-hidden border-b border-line bg-canvas pt-32 pb-14 sm:pt-40">
 
         <div className="container-x relative">

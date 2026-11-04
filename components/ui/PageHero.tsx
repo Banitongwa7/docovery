@@ -44,13 +44,6 @@ export default function PageHero({
 
       gsap
         .timeline({ defaults: { ease: EASE } })
-        .fromTo(
-          "[data-ph-panel]",
-          { opacity: 1, clipPath: "inset(8% 5% 8% 5% round 40px)" },
-          { clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 1.3, ease: "expo.inOut" },
-          0,
-        )
-        .fromTo("[data-ph-image]", { scale: 1.25 }, { scale: 1.06, duration: 2, ease: "expo.out" }, 0)
         .fromTo("[data-ph-lede]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 1)
         .fromTo("[data-ph-strip]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 1.1);
 
@@ -72,9 +65,9 @@ export default function PageHero({
     <section ref={root} className={cn("bg-canvas pt-[4.75rem]", className)}>
       <div className="px-3 sm:px-4">
         <div
-          data-anim
           data-ph-panel
-          className="relative mx-auto h-[clamp(21rem,30vw,26.25rem)] max-w-[88rem] overflow-hidden rounded-panel bg-[#12201f]"
+          data-tone="dark"
+          className="hero-open relative mx-auto h-[clamp(21rem,30vw,26.25rem)] max-w-[88rem] overflow-hidden rounded-panel bg-[#12201f]"
         >
           <div data-ph-image className="absolute inset-0 will-change-transform">
             <Image
@@ -83,7 +76,7 @@ export default function PageHero({
               fill
               priority
               sizes="(max-width: 1408px) 100vw, 1408px"
-              className="object-cover"
+              className="hero-zoom object-cover"
               style={{ objectPosition: imagePosition }}
             />
           </div>

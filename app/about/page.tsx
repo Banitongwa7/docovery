@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { metrics, capabilities } from "@/lib/company";
@@ -9,16 +11,17 @@ import Counter from "@/components/motion/Counter";
 import Values from "@/components/sections/Values";
 import Testimonials from "@/components/sections/Testimonials";
 
-export const metadata: Metadata = {
-  title: "À Propos",
+export const metadata: Metadata = pageMetadata({
+  title: "À propos : studio logiciel à Kinshasa",
   description:
-    "Docovery, studio digital basé à Kinshasa : notre équipe, nos valeurs et les chiffres qui mesurent notre engagement envers l'excellence.",
-  alternates: { canonical: "/about" },
-};
+    "Docovery, studio logiciel basé à Kinshasa : notre équipe, nos valeurs et les chiffres qui mesurent notre engagement envers l'excellence.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "À propos", path: "/about" }])} />
       <PageHero
         image="/media/v2/abstrait-noir-vert.jpg"
         title="Construire des solutions, façonner l'avenir."

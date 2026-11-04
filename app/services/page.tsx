@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata, breadcrumbJsonLd, faqJsonLd, servicesJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
@@ -8,7 +10,7 @@ import {
   engagementIncluded,
   servicesFaq,
 } from "@/lib/services";
-import { audiences } from "@/lib/site";
+import { audiences, siteConfig } from "@/lib/site";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Reveal, Stagger } from "@/components/motion/Reveal";
@@ -17,16 +19,23 @@ import ProjectCTA from "@/components/ui/ProjectCTA";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = pageMetadata({
+  title: "Services : développement web, mobile, cloud et IA",
   description:
-    "Développement web et mobile, cloud, bases de données, sécurité, IA, formation et maintenance : l'expertise complète de Docovery pour les startups fintech, plateformes SaaS et institutions financières.",
-  alternates: { canonical: "/services" },
-};
+    "Développement web et mobile, cloud, bases de données, sécurité, IA, formation et maintenance pour startups fintech, plateformes SaaS et institutions financières.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([{ name: "Services", path: "/services" }]),
+          servicesJsonLd(services, siteConfig.url),
+          faqJsonLd(servicesFaq),
+        ]}
+      />
       <PageHero
         title="Huit expertises, une seule équipe."
         description="De la première ligne de code jusqu'à l'exploitation en production, pour les startups fintech, les éditeurs SaaS et les institutions financières."

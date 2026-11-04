@@ -81,6 +81,13 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
+
+  /* On teal bands and photos the teal ring disappears — switch to mint. */
+  [data-tone="dark"] :focus-visible,
+  .btn-invert:focus-visible,
+  .btn-outline-invert:focus-visible {
+    outline-color: var(--color-mint);
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -225,7 +232,7 @@ html.lenis body {
 
   .field {
     @apply w-full rounded-2xl border border-line bg-surface px-4 py-3.5 text-[0.9375rem] text-ink
-           placeholder:text-muted/70 transition-[border-color,background-color,box-shadow] duration-200
+           placeholder:text-muted transition-[border-color,background-color,box-shadow] duration-200
            hover:border-ink/15
            focus:border-accent focus:bg-canvas focus:outline-none focus:ring-4 focus:ring-accent/10;
   }
@@ -326,6 +333,37 @@ html.lenis body {
 
   .shine:hover::after {
     transform: translateX(120%);
+  }
+}
+
+/*
+  Hero panels open with CSS, not GSAP: the photo is the LCP element, so it
+  must paint on the first frame without waiting for JavaScript. Reduced-motion
+  users get the end state immediately (global rule above + `both` fill).
+*/
+.hero-open {
+  animation: hero-open 1.4s cubic-bezier(0.83, 0, 0.17, 1) both;
+}
+
+.hero-zoom {
+  animation: hero-zoom 2.2s var(--ease-out-expo) both;
+}
+
+@keyframes hero-open {
+  from {
+    clip-path: inset(9% 7% 9% 7% round 44px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 24px);
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.28);
+  }
+  to {
+    transform: scale(1.06);
   }
 }
 

@@ -35,13 +35,6 @@ export default function ContactPanel() {
       }
       gsap
         .timeline({ defaults: { ease: EASE } })
-        .fromTo(
-          root.current,
-          { opacity: 1, clipPath: "inset(6% 6% 6% 6% round 40px)" },
-          { clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 1.3, ease: "expo.inOut" },
-          0,
-        )
-        .fromTo("[data-cp-image]", { scale: 1.3 }, { scale: 1.05, duration: 2, ease: "expo.out" }, 0)
         .fromTo("[data-cp-lede]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 0.9)
         .fromTo(
           "[data-cp-tile]",
@@ -57,8 +50,8 @@ export default function ContactPanel() {
   return (
     <div
       ref={root}
-      data-anim
-      className="relative min-h-[38rem] overflow-hidden rounded-panel bg-[#12201f] text-white lg:min-h-[40rem]"
+      data-tone="dark"
+      className="hero-open relative min-h-[38rem] overflow-hidden rounded-panel bg-[#12201f] text-white lg:min-h-[40rem]"
     >
       <div data-cp-image className="absolute inset-0">
         <Image
@@ -67,7 +60,7 @@ export default function ContactPanel() {
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover object-[center_30%]"
+          className="hero-zoom object-cover object-[center_30%]"
         />
       </div>
       <div

@@ -82,6 +82,7 @@ export default function Footer() {
     >
       <div
         data-band
+        data-tone="dark"
         className="relative mx-auto max-w-[88rem] overflow-hidden rounded-panel bg-accent text-white"
       >
         {/* Ambient light — two soft orbs drifting behind the content */}

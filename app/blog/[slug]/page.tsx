@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata, breadcrumbJsonLd, orgId } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,19 +24,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   if (!post) return { title: "Article introuvable" };
 
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-      publishedTime: post.datetime,
-      authors: [post.author],
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.datetime,
+    authors: [post.author],
+  });
 }
 
 export default async function BlogPostPage({ params }: Params) {
@@ -53,17 +50,22 @@ export default async function BlogPostPage({ params }: Params) {
     description: post.excerpt,
     image: `${siteConfig.url}${post.image}`,
     datePublished: post.datetime,
+    dateModified: post.datetime,
+    inLanguage: "fr-FR",
+    articleSection: post.category,
     author: { "@type": "Person", name: post.author },
-    publisher: { "@type": "Organization", name: siteConfig.name },
+    publisher: { "@id": orgId },
     mainEntityOfPage: url,
   };
 
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={[jsonLd, breadcrumb]} />
 
       <article>
         <header className="relative overflow-hidden border-b border-line bg-canvas pt-32 pb-14 sm:pt-40">
