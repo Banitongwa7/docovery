@@ -26,13 +26,11 @@ function linkify(text: string): ReactNode {
 }
 
 export default function LegalDocument({
-  eyebrow,
   title,
   intro,
   sections,
   updatedAt,
 }: {
-  eyebrow: string;
   title: string;
   intro: string;
   sections: LegalSection[];
@@ -41,7 +39,6 @@ export default function LegalDocument({
   return (
     <>
       <PageHero
-        eyebrow={eyebrow}
         title={title}
         description={intro}
         meta={

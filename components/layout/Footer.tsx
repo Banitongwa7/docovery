@@ -3,14 +3,15 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
-import { contact, socials, footerNav, footerCtas, links } from "@/lib/site";
+import { ArrowUpRight, CalendarCheck, Mail, Phone } from "lucide-react";
+import { contact, footerNav, footerCtas, links } from "@/lib/site";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import NewsletterForm from "@/components/forms/NewsletterForm";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import SplitHeading from "@/components/motion/SplitHeading";
 import ProjectCTA from "@/components/ui/ProjectCTA";
 import { LogoMark } from "@/components/ui/Logo";
+import SocialLinks from "@/components/ui/SocialLinks";
 
 const year = new Date().getFullYear();
 
@@ -150,20 +151,26 @@ export default function Footer() {
                 <p className="mt-3 max-w-[16rem] text-sm leading-relaxed text-muted">
                   Studio logiciel basé à {contact.office.label}.
                 </p>
-                <p className="mt-4 flex flex-col gap-1 text-sm">
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="link-underline w-fit"
-                  >
-                    {contact.email}
-                  </a>
-                  <a
-                    href={`tel:${contact.phone.value}`}
-                    className="link-underline w-fit"
-                  >
-                    {contact.phone.label}
-                  </a>
-                </p>
+                <ul className="mt-4 flex flex-col gap-2 text-sm">
+                  <li>
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="group inline-flex items-center gap-2.5"
+                    >
+                      <Mail aria-hidden="true" className="size-4 shrink-0 text-brand" />
+                      <span className="link-underline">{contact.email}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`tel:${contact.phone.value}`}
+                      className="group inline-flex items-center gap-2.5"
+                    >
+                      <Phone aria-hidden="true" className="size-4 shrink-0 text-brand" />
+                      <span className="link-underline">{contact.phone.label}</span>
+                    </a>
+                  </li>
+                </ul>
               </div>
 
               <div className="lg:col-span-4">
@@ -217,31 +224,17 @@ export default function Footer() {
                   <p className="text-[0.8125rem] font-semibold text-accent">
                     Suivez-nous
                   </p>
-                  <ul className="mt-3 space-y-2">
-                    {socials.map((social) => (
-                      <li key={social.label}>
-                        <a
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link-underline"
-                        >
-                          {social.label}
-                        </a>
-                      </li>
-                    ))}
-                    <li>
-                      <a
-                        href={links.meeting}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1 whitespace-nowrap font-medium text-accent"
-                      >
-                        Rendez-vous
-                        <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </a>
-                    </li>
-                  </ul>
+                  <SocialLinks className="mt-3" />
+                  <a
+                    href={links.meeting}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-4 inline-flex items-center gap-2 whitespace-nowrap font-medium text-accent"
+                  >
+                    <CalendarCheck aria-hidden="true" className="size-4" />
+                    Rendez-vous
+                    <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
                 </nav>
               </div>
             </div>

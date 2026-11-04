@@ -20,7 +20,6 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="À propos"
         image="/media/v2/abstrait-noir-vert.jpg"
         title="Construire des solutions, façonner l'avenir."
         description="Chez Docovery, nous combinons l'expertise technique avec une vision créative pour livrer des solutions qui transforment les entreprises et créent un impact durable dans le paysage digital."

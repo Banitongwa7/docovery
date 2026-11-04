@@ -2,20 +2,22 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { contact, links } from "@/lib/site";
 import { gsap, useGSAP, EASE, prefersReducedMotion } from "@/lib/gsap";
 import SplitHeading from "@/components/motion/SplitHeading";
+import SocialLinks from "@/components/ui/SocialLinks";
 
 const channels = [
-  { label: "Email", value: contact.email, href: `mailto:${contact.email}` },
+  { icon: Mail, label: "Email", value: contact.email, href: `mailto:${contact.email}` },
   {
+    icon: Phone,
     label: "Téléphone",
     value: contact.phone.label,
     href: `tel:${contact.phone.value}`,
   },
-  { label: "Bureau", value: `${contact.office.city}, sur rendez-vous` },
-  { label: "Horaires", value: contact.hours.weekdays },
+  { icon: MapPin, label: "Bureau", value: `${contact.office.city}, sur rendez-vous` },
+  { icon: Clock, label: "Horaires", value: contact.hours.weekdays },
 ];
 
 /**
@@ -92,14 +94,19 @@ export default function ContactPanel() {
         <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
           {channels.map((channel) => {
             const body = (
-              <>
-                <span className="block text-xs text-white/75">
-                  {channel.label}
+              <span className="flex items-center gap-3">
+                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white/14 text-mint">
+                  <channel.icon aria-hidden="true" className="size-4" />
                 </span>
-                <span className="mt-0.5 block text-[0.9375rem] font-medium">
-                  {channel.value}
+                <span className="min-w-0">
+                  <span className="block text-xs text-white/75">
+                    {channel.label}
+                  </span>
+                  <span className="mt-0.5 block truncate text-[0.9375rem] font-medium">
+                    {channel.value}
+                  </span>
                 </span>
-              </>
+              </span>
             );
             return (
               <li key={channel.label} data-anim data-cp-tile>
@@ -120,19 +127,24 @@ export default function ContactPanel() {
           })}
         </ul>
 
-        <a
+        <div
           data-anim
           data-cp-cta
-          href={links.meeting}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group mt-5 inline-flex h-[3.125rem] items-center gap-2.5 rounded-full bg-white pr-2 pl-[1.375rem] text-[0.9375rem] font-semibold text-accent transition-colors hover:bg-mint"
+          className="mt-5 flex flex-wrap items-center gap-3"
         >
-          Réserver un appel de 30 min
-          <span className="grid size-[2.125rem] place-items-center rounded-full bg-accent text-white transition-transform duration-500 group-hover:rotate-45">
-            <ArrowUpRight className="size-3.5" />
-          </span>
-        </a>
+          <a
+            href={links.meeting}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex h-[3.125rem] items-center gap-2.5 rounded-full bg-white pr-2 pl-[1.375rem] text-[0.9375rem] font-semibold text-accent transition-colors hover:bg-mint"
+          >
+            Réserver un appel de 30 min
+            <span className="grid size-[2.125rem] place-items-center rounded-full bg-accent text-white transition-transform duration-500 group-hover:rotate-45">
+              <ArrowUpRight className="size-3.5" />
+            </span>
+          </a>
+          <SocialLinks tone="dark" />
+        </div>
       </div>
     </div>
   );

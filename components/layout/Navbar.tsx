@@ -10,11 +10,12 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { navItems, contact } from "@/lib/site";
 import { useProjectModal } from "@/components/providers/ProjectModalProvider";
 import Logo from "@/components/ui/Logo";
 import ProjectCTA from "@/components/ui/ProjectCTA";
+import SocialLinks from "@/components/ui/SocialLinks";
 import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -230,14 +231,16 @@ export default function Navbar() {
               >
                 Démarrer un projet
               </button>
-              <p className="mt-4 text-sm leading-7">
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                 <a
                   href={`mailto:${contact.email}`}
-                  className="underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-sm underline underline-offset-4"
                 >
+                  <Mail aria-hidden="true" className="size-4 text-mint" />
                   {contact.email}
                 </a>
-              </p>
+                <SocialLinks tone="dark" />
+              </div>
             </motion.div>
           </motion.div>
         )}

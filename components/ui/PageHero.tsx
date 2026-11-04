@@ -7,7 +7,6 @@ import SplitHeading from "@/components/motion/SplitHeading";
 import { cn } from "@/lib/utils";
 
 type PageHeroProps = {
-  eyebrow: string;
   title: ReactNode;
   description?: ReactNode;
   /** Buttons, search field… — rendered on white, under the banner. */
@@ -26,7 +25,6 @@ type PageHeroProps = {
  * Same motion grammar as the home hero, just shorter.
  */
 export default function PageHero({
-  eyebrow,
   title,
   description,
   actions,
@@ -53,7 +51,6 @@ export default function PageHero({
           0,
         )
         .fromTo("[data-ph-image]", { scale: 1.25 }, { scale: 1.06, duration: 2, ease: "expo.out" }, 0)
-        .fromTo("[data-ph-badge]", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7 }, 0.6)
         .fromTo("[data-ph-lede]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 1)
         .fromTo("[data-ph-strip]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 1.1);
 
@@ -96,18 +93,10 @@ export default function PageHero({
           />
 
           <div className="absolute inset-x-6 bottom-7 text-white sm:inset-x-10 sm:bottom-10 lg:inset-x-14 lg:bottom-12">
-            <p
-              data-anim
-              data-ph-badge
-              className="inline-flex items-center gap-2 rounded-full bg-white/14 px-3.5 py-1.5 text-[0.8125rem] font-medium backdrop-blur-md"
-            >
-              <span aria-hidden="true" className="size-[7px] rounded-full bg-[#5fd3c7]" />
-              {eyebrow}
-            </p>
             <SplitHeading
               as="h1"
-              delay={0.7}
-              className="display mt-4 max-w-[45rem] text-[2.125rem] leading-[1.14] text-white text-balance sm:text-[2.75rem] lg:text-[3.25rem]"
+              delay={0.6}
+              className="display max-w-[45rem] text-[2.125rem] leading-[1.14] text-white text-balance sm:text-[2.75rem] lg:text-[3.25rem]"
             >
               {title}
             </SplitHeading>

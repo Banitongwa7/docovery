@@ -20,7 +20,6 @@ export default function TermsOfServicePage() {
   return (
     <>
       <LegalDocument
-        eyebrow="Conditions légales"
         title="Conditions d'utilisation."
         intro={termsIntro}
         sections={termsSections}

@@ -20,7 +20,6 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <LegalDocument
-        eyebrow="Confidentialité"
         title="Politique de confidentialité."
         intro={privacyIntro}
         sections={privacySections}

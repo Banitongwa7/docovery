@@ -14,7 +14,6 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="Blog & insights"
         image="/media/v2/code-html-sombre.jpg"
         title="Actualités & innovations tech."
         description="Découvrez nos articles, conseils et analyses sur les dernières tendances du développement digital et de l'innovation technologique."

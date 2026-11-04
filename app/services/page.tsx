@@ -28,7 +28,6 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Expertise"
         title="Huit expertises, une seule équipe."
         description="De la première ligne de code jusqu'à l'exploitation en production, pour les startups fintech, les éditeurs SaaS et les institutions financières."
         image="/media/v2/abstrait-vert-courbe.jpg"

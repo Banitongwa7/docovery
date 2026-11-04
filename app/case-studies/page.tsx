@@ -16,7 +16,6 @@ export default function CaseStudiesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Réalisations"
         image="/media/v2/abstrait-vert-soie.jpg"
         title="Des cas concrets, du cadrage à la production."
         description="Chaque dossier décrit le problème rencontré, les décisions techniques prises et ce qui a changé une fois la plateforme en service."
