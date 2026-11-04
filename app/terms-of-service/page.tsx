@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import LegalDocument from "@/components/legal/LegalDocument";
-import CTASection from "@/components/sections/CTASection";
 import { termsIntro, termsSections } from "@/lib/legal";
 
 export const metadata: Metadata = {
@@ -28,11 +27,6 @@ export default function TermsOfServicePage() {
         updatedAt={updatedAt}
       />
 
-      <CTASection
-        eyebrow="Besoin de clarifications ?"
-        title="Nous restons disponibles pour vos questions."
-        description="Pour toute question concernant ces conditions d'utilisation, notre équipe vous répond sous 24h ouvrées."
-      />
     </>
   );
 }

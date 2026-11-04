@@ -41,7 +41,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     duration: "7 mois",
     scope: ["Développement Web", "Applications Mobiles", "Sécurité & Conformité"],
-    image: "/media/case-payments.jpg",
+    image: "/media/v2/iphone-ecran-accueil.jpg",
     challenge:
       "Le service reposait sur un monolithe unique qui saturait à chaque pic de fin de mois : temps de réponse dégradés, rapprochements manuels et incapacité à publier une nouvelle version sans interruption de service. L'équipe ne pouvait plus ouvrir de nouveaux corridors marchands sans risquer la stabilité de l'ensemble.",
     approach: [
@@ -80,7 +80,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     duration: "5 mois",
     scope: ["Développement Web", "Solutions Cloud", "Bases de Données"],
-    image: "/media/case-treasury.jpg",
+    image: "/media/v2/dashboard-sombre.jpg",
     challenge:
       "L'outil fonctionnait, mais pour une seule entreprise : une base de données commune, aucune séparation des données, aucun système de facturation et un déploiement manuel. Impossible d'ouvrir un compte à un client sans intervention d'un développeur.",
     approach: [
@@ -119,7 +119,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024",
     duration: "9 mois",
     scope: ["Développement Web", "Sécurité & Conformité", "Formation IT"],
-    image: "/media/case-portal.jpg",
+    image: "/media/v2/laptop-dashboard.jpg",
     challenge:
       "Le portail existant datait de plus de dix ans : inutilisable sur mobile alors que la majorité des connexions y arrivaient, non conforme aux exigences d'accessibilité, et dépourvu du journal d'audit réclamé par les auditeurs.",
     approach: [
@@ -158,7 +158,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024",
     duration: "4 mois",
     scope: ["IA & Machine Learning", "Solutions Cloud", "Maintenance"],
-    image: "/media/case-automation.jpg",
+    image: "/media/v2/circuit-sombre.jpg",
     challenge:
       "Chaque dossier entrant était ressaisi à la main dans trois systèmes différents. Le délai de traitement se comptait en jours, les erreurs de saisie généraient des litiges, et le volume progressait plus vite que l'effectif.",
     approach: [

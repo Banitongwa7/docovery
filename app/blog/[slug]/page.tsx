@@ -9,7 +9,6 @@ import { Reveal, Stagger } from "@/components/motion/Reveal";
 import SplitHeading from "@/components/motion/SplitHeading";
 import ArticleBody from "@/components/blog/ArticleBody";
 import ShareLinks from "@/components/blog/ShareLinks";
-import CTASection from "@/components/sections/CTASection";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -68,7 +67,6 @@ export default async function BlogPostPage({ params }: Params) {
 
       <article>
         <header className="relative overflow-hidden border-b border-line bg-canvas pt-32 pb-14 sm:pt-40">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-96 grid-lines-light opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
 
           <div className="container-x relative max-w-3xl">
             <Reveal y={12} duration={0.6}>
@@ -193,11 +191,6 @@ export default async function BlogPostPage({ params }: Params) {
         </section>
       )}
 
-      <CTASection
-        eyebrow="Let's talk"
-        title="Vous avez un projet en tête ?"
-        description="Parlons-en ! Notre équipe est prête à transformer vos idées en solutions digitales performantes."
-      />
     </>
   );
 }

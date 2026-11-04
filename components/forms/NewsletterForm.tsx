@@ -9,7 +9,12 @@ import { cn } from "@/lib/utils";
 
 type Status = { type: "idle" | "success" | "error"; message?: string };
 
-export default function NewsletterForm() {
+export default function NewsletterForm({
+  tone = "dark",
+}: {
+  /** "light" is the V2 underlined field used on the white footer card. */
+  tone?: "dark" | "light";
+}) {
   const [status, setStatus] = useState<Status>({ type: "idle" });
 
   const {
@@ -47,9 +52,17 @@ export default function NewsletterForm() {
     }
   };
 
+  const light = tone === "light";
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
-      <div className="flex flex-col gap-2 sm:flex-row">
+      <div
+        className={cn(
+          light
+            ? "group/nl flex items-center gap-3 border-b border-ink/20 transition-colors focus-within:border-accent"
+            : "flex flex-col gap-2 sm:flex-row",
+        )}
+      >
         <div className="flex-1">
           <label htmlFor="newsletter-email" className="sr-only">
             Votre adresse email
@@ -63,10 +76,14 @@ export default function NewsletterForm() {
             aria-describedby={errors.email ? "newsletter-error" : undefined}
             {...register("email")}
             className={cn(
-              "w-full rounded-full border border-white/12 bg-white/5 px-5 py-3 text-sm text-white",
-              "placeholder:text-white/35 transition-colors",
-              "focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20",
-              errors.email && "border-negative/70",
+              light
+                ? "h-12 w-full bg-transparent text-[0.9375rem] text-ink placeholder:text-muted focus:outline-none"
+                : cn(
+                    "w-full rounded-full border border-white/12 bg-white/5 px-5 py-3 text-sm text-white",
+                    "placeholder:text-white/35 transition-colors",
+                    "focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20",
+                  ),
+              errors.email && !light && "border-negative/70",
             )}
           />
         </div>
@@ -74,10 +91,17 @@ export default function NewsletterForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="btn btn-invert h-12 shrink-0 px-6 disabled:opacity-60"
+          aria-label={light ? "S'abonner à la newsletter" : undefined}
+          className={cn(
+            light
+              ? "grid size-10 shrink-0 place-items-center rounded-full bg-accent text-white transition-transform duration-300 hover:scale-105 group-focus-within/nl:bg-brand disabled:opacity-60"
+              : "btn btn-invert h-12 shrink-0 px-6 disabled:opacity-60",
+          )}
         >
           {isSubmitting ? (
             <LoaderCircle className="size-4 animate-spin" />
+          ) : light ? (
+            <ArrowRight className="size-4" />
           ) : (
             <>
               S&apos;abonner

@@ -27,6 +27,38 @@ préalable, attribution appréciée mais non obligatoire.
 
 URL source complète : `https://images.unsplash.com/<identifiant>`
 
+### Visuels V2 (`media/v2/`) — sans personnes
+
+Même licence Unsplash. Sélection abstraite / code / matériel Apple utilisée par
+la refonte V2 (maquette : `design/maquette-docovery/`).
+
+| Fichier | Identifiant source | Usage |
+| --- | --- | --- |
+| `abstrait-sarcelle-hero.jpg` | `photo-1669295384050-a1d4357bd1d7` | Hero de l'accueil |
+| `macbook-code-sombre.jpg` | `photo-1555066931-4365d14bab8c` | Collage « Notre impact » |
+| `macbook-iphone-airpods.jpg` | `photo-1651761648226-333ab304b2cc` | Collage « Notre impact » |
+| `telephone-vague-verte.jpg` | `photo-1693822845595-862bacc31cf9` | Collage « Notre impact » |
+| `macbook-sarcelle.jpg` | `photo-1514826786317-59744fe2a548` | Photo centrale des services |
+| `iphone-ecran-accueil.jpg` | `photo-1596558450268-9c27524ba856` | Cas — paiement mobile |
+| `dashboard-sombre.jpg` | `photo-1551288049-bebda4e38f71` | Cas — SaaS trésorerie |
+| `laptop-dashboard.jpg` | `photo-1460925895917-afdab827c52f` | Cas — portail institution financière |
+| `circuit-sombre.jpg` | `photo-1592659762303-90081d34b277` | Cas — automatisation documentaire |
+| `abstrait-vert-courbe.jpg` | `photo-1690321607822-669326f4e3cc` | Bannière Services |
+| `abstrait-vert-soie.jpg` | `photo-1707430393809-784967fe6fee` | Bannière Réalisations |
+| `abstrait-noir-vert.jpg` | `photo-1685871286419-58e4fc0de8e1` | Bannière À propos |
+| `code-html-sombre.jpg` | `photo-1461749280684-dccba630e2f6` | Bannière Blog |
+| `spirale-sarcelle.jpg` | `photo-1650943574955-ac02c65cfc71` | Page Contact |
+| `abstrait-vert-couches.jpg` | `photo-1689443111287-5c2e129ec756` | Page 404, pages légales |
+| `ruban-vert.jpg` | `photo-1677611998429-1baa4371456b` | Fenêtre « Démarrer un projet » |
+| `code-react.jpg` | `photo-1619410283995-43d9134e7656` | Service — développement web |
+| `iphone-maquette.jpg` | `photo-1695973056905-73ac6275b2f7` | Service — applications mobiles |
+| `salle-serveurs.jpg` | `photo-1564457461758-8ff96e439e83` | Service — bases de données |
+| `serveurs-voyants.jpg` | `photo-1762163516269-3c143e04175c` | Service — solutions cloud |
+| `code-sql.jpg` | `photo-1627398242454-45a1465c2479` | Service — sécurité et conformité |
+| `vague-particules.jpg` | `photo-1757466762489-52fea38071ad` | Service — IA et machine learning |
+| `datacenter-blanc.jpg` | `photo-1784652852605-6945598f2af3` | Service — maintenance |
+| `bureau-macbook-clavier.jpg` | `photo-1531935015902-64b87c1f4da5` | Service — formation IT |
+
 ## Vidéos — Pexels
 
 Licence Pexels : usage commercial gratuit, sans attribution obligatoire.

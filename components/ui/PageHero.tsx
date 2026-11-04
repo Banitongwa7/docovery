@@ -1,5 +1,8 @@
-import type { ReactNode } from "react";
-import { Reveal } from "@/components/motion/Reveal";
+"use client";
+
+import { useRef, type ReactNode } from "react";
+import Image from "next/image";
+import { gsap, useGSAP, EASE, prefersReducedMotion } from "@/lib/gsap";
 import SplitHeading from "@/components/motion/SplitHeading";
 import { cn } from "@/lib/utils";
 
@@ -7,70 +10,130 @@ type PageHeroProps = {
   eyebrow: string;
   title: ReactNode;
   description?: ReactNode;
-  /** Buttons, search field, meta row… */
+  /** Buttons, search field… — rendered on white, under the banner. */
   actions?: ReactNode;
-  /** Right-hand column, e.g. a key figure or breadcrumb. */
+  /** Key figure, date, location… — rendered on white, under the banner. */
   meta?: ReactNode;
+  /** Banner photo (V2, no people). */
+  image?: string;
+  imagePosition?: string;
   className?: string;
 };
 
-/** Shared masthead for every inner page — keeps the top of the site coherent. */
+/**
+ * V2 inner-page masthead: an inset rounded photo banner with the title in
+ * white at the bottom-left, plus an optional white strip for actions/meta.
+ * Same motion grammar as the home hero, just shorter.
+ */
 export default function PageHero({
   eyebrow,
   title,
   description,
   actions,
   meta,
+  image = "/media/v2/abstrait-vert-couches.jpg",
+  imagePosition = "center 35%",
   className,
 }: PageHeroProps) {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      if (prefersReducedMotion()) {
+        gsap.set("[data-anim]", { opacity: 1, y: 0 });
+        return;
+      }
+
+      gsap
+        .timeline({ defaults: { ease: EASE } })
+        .fromTo(
+          "[data-ph-panel]",
+          { opacity: 1, clipPath: "inset(8% 5% 8% 5% round 40px)" },
+          { clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 1.3, ease: "expo.inOut" },
+          0,
+        )
+        .fromTo("[data-ph-image]", { scale: 1.25 }, { scale: 1.06, duration: 2, ease: "expo.out" }, 0)
+        .fromTo("[data-ph-badge]", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7 }, 0.6)
+        .fromTo("[data-ph-lede]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 1)
+        .fromTo("[data-ph-strip]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, 1.1);
+
+      gsap.to("[data-ph-image]", {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "[data-ph-panel]",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      });
+    },
+    { scope: root },
+  );
+
   return (
-    <section
-      className={cn(
-        "relative overflow-hidden border-b border-line bg-canvas pt-32 pb-16 sm:pt-40 sm:pb-20",
-        className,
-      )}
-    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-96 grid-lines-light opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
-      <div
-        className="pointer-events-none absolute -top-40 right-[-8%] size-[36rem] rounded-full blur-[130px]"
-        style={{ background: "rgb(37 99 235 / 0.07)" }}
-      />
+    <section ref={root} className={cn("bg-canvas pt-[4.75rem]", className)}>
+      <div className="px-3 sm:px-4">
+        <div
+          data-anim
+          data-ph-panel
+          className="relative mx-auto h-[clamp(21rem,30vw,26.25rem)] max-w-[88rem] overflow-hidden rounded-panel bg-[#12201f]"
+        >
+          <div data-ph-image className="absolute inset-0 will-change-transform">
+            <Image
+              src={image}
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 1408px) 100vw, 1408px"
+              className="object-cover"
+              style={{ objectPosition: imagePosition }}
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-[rgb(7_18_17/0.85)] via-[rgb(7_18_17/0.38)] to-[rgb(7_18_17/0.1)]"
+          />
 
-      <div className="container-x relative">
-        <Reveal y={12} duration={0.6} className="flex items-center gap-3">
-          <span className="h-px w-8 bg-line" aria-hidden="true" />
-          <span className="eyebrow">{eyebrow}</span>
-        </Reveal>
-
-        <div className="mt-6 gap-x-16 lg:flex lg:items-end lg:justify-between">
-          <SplitHeading
-            as="h1"
-            className="display max-w-4xl text-[2.5rem] leading-[1] sm:text-[3.5rem] lg:text-[4.25rem]"
-          >
-            {title}
-          </SplitHeading>
-
-          {meta && (
-            <Reveal y={18} delay={0.15} className="mt-8 lg:mt-0 lg:shrink-0">
-              {meta}
-            </Reveal>
-          )}
-        </div>
-
-        {description && (
-          <Reveal y={20} delay={0.12}>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted text-pretty">
-              {description}
+          <div className="absolute inset-x-6 bottom-7 text-white sm:inset-x-10 sm:bottom-10 lg:inset-x-14 lg:bottom-12">
+            <p
+              data-anim
+              data-ph-badge
+              className="inline-flex items-center gap-2 rounded-full bg-white/14 px-3.5 py-1.5 text-[0.8125rem] font-medium backdrop-blur-md"
+            >
+              <span aria-hidden="true" className="size-[7px] rounded-full bg-[#5fd3c7]" />
+              {eyebrow}
             </p>
-          </Reveal>
-        )}
-
-        {actions && (
-          <Reveal y={20} delay={0.2} className="mt-10">
-            {actions}
-          </Reveal>
-        )}
+            <SplitHeading
+              as="h1"
+              delay={0.7}
+              className="display mt-4 max-w-[45rem] text-[2.125rem] leading-[1.14] text-white text-balance sm:text-[2.75rem] lg:text-[3.25rem]"
+            >
+              {title}
+            </SplitHeading>
+            {description && (
+              <p
+                data-anim
+                data-ph-lede
+                className="mt-3.5 max-w-[35rem] text-base leading-relaxed text-white/88 text-pretty sm:text-[1.0625rem]"
+              >
+                {description}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
+
+      {(actions || meta) && (
+        <div
+          data-anim
+          data-ph-strip
+          className="mx-auto mt-6 flex max-w-[77.5rem] flex-col gap-x-10 gap-y-5 px-5 sm:px-10 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between"
+        >
+          <div>{actions}</div>
+          {meta && <div>{meta}</div>}
+        </div>
+      )}
     </section>
   );
 }

@@ -8,7 +8,6 @@ import { Reveal, Stagger } from "@/components/motion/Reveal";
 import Counter from "@/components/motion/Counter";
 import Values from "@/components/sections/Values";
 import Testimonials from "@/components/sections/Testimonials";
-import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
   title: "À Propos",
@@ -22,6 +21,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="À propos"
+        image="/media/v2/abstrait-noir-vert.jpg"
         title="Construire des solutions, façonner l'avenir."
         description="Chez Docovery, nous combinons l'expertise technique avec une vision créative pour livrer des solutions qui transforment les entreprises et créent un impact durable dans le paysage digital."
         meta={
@@ -133,11 +133,6 @@ export default function AboutPage() {
 
       <Testimonials />
 
-      <CTASection
-        eyebrow="Travaillons ensemble"
-        title="Envie d'en savoir plus sur notre façon de travailler ?"
-        description="Prenez rendez-vous : nous vous montrerons concrètement comment nous cadrons un projet avant d'écrire la première ligne de code."
-      />
     </>
   );
 }

@@ -99,3 +99,74 @@ export const audiences = [
   "Entreprises en transformation digitale",
   "Institutions financières",
 ] as const;
+
+export type FooterCta = {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+};
+
+/**
+ * Closing call-to-action rendered inside the green footer band (V2).
+ * Matched by longest route prefix; `null` keeps the footer compact
+ * (pages that already are a form or a legal document).
+ */
+export const footerCtas: { prefix: string; cta: FooterCta | null }[] = [
+  {
+    prefix: "/services",
+    cta: {
+      eyebrow: "Un besoin précis ?",
+      title: "Décrivez-nous votre contexte.",
+      description:
+        "Nous revenons vers vous sous 24h ouvrées avec une première lecture technique de votre projet et une estimation de charge.",
+    },
+  },
+  {
+    prefix: "/case-studies/",
+    cta: {
+      eyebrow: "Projet similaire ?",
+      title: "Discutons de votre contexte.",
+      description:
+        "Nous commençons toujours par comprendre votre métier avant de proposer une architecture.",
+    },
+  },
+  {
+    prefix: "/case-studies",
+    cta: {
+      eyebrow: "Votre projet",
+      title: "Le prochain dossier peut être le vôtre.",
+      description:
+        "Décrivez-nous votre contexte : nous vous dirons honnêtement si nous sommes la bonne équipe pour le construire.",
+    },
+  },
+  {
+    prefix: "/about",
+    cta: {
+      eyebrow: "Travaillons ensemble",
+      title: "Envie d'en savoir plus sur notre façon de travailler ?",
+      description:
+        "Prenez rendez-vous : nous vous montrerons concrètement comment nous cadrons un projet avant d'écrire la première ligne de code.",
+    },
+  },
+  {
+    prefix: "/blog",
+    cta: {
+      eyebrow: "Parlons-en",
+      title: "Vous avez un projet en tête ?",
+      description:
+        "Notre équipe est prête à transformer vos idées en solutions digitales performantes et innovantes.",
+    },
+  },
+  { prefix: "/contact", cta: null },
+  { prefix: "/privacy-policy", cta: null },
+  { prefix: "/terms-of-service", cta: null },
+  {
+    prefix: "/",
+    cta: {
+      eyebrow: "Passons à l'action",
+      title: "Prêt à transformer votre entreprise ?",
+      description:
+        "Rejoignez les entreprises qui nous font confiance pour leurs projets digitaux. Commençons ensemble votre transformation digitale dès aujourd'hui.",
+    },
+  },
+];

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import LegalDocument from "@/components/legal/LegalDocument";
-import CTASection from "@/components/sections/CTASection";
 import { privacyIntro, privacySections } from "@/lib/legal";
 
 export const metadata: Metadata = {
@@ -28,11 +27,6 @@ export default function PrivacyPolicyPage() {
         updatedAt={updatedAt}
       />
 
-      <CTASection
-        eyebrow="Des questions ?"
-        title="Nous répondons à vos demandes sur vos données."
-        description="Si vous avez des questions concernant notre politique de confidentialité, n'hésitez pas à nous contacter."
-      />
     </>
   );
 }

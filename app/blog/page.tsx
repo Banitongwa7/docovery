@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { posts } from "@/lib/posts";
 import PageHero from "@/components/ui/PageHero";
 import BlogExplorer from "@/components/blog/BlogExplorer";
-import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -16,12 +15,13 @@ export default function BlogPage() {
     <>
       <PageHero
         eyebrow="Blog & insights"
+        image="/media/v2/code-html-sombre.jpg"
         title="Actualités & innovations tech."
         description="Découvrez nos articles, conseils et analyses sur les dernières tendances du développement digital et de l'innovation technologique."
         meta={
           <dl>
             <dt className="eyebrow">Articles publiés</dt>
-            <dd className="mt-1 text-3xl font-semibold tracking-[-0.03em] text-ink tabular-nums">
+            <dd className="mt-1 font-display text-3xl font-medium text-accent tabular-nums">
               {String(posts.length).padStart(2, "0")}
             </dd>
           </dl>
@@ -30,11 +30,6 @@ export default function BlogPage() {
 
       <BlogExplorer />
 
-      <CTASection
-        eyebrow="Let's talk"
-        title="Vous avez un projet en tête ?"
-        description="Parlons-en ! Notre équipe est prête à transformer vos idées en solutions digitales performantes et innovantes."
-      />
     </>
   );
 }

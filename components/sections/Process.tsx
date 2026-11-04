@@ -5,51 +5,56 @@ import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { processSteps } from "@/lib/company";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ProjectCTA from "@/components/ui/ProjectCTA";
+import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * "Notre processus, clair et transparent."
- * A vertical rail whose progress line draws itself as the section scrolls —
- * the one place on the page where scrubbed motion earns its keep.
+ * "Notre processus, clair et transparent." — five grey cards. A teal rail
+ * draws itself across them as the section scrolls, and each step's number
+ * lights up as the rail reaches it.
  */
 export default function Process() {
   const root = useRef<HTMLDivElement>(null);
-  const rail = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
-      const steps = gsap.utils.toArray<HTMLElement>("[data-step]", root.current);
+      const cards = gsap.utils.toArray<HTMLElement>("[data-step]");
+      const dots = gsap.utils.toArray<HTMLElement>("[data-step-dot]");
 
       if (prefersReducedMotion()) {
-        gsap.set(steps, { opacity: 1, y: 0 });
-        gsap.set(rail.current, { scaleY: 1 });
+        gsap.set(cards, { opacity: 1, y: 0 });
+        gsap.set("[data-rail]", { scaleX: 1 });
         return;
       }
 
       gsap.fromTo(
-        rail.current,
-        { scaleY: 0 },
+        cards,
+        { opacity: 0, y: 48, rotateX: -12 },
         {
-          scaleY: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top 65%",
-            end: "bottom 75%",
-            scrub: 0.5,
-          },
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: root.current, start: "top 80%", once: true },
         },
       );
 
-      steps.forEach((step) => {
-        gsap.fromTo(
-          step,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.85,
-            scrollTrigger: { trigger: step, start: "top 85%", once: true },
-          },
+      const progress = gsap.timeline({
+        scrollTrigger: {
+          trigger: root.current,
+          start: "top 70%",
+          end: "bottom 55%",
+          scrub: 0.6,
+        },
+      });
+      progress.fromTo("[data-rail]", { scaleX: 0 }, { scaleX: 1, ease: "none", duration: dots.length }, 0);
+      dots.forEach((dot, index) => {
+        progress.fromTo(
+          dot,
+          { backgroundColor: "#d9e3e1", color: "#0a4d47" },
+          { backgroundColor: "#0a4d47", color: "#ffffff", duration: 0.3 },
+          index,
         );
       });
     },
@@ -57,66 +62,66 @@ export default function Process() {
   );
 
   return (
-    <section className="relative overflow-hidden bg-surface py-20 sm:py-28">
-      <div className="container-x">
+    <section className="bg-canvas pb-20 sm:pb-28 lg:pb-32">
+      <div className="mx-auto max-w-[77.5rem] px-5 sm:px-10">
         <SectionHeader
           eyebrow="Notre méthode"
           title="Notre processus, clair et transparent."
           description="Cinq étapes, des livrables identifiés et une visibilité permanente sur l'avancement. Vous savez toujours où en est votre projet."
         />
 
-        <div ref={root} className="relative">
-          {/* Rail */}
+        <div ref={root} className="relative [perspective:1200px]">
+          {/* Progress rail (desktop) */}
           <span
             aria-hidden="true"
-            className="absolute top-2 bottom-2 left-[0.9375rem] w-px bg-line md:left-[7.5rem]"
+            className="absolute top-[2.4rem] right-[10%] left-[10%] hidden h-0.5 rounded-full bg-line lg:block"
           />
           <span
-            ref={rail}
+            data-rail
             aria-hidden="true"
-            className="absolute top-2 bottom-2 left-[0.9375rem] w-px origin-top scale-y-0 bg-accent md:left-[7.5rem]"
+            className="absolute top-[2.4rem] right-[10%] left-[10%] hidden h-0.5 origin-left scale-x-0 rounded-full bg-gradient-to-r from-accent to-brand lg:block"
           />
 
-          <ol className="space-y-px">
+          <ol className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {processSteps.map((step) => (
               <li
                 key={step.index}
                 data-step
                 data-anim
-                className="relative grid gap-x-10 gap-y-3 py-8 pl-11 md:grid-cols-[7.5rem_1fr] md:pl-0"
+                className="group rounded-[1.125rem] bg-surface p-[1.375rem] transition-[background-color,box-shadow,translate] duration-500 hover:-translate-y-1 hover:bg-canvas hover:shadow-[0_24px_48px_-28px_rgba(10,77,71,0.45),0_0_0_1px_var(--color-line)]"
               >
-                <div className="md:pr-10 md:text-right">
-                  <span className="absolute top-9 left-[0.5625rem] size-[0.875rem] rounded-full border-2 border-accent bg-canvas md:left-[7.0625rem]" />
-                  <span className="font-mono text-xs tracking-[0.1em] text-muted">
+                <span className="flex items-center justify-between gap-2">
+                  <span
+                    data-step-dot
+                    className="relative z-10 grid size-[2.125rem] place-items-center rounded-full bg-accent font-display text-[0.8125rem] font-medium text-white"
+                  >
+                    {step.index}
+                  </span>
+                  <span className="text-xs font-semibold text-accent">
                     {step.duration}
                   </span>
-                </div>
-
-                <div className="md:pl-10">
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs text-accent">
-                      {step.index}
-                    </span>
-                    <h3 className="text-xl font-semibold tracking-[-0.02em] text-ink">
-                      {step.title}
-                    </h3>
-                  </div>
-                  <p className="mt-3 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
-                    {step.description}
-                  </p>
-                </div>
+                </span>
+                <h3 className="mt-4 font-display text-lg font-medium text-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft/90">
+                  {step.description}
+                </p>
               </li>
             ))}
           </ol>
         </div>
 
-        <div className="mt-14 flex flex-col items-start gap-4 border-t border-line pt-10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-md text-[0.9375rem] text-muted">
+        <Reveal
+          y={16}
+          className="mt-5 flex flex-col items-start gap-4 rounded-[1.25rem] border border-line px-6 py-[1.125rem] sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p className="max-w-[38.75rem] text-[0.9375rem] leading-relaxed text-ink-soft">
             Chaque étape est cadrée par écrit avant de commencer. Pas d&apos;effet
             tunnel, pas de mauvaise surprise en fin de projet.
           </p>
-          <ProjectCTA label="Cadrer mon projet" size="md" />
-        </div>
+          <ProjectCTA label="Cadrer mon projet" size="md" className="shine" />
+        </Reveal>
       </div>
     </section>
   );

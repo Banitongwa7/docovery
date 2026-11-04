@@ -11,7 +11,6 @@ import {
 import { Reveal, Stagger } from "@/components/motion/Reveal";
 import SplitHeading from "@/components/motion/SplitHeading";
 import Counter from "@/components/motion/Counter";
-import CTASection from "@/components/sections/CTASection";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -49,7 +48,6 @@ export default async function CaseStudyPage({ params }: Params) {
   return (
     <>
       <section className="relative overflow-hidden border-b border-line bg-canvas pt-32 pb-14 sm:pt-40">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-96 grid-lines-light opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
 
         <div className="container-x relative">
           <Reveal y={12} duration={0.6}>
@@ -66,11 +64,11 @@ export default async function CaseStudyPage({ params }: Params) {
             <span className="rounded-full bg-accent-soft px-3 py-1 text-[0.6875rem] font-medium text-accent">
               {study.sector}
             </span>
-            <span className="font-mono text-xs text-muted">{study.year}</span>
+            <span className="text-xs text-muted">{study.year}</span>
             <span className="text-muted/40" aria-hidden="true">
               ·
             </span>
-            <span className="font-mono text-xs text-muted">
+            <span className="text-xs text-muted">
               {study.duration}
             </span>
           </div>
@@ -174,7 +172,7 @@ export default async function CaseStudyPage({ params }: Params) {
                   data-anim
                   className="flex gap-6 border-b border-line py-7 first:pt-0 last:border-b-0"
                 >
-                  <span className="font-mono text-xs text-accent">
+                  <span className="text-xs text-accent">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -227,11 +225,6 @@ export default async function CaseStudyPage({ params }: Params) {
         </div>
       </section>
 
-      <CTASection
-        eyebrow="Projet similaire ?"
-        title="Discutons de votre contexte."
-        description="Nous commençons toujours par comprendre votre métier avant de proposer une architecture."
-      />
     </>
   );
 }

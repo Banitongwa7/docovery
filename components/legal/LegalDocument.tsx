@@ -66,7 +66,7 @@ export default function LegalDocument({
                         href={`#${section.id}`}
                         className="group flex gap-3 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface hover:text-ink"
                       >
-                        <span className="font-mono text-xs text-muted/70">
+                        <span className="text-xs text-muted/70">
                           {section.index}
                         </span>
                         {section.title}
@@ -102,7 +102,7 @@ export default function LegalDocument({
               >
                 <div id={section.id} className="scroll-mt-28">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs text-accent">
+                    <span className="text-xs text-accent">
                       {section.index}
                     </span>
                     <h2 className="text-xl font-semibold tracking-[-0.02em] text-ink">

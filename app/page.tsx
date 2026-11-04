@@ -6,12 +6,13 @@ import Process from "@/components/sections/Process";
 import CaseStudiesPreview from "@/components/sections/CaseStudiesPreview";
 import Values from "@/components/sections/Values";
 import Testimonials from "@/components/sections/Testimonials";
-import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+// The closing call-to-action ("Prêt à transformer votre entreprise ?") lives
+// in the green footer band — see `footerCtas` in lib/site.ts.
 export default function HomePage() {
   return (
     <>
@@ -20,9 +21,8 @@ export default function HomePage() {
       <ServicesGrid />
       <Process />
       <CaseStudiesPreview />
-      <Values className="bg-canvas pb-20 sm:pb-28" />
+      <Values />
       <Testimonials />
-      <CTASection />
     </>
   );
 }

@@ -62,7 +62,7 @@ export default function BlogExplorer() {
                 className={cn(
                   "shrink-0 rounded-full border px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300",
                   category === item
-                    ? "border-ink bg-ink text-white"
+                    ? "border-accent bg-accent text-white"
                     : "border-line text-muted hover:border-ink/25 hover:text-ink",
                 )}
               >

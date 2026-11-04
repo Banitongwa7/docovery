@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./../styles/globals.css";
 
@@ -7,17 +7,19 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { ProjectModalProvider } from "@/components/providers/ProjectModalProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileProjectBar from "@/components/layout/MobileProjectBar";
 import { siteConfig, contact } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -97,7 +99,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="fr" className={`${dmSans.variable} ${poppins.variable}`}>
       <head>
         {/*
           Anti-FOUC safety net: animated nodes start at opacity 0 so GSAP can
@@ -117,7 +119,7 @@ export default function RootLayout({
       <body className="antialiased">
         <a
           href="#contenu"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:rounded-full focus:bg-accent focus:px-5 focus:py-3 focus:text-sm focus:text-white"
         >
           Aller au contenu principal
         </a>
@@ -127,6 +129,7 @@ export default function RootLayout({
             <Navbar />
             <main id="contenu">{children}</main>
             <Footer />
+            <MobileProjectBar />
           </ProjectModalProvider>
         </SmoothScroll>
 

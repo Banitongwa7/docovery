@@ -1,41 +1,44 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  Docovery — Design tokens                                           */
-/*  Clean · structured · finance-oriented                              */
+/*  Docovery — Design tokens (V2)                                      */
+/*  Deep teal from the logo · rounded photo panels · pill actions      */
 /* ------------------------------------------------------------------ */
 @theme {
   /* Surfaces */
   --color-canvas: #ffffff;
-  --color-surface: #f6f7f9;
-  --color-surface-2: #eef0f4;
+  --color-surface: #f4f6f5;
+  --color-surface-2: #e9eeed;
 
   /* Ink */
-  --color-ink: #0b0d12;
-  --color-ink-soft: #3d434f;
-  --color-muted: #6b7280;
-  --color-line: #e6e8ee;
+  --color-ink: #121a19;
+  --color-ink-soft: #2f3b39;
+  --color-muted: #5f6b69;
+  --color-line: #e1e7e6;
 
-  /* Brand accent (preserved from the original identity) */
-  --color-accent: #2563eb;
-  --color-accent-dark: #1d4ed8;
-  --color-accent-soft: #eff4ff;
-  --color-accent-ink: #172554;
+  /* Brand — deep teal derived from the logo gradient */
+  --color-accent: #0a4d47;
+  --color-accent-dark: #083d38;
+  --color-accent-soft: #eaf5f3;
+  --color-accent-ink: #062e2a;
+  --color-brand: #01a297;
+  --color-mint: #9fe0d6;
 
-  /* Dark sections */
-  --color-night: #0b0d12;
-  --color-night-2: #12151d;
-  --color-night-line: #232833;
+  /* Dark sections (green bands) */
+  --color-night: #0a4d47;
+  --color-night-2: #083d38;
+  --color-night-line: #1f6460;
 
   /* Signal */
   --color-positive: #059669;
-  --color-negative: #dc2626;
+  --color-negative: #b42318;
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-card: 1.25rem;
-  --radius-panel: 2rem;
+  --radius-panel: 1.5rem;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -63,8 +66,14 @@
   }
 
   ::selection {
-    background-color: var(--color-ink);
+    background-color: var(--color-accent);
     color: var(--color-canvas);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
   }
 
   :focus-visible {
@@ -136,12 +145,17 @@ html.lenis body {
     @apply mx-auto w-full max-w-[80rem] px-5 sm:px-8;
   }
 
+  /* Sentence-case teal label above every section title (V2). */
   .eyebrow {
-    @apply font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-muted;
+    @apply text-[0.9375rem] font-semibold text-accent;
+  }
+
+  .eyebrow-invert {
+    @apply text-[0.9375rem] font-semibold text-mint;
   }
 
   .display {
-    @apply font-semibold tracking-[-0.035em] leading-[0.98];
+    @apply font-display font-medium tracking-[-0.015em] leading-[1.12];
   }
 
   .rule {
@@ -172,7 +186,8 @@ html.lenis body {
   .btn-primary,
   .btn-dark,
   .btn-ghost,
-  .btn-invert {
+  .btn-invert,
+  .btn-outline-invert {
     @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium
            whitespace-nowrap transition-all duration-300
            disabled:cursor-not-allowed disabled:opacity-55;
@@ -180,34 +195,39 @@ html.lenis body {
 
   .btn-primary {
     @apply bg-accent text-white hover:bg-accent-dark
-           shadow-[0_1px_2px_rgba(11,13,18,0.08),0_8px_24px_-8px_rgba(37,99,235,0.55)]
-           hover:shadow-[0_1px_2px_rgba(11,13,18,0.08),0_12px_32px_-8px_rgba(37,99,235,0.6)];
+           shadow-[0_1px_2px_rgba(10,77,71,0.10),0_10px_24px_-12px_rgba(10,77,71,0.55)]
+           hover:shadow-[0_1px_2px_rgba(10,77,71,0.10),0_16px_32px_-12px_rgba(10,77,71,0.6)];
   }
 
   .btn-dark {
-    @apply bg-ink text-white hover:bg-night-2;
+    @apply bg-ink text-white hover:bg-accent-ink;
   }
 
   .btn-ghost {
-    @apply border border-line bg-canvas text-ink hover:border-ink/25 hover:bg-surface;
+    @apply border border-ink/15 bg-canvas text-ink hover:border-accent/40 hover:bg-accent-soft;
   }
 
   .btn-invert {
-    @apply bg-white text-ink hover:bg-white/90;
+    @apply bg-white font-semibold text-accent hover:bg-mint/90;
+  }
+
+  .btn-outline-invert {
+    @apply border border-white/70 text-white hover:bg-white/10;
   }
 
   .btn-md {
-    @apply h-11 px-5;
+    @apply h-11 px-5 text-[0.9375rem];
   }
 
   .btn-lg {
-    @apply h-13 px-7 text-[0.9375rem];
+    @apply h-[3.25rem] px-7 text-[0.9375rem];
   }
 
   .field {
-    @apply w-full rounded-xl border border-line bg-canvas px-4 py-3 text-[0.9375rem] text-ink
-           placeholder:text-muted/70 transition-colors duration-200
-           focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10;
+    @apply w-full rounded-2xl border border-line bg-surface px-4 py-3.5 text-[0.9375rem] text-ink
+           placeholder:text-muted/70 transition-[border-color,background-color,box-shadow] duration-200
+           hover:border-ink/15
+           focus:border-accent focus:bg-canvas focus:outline-none focus:ring-4 focus:ring-accent/10;
   }
 
   .field-error {
@@ -216,6 +236,180 @@ html.lenis body {
 
   .card {
     @apply rounded-card border border-line bg-canvas;
+  }
+
+  /* Underline that draws itself from the left on hover (V2 links). */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition:
+      background-size 0.45s var(--ease-out-expo),
+      color 0.3s ease;
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+    color: var(--color-accent);
+  }
+
+  /* Photo panels: soft zoom on hover, driven by the parent `.group`. */
+  .img-zoom {
+    transition: transform 1.2s var(--ease-out-expo);
+  }
+
+  .group:hover .img-zoom {
+    transform: scale(1.06);
+  }
+
+  /* Ambient orbs drifting in the green bands. */
+  .orb {
+    animation: orb-drift 18s ease-in-out infinite alternate;
+  }
+
+  .orb-slow {
+    animation-duration: 26s;
+    animation-direction: alternate-reverse;
+  }
+
+  /* Logo dots blink in sequence when the logo is hovered. */
+  .logo-link:hover .logo-dot {
+    animation: dot-pulse 0.9s ease-in-out;
+  }
+
+  .logo-dot:nth-child(3n + 1) {
+    animation-delay: 0.05s;
+  }
+
+  .logo-dot:nth-child(3n + 2) {
+    animation-delay: 0.15s;
+  }
+
+  .logo-dot:nth-child(3n) {
+    animation-delay: 0.25s;
+  }
+
+  /* Infinite marquee (audiences strip, stack). */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+
+  .marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Light sweep across pill buttons. */
+  .shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.28) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.9s var(--ease-out-expo);
+  }
+
+  .shine:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+/* Radix Accordion exposes the panel height as a CSS variable. */
+.accordion-content[data-state="open"] {
+  animation: accordion-down 0.45s var(--ease-out-expo);
+}
+
+.accordion-content[data-state="closed"] {
+  animation: accordion-up 0.35s var(--ease-out-expo);
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes orb-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6rem, 3rem, 0) scale(1.15);
+  }
+}
+
+@keyframes dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping-soft {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
   }
 }
 
